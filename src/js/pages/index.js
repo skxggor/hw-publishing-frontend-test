@@ -4,7 +4,7 @@ import { pubSub } from '@core/pubsub.js';
 import Utils from '@core/utils.js';
 import I18n from '@core/i18n.js';
 
-const createLandingPage = function createLandingPage() {
+const createHomePage = function createHomePage() {
   let isInitialized = false;
 
   const initMobileMenu = function initMobileMenu() {
@@ -199,11 +199,11 @@ const createLandingPage = function createLandingPage() {
   return Object.freeze({ init });
 };
 
-const landingPage = createLandingPage();
+const homePage = createHomePage();
 
-document.addEventListener('DOMContentLoaded', function startLanding() {
-  landingPage.init();
+document.addEventListener('DOMContentLoaded', function startHome() {
+  homePage.init();
 });
 
-export { createLandingPage };
-export default landingPage;
+export { createHomePage };
+export default homePage;

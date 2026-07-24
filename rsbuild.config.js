@@ -7,7 +7,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)));
 export default defineConfig({
   source: {
     entry: {
-      landing: './src/js/pages/landing.js',
+      index: './src/js/pages/index.js',
       upsell: './src/js/pages/upsell.js',
       'thank-you': './src/js/pages/thank-you.js',
     },

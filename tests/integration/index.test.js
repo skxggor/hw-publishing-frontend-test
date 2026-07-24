@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { createLandingPage } from '@pages/landing.js';
+import { createHomePage } from '@pages/index.js';
 import { pubSub } from '@core/pubsub.js';
 import { installIntersectionObserver } from '../helpers.js';
 
-const setupLandingDom = function setupLandingDom() {
+const setupHomeDom = function setupHomeDom() {
   document.body.innerHTML = `
     <header class="header"></header>
     <button id="mobileMenuToggle">Menu</button>
@@ -15,14 +15,14 @@ const setupLandingDom = function setupLandingDom() {
   `;
 };
 
-describe('Landing Page - Integration', function () {
-  let landingPage;
+describe('Home Page - Integration', function () {
+  let homePage;
 
   beforeEach(function () {
-    setupLandingDom();
+    setupHomeDom();
     localStorage.clear();
     Object.defineProperty(navigator, 'language', { value: 'pt-BR', configurable: true });
-    landingPage = createLandingPage();
+    homePage = createHomePage();
   });
 
   afterEach(function () {
@@ -32,7 +32,7 @@ describe('Landing Page - Integration', function () {
 
   describe('initLanguageToggle', function () {
     it('should switch to en-US and update label on click', function () {
-      landingPage.init();
+      homePage.init();
 
       document.querySelector('#languageToggle').click();
 
@@ -41,7 +41,7 @@ describe('Landing Page - Integration', function () {
     });
 
     it('should switch back to pt-BR on second click', function () {
-      landingPage.init();
+      homePage.init();
 
       document.querySelector('#languageToggle').click();
       document.querySelector('#languageToggle').click();
@@ -55,7 +55,7 @@ describe('Landing Page - Integration', function () {
 
       pubSub.subscribe('language:changed', handler);
 
-      landingPage.init();
+      homePage.init();
       document.querySelector('#languageToggle').click();
 
       expect(handler).toHaveBeenCalledTimes(1);
@@ -65,7 +65,7 @@ describe('Landing Page - Integration', function () {
 
   describe('initMobileMenu', function () {
     it('should toggle header menu class on click', function () {
-      landingPage.init();
+      homePage.init();
 
       const header = document.querySelector('.header');
 
@@ -83,7 +83,7 @@ describe('Landing Page - Integration', function () {
 
       pubSub.subscribe('cta:clicked', handler);
 
-      landingPage.init();
+      homePage.init();
       document.querySelector('.btn--primary').click();
 
       expect(handler).toHaveBeenCalledTimes(1);
@@ -97,7 +97,7 @@ describe('Landing Page - Integration', function () {
     });
 
     it('should activate the first testimonial on init', function () {
-      landingPage.init();
+      homePage.init();
 
       const active = document.querySelectorAll('.testimonial-card--active');
 
@@ -106,7 +106,7 @@ describe('Landing Page - Integration', function () {
     });
 
     it('should advance to the next testimonial after the interval', function () {
-      landingPage.init();
+      homePage.init();
 
       vi.advanceTimersByTime(5000);
 
@@ -117,7 +117,7 @@ describe('Landing Page - Integration', function () {
     });
 
     it('should loop back to the first testimonial', function () {
-      landingPage.init();
+      homePage.init();
 
       vi.advanceTimersByTime(10000);
 
@@ -133,7 +133,7 @@ describe('Landing Page - Integration', function () {
     });
 
     it('should add scrolled class when scrolled past threshold', function () {
-      landingPage.init();
+      homePage.init();
 
       Object.defineProperty(window, 'pageYOffset', { value: 150, configurable: true, writable: true });
       window.dispatchEvent(new Event('scroll'));
@@ -142,7 +142,7 @@ describe('Landing Page - Integration', function () {
     });
 
     it('should remove scrolled class when scrolled back to top', function () {
-      landingPage.init();
+      homePage.init();
 
       Object.defineProperty(window, 'pageYOffset', { value: 150, configurable: true, writable: true });
       window.dispatchEvent(new Event('scroll'));
@@ -162,8 +162,8 @@ describe('Landing Page - Integration', function () {
 
       pubSub.subscribe('landing:initialized', handler);
 
-      landingPage.init();
-      landingPage.init();
+      homePage.init();
+      homePage.init();
 
       expect(handler).toHaveBeenCalledTimes(1);
     });
@@ -177,7 +177,7 @@ describe('Landing Page - Integration', function () {
       document.body.appendChild(link);
 
       expect(function clickEmptyHash() {
-        landingPage.init();
+        homePage.init();
         link.click();
       }).not.toThrow();
     });
@@ -191,7 +191,7 @@ describe('Landing Page - Integration', function () {
       document.body.append(target, link);
 
       expect(function clickRealAnchor() {
-        landingPage.init();
+        homePage.init();
         link.click();
       }).not.toThrow();
     });
@@ -206,7 +206,7 @@ describe('Landing Page - Integration', function () {
       animated.setAttribute('data-animate', '');
       document.body.appendChild(animated);
 
-      landingPage.init();
+      homePage.init();
 
       expect(animated.classList.contains('is-visible')).toBe(true);
     });
@@ -217,7 +217,7 @@ describe('Landing Page - Integration', function () {
       document.querySelector('#languageToggle').remove();
 
       expect(function safeInit() {
-        landingPage.init();
+        homePage.init();
       }).not.toThrow();
     });
 
@@ -225,7 +225,7 @@ describe('Landing Page - Integration', function () {
       document.querySelector('#mobileMenuToggle').remove();
 
       expect(function safeInit() {
-        landingPage.init();
+        homePage.init();
       }).not.toThrow();
     });
 
@@ -235,7 +235,7 @@ describe('Landing Page - Integration', function () {
       });
 
       expect(function safeInit() {
-        landingPage.init();
+        homePage.init();
       }).not.toThrow();
     });
   });

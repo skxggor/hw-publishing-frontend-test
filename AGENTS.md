@@ -186,7 +186,7 @@ hw-publishing-frontend-test-2026-07-24/
 │   │   │   ├── upsell/
 │   │   │   └── thank-you/
 │   │   └── pages/
-│   │       ├── landing.js
+│   │       ├── index.js
 │   │       ├── upsell.js
 │   │       └── thank-you.js
 │   ├── css/
@@ -205,7 +205,7 @@ hw-publishing-frontend-test-2026-07-24/
 │   ├── integration/
 │   └── setup.js
 ├── pages/
-│   ├── landing.html
+│   ├── index.html
 │   ├── upsell.html
 │   └── thank-you.html
 ├── jsconfig.json

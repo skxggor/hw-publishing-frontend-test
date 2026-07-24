@@ -58,7 +58,7 @@ hw-publishing-frontend-test-2026-07-24/
 │   │   │   ├── pubsub.js
 │   │   │   └── utils.js
 │   │   └── pages/
-│   │       ├── landing.js
+│   │       ├── index.js
 │   │       ├── upsell.js
 │   │       └── thank-you.js
 │   └── locales/
@@ -70,7 +70,7 @@ hw-publishing-frontend-test-2026-07-24/
 │   ├── helpers.js
 │   └── setup.js
 ├── pages/
-│   ├── landing.html
+│   ├── index.html
 │   ├── upsell.html
 │   └── thank-you.html
 ├── jsconfig.json
