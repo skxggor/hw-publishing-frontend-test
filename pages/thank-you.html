@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Obrigado pela sua compra! Seu exemplar de Demian está reservado e a caminho.">
+  <meta name="keywords" content="Demian, Hermann Hesse, pedido confirmado, H&W Publishing">
+
+  <title>Pedido Confirmado — Demian | H&W Publishing</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+  <header class="header header--simple">
+    <div class="header__container">
+      <a href="/" class="header__logo" data-i18n="header.logo">H&W Publishing</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="thank-you-hero">
+      <div class="thank-you-hero__container">
+        <div class="thank-you-hero__icon">📚</div>
+        <h1 class="thank-you-hero__title" data-i18n="thankYou.hero.title">
+          Obrigado, Marcos! Seu exemplar está reservado.
+        </h1>
+        <p class="thank-you-hero__subtitle" data-i18n="thankYou.hero.subtitle">
+          Sua relíquia literária está a caminho
+        </p>
+      </div>
+    </section>
+
+    <section class="order-summary">
+      <div class="order-summary__container">
+        <h2 class="order-summary__title" data-i18n="thankYou.orderSummary.title">
+          Resumo do seu pedido
+        </h2>
+
+        <div class="order-summary__card">
+          <div class="order-summary__header">
+            <span data-i18n="thankYou.orderSummary.order">Pedido</span>
+            <span class="order-summary__number" id="orderNumber">#HWP-000000</span>
+          </div>
+
+          <div class="order-summary__items">
+            <div class="order-summary__item">
+              <div class="order-summary__product">
+                <span data-i18n="thankYou.orderSummary.book">Demian — Primeira Edição em Português</span>
+              </div>
+              <div class="order-summary__price">R$ 497,00</div>
+            </div>
+
+            <div class="order-summary__item is-hidden" id="companionItem">
+              <div class="order-summary__product">
+                <span data-i18n="thankYou.orderSummary.companion">Companhão de Colecionador (guia + slipcase)</span>
+              </div>
+              <div class="order-summary__price">R$ 197,00</div>
+            </div>
+          </div>
+
+          <div class="order-summary__total">
+            <span data-i18n="thankYou.orderSummary.total">Total</span>
+            <span class="order-summary__value" id="orderTotal">R$ 497,00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="next-steps">
+      <div class="next-steps__container">
+        <h2 class="next-steps__title" data-i18n="thankYou.nextSteps.title">
+          Próximos Passos
+        </h2>
+
+        <div class="next-steps__timeline">
+          <div class="step-card" data-animate>
+            <div class="step-card__number">1</div>
+            <div class="step-card__content">
+              <h3 class="step-card__title" data-i18n="thankYou.nextSteps.step1.title">
+                Confirmação por e-mail
+              </h3>
+              <p class="step-card__description" data-i18n="thankYou.nextSteps.step1.description">
+                Você receberá a confirmação e o número de rastreio em até 24 horas.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card" data-animate>
+            <div class="step-card__number">2</div>
+            <div class="step-card__content">
+              <h3 class="step-card__title" data-i18n="thankYou.nextSteps.step2.title">
+                Embalagem e envio
+              </h3>
+              <p class="step-card__description" data-i18n="thankYou.nextSteps.step2.description">
+                O exemplar é embalado com proteção archival e despachado com seguro.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card" data-animate>
+            <div class="step-card__number">3</div>
+            <div class="step-card__content">
+              <h3 class="step-card__title" data-i18n="thankYou.nextSteps.step3.title">
+                Entrega segura
+              </h3>
+              <p class="step-card__description" data-i18n="thankYou.nextSteps.step3.description">
+                Receba seu Demian em casa e adicione à sua biblioteca.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="support-section">
+      <div class="support-section__container">
+        <h2 class="support-section__title" data-i18n="thankYou.support.title">
+          Precisa de ajuda?
+        </h2>
+        <p class="support-section__description" data-i18n="thankYou.support.description">
+          Nossa curadoria está pronta para auxiliar você.
+        </p>
+
+        <div class="support-section__contacts">
+          <a href="mailto:curadoria@hwpublishing.com" class="support-section__contact">
+            <span class="support-section__icon">📧</span>
+            <span class="support-section__text" data-i18n="thankYou.support.email">curadoria@hwpublishing.com</span>
+          </a>
+          <a href="https://wa.me/5511999999999" class="support-section__contact">
+            <span class="support-section__icon">💬</span>
+            <span class="support-section__text" data-i18n="thankYou.support.whatsapp">WhatsApp: (11) 99999-9999</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="cta-section__container">
+        <a href="https://rastreio.hwpublishing.com" class="btn btn--primary btn--large" data-i18n="thankYou.cta.primary">
+          Acompanhar Meu Pedido
+        </a>
+        <a href="/" class="btn btn--secondary" data-i18n="thankYou.cta.secondary">
+          Voltar ao Início
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__content">
+        <div class="footer__section">
+          <h3 class="footer__title">H&W Publishing</h3>
+          <p class="footer__description">
+            Curadoria de edições raras e exemplares de colecionador.
+          </p>
+        </div>
+
+        <div class="footer__section">
+          <h4 class="footer__heading">Links Úteis</h4>
+          <ul class="footer__links">
+            <li><a href="/terms.html">Termos de Uso</a></li>
+            <li><a href="/privacy.html">Política de Privacidade</a></li>
+            <li><a href="mailto:curadoria@hwpublishing.com">Curadoria</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p data-i18n="footer.copyright">© 2024 H&W Publishing. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
