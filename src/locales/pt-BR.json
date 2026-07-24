@@ -1,0 +1,148 @@
+{
+  "common": {
+    "currency": "R$",
+    "error": "Ocorreu um erro",
+    "loading": "Carregando...",
+    "retry": "Tentar novamente"
+  },
+  "header": {
+    "about": "A Obra",
+    "contact": "Contato",
+    "courses": "Edição",
+    "home": "Início",
+    "language": "Idioma",
+    "logo": "H&W Publishing"
+  },
+  "footer": {
+    "contact": "Contato",
+    "copyright": "© 2024 H&W Publishing. Todos os direitos reservados.",
+    "privacy": "Política de Privacidade",
+    "social": "Siga-nos",
+    "terms": "Termos de Uso"
+  },
+  "landing": {
+    "cta": {
+      "primary": "Quero Adquirir Este Exemplar",
+      "secondary": "Conhecer a Obra",
+      "urgency": "Exemplar único disponível"
+    },
+    "edition": {
+      "feature1": {
+        "description": "A primeira edição em português de Demian, um exemplar histórico das décadas de 1930.",
+        "title": "Primeira Edição em Português"
+      },
+      "feature2": {
+        "description": "Encadernação original preservada, miolo íntegro e páginas em excelente estado.",
+        "title": "Conservação Impecável"
+      },
+      "feature3": {
+        "description": "Obra de Hermann Hesse, vencedor do Nobel de Literatura de 1946.",
+        "title": "Um Clássico Premiada"
+      },
+      "title": "Por que este exemplar é único"
+    },
+    "guarantee": {
+      "description": "Se o exemplar não corresponder à descrição, devolvemos 100% do valor. Autenticidade e estado garantidos.",
+      "title": "Garantia de Autenticidade e 30 Dias"
+    },
+    "hero": {
+      "cta": "Quero Este Exemplar",
+      "guarantee": "Garantia de 30 dias",
+      "subtitle": "A primeira edição em português da obra-prima de Hermann Hesse — um exemplar raro, para verdadeiros colecionadores.",
+      "title": "Possua a Primeira Edição em Português de Demian"
+    },
+    "testimonials": {
+      "testimonial1": {
+        "name": "Ricardo Almeida",
+        "rating": 5,
+        "role": "Colecionador",
+        "text": "Exemplar impecável e entrega cuidada. Ter a primeira edição em português é um sonho para qualquer colecionador de Hesse."
+      },
+      "testimonial2": {
+        "name": "Helena Martins",
+        "rating": 5,
+        "role": "Professora de Literatura",
+        "text": "A qualidade da conservação superou minhas expectativas. Uma relíquia que agora faz parte da minha biblioteca particular."
+      },
+      "testimonial3": {
+        "name": "Tomás Ferreira",
+        "rating": 5,
+        "role": "Leitor apaixonado",
+        "text": "Atendimento impecável do início ao fim. Recebi o livro autenticado e bem embalado. Recomendo sem reservas."
+      },
+      "title": "O que dizem nossos colecionadores"
+    }
+  },
+  "thankYou": {
+    "cta": {
+      "primary": "Acompanhar Meu Pedido",
+      "secondary": "Voltar ao Início"
+    },
+    "hero": {
+      "subtitle": "Sua relíquia literária está a caminho",
+      "title": "Obrigado, Marcos! Seu exemplar está reservado."
+    },
+    "orderSummary": {
+      "book": "Demian — Primeira Edição em Português",
+      "companion": "Companhão de Colecionador (guia + slipcase)",
+      "order": "Pedido",
+      "title": "Resumo do seu pedido",
+      "total": "Total"
+    },
+    "nextSteps": {
+      "step1": {
+        "description": "Você receberá a confirmação e o número de rastreio em até 24 horas.",
+        "title": "1. Confirmação por e-mail"
+      },
+      "step2": {
+        "description": "O exemplar é embalado com proteção archival e despachado com seguro.",
+        "title": "2. Embalagem e envio"
+      },
+      "step3": {
+        "description": "Receba seu Demian em casa e adicione à sua biblioteca.",
+        "title": "3. Entrega segura"
+      },
+      "title": "Próximos Passos"
+    },
+    "support": {
+      "description": "Nossa curadoria está pronta para auxiliar você.",
+      "email": "curadoria@hwpublishing.com",
+      "title": "Precisa de ajuda?",
+      "whatsapp": "WhatsApp: (11) 99999-9999"
+    }
+  },
+  "upsell": {
+    "cta": {
+      "accept": "Sim, quero o Companhão de Colecionador",
+      "decline": "Não, obrigado. Continuar apenas com o livro."
+    },
+    "guarantee": {
+      "description": "Se você não amar o companheiro, devolvemos 100% do investimento.",
+      "title": "Mesma Garantia de 30 Dias"
+    },
+    "hero": {
+      "subtitle": "Antes de finalizar, temos uma oferta exclusiva para o seu exemplar...",
+      "title": "Parabéns! Você reservou seu Demian."
+    },
+    "offer": {
+      "cta": "Adicionar Companheiro de Colecionador",
+      "currentPrice": "R$ 197,00",
+      "description": "Um guia de leitura anotado de Demian, uma slipcase artesanal para proteger o exemplar e um ex-libris numerado para a sua biblioteca.",
+      "discount": "50% OFF",
+      "features": {
+        "feature1": "Guia de leitura anotado sobre a obra de Hesse",
+        "feature2": "Slipcase artesanal de proteção archival",
+        "feature3": "Ex-libris numerado e personalizado",
+        "feature4": "Certificado de colecionador exclusivo",
+        "feature5": "Acesso ao clube de raridades literárias"
+      },
+      "originalPrice": "R$ 397,00",
+      "subtitle": "Complete a sua coleção com um cuidado à altura do exemplar",
+      "title": "Companheiro de Colecionador"
+    },
+    "video": {
+      "description": "Assista ao vídeo e conheça esta oferta exclusiva",
+      "title": "Conheça o cuidado que envolverá o seu exemplar"
+    }
+  }
+}

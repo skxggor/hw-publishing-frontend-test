@@ -1,0 +1,148 @@
+{
+  "common": {
+    "currency": "$",
+    "error": "An error occurred",
+    "loading": "Loading...",
+    "retry": "Try again"
+  },
+  "header": {
+    "about": "The Work",
+    "contact": "Contact",
+    "courses": "Edition",
+    "home": "Home",
+    "language": "Language",
+    "logo": "H&W Publishing"
+  },
+  "footer": {
+    "contact": "Contact",
+    "copyright": "© 2024 H&W Publishing. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "social": "Follow us",
+    "terms": "Terms of Use"
+  },
+  "landing": {
+    "cta": {
+      "primary": "I Want This Copy",
+      "secondary": "Discover the Work",
+      "urgency": "Single copy available"
+    },
+    "edition": {
+      "feature1": {
+        "description": "The first Portuguese-language edition of Demian, a historic copy from the 1930s.",
+        "title": "First Portuguese Edition"
+      },
+      "feature2": {
+        "description": "Original binding preserved, intact interior and pages in excellent condition.",
+        "title": "Immaculate Condition"
+      },
+      "feature3": {
+        "description": "A work by Hermann Hesse, winner of the 1946 Nobel Prize in Literature.",
+        "title": "An Awarded Classic"
+      },
+      "title": "Why this copy is unique"
+    },
+    "guarantee": {
+      "description": "If the copy does not match the description, we refund 100% of the value. Authenticity and condition guaranteed.",
+      "title": "Authenticity Guarantee and 30 Days"
+    },
+    "hero": {
+      "cta": "I Want This Copy",
+      "guarantee": "30-day guarantee",
+      "subtitle": "The first Portuguese-language edition of Hermann Hesse's masterpiece — a rare copy, for true collectors.",
+      "title": "Own the First Portuguese Edition of Demian"
+    },
+    "testimonials": {
+      "testimonial1": {
+        "name": "Ricardo Almeida",
+        "rating": 5,
+        "role": "Collector",
+        "text": "Immaculate copy and careful delivery. Owning the first Portuguese edition is a dream for any Hesse collector."
+      },
+      "testimonial2": {
+        "name": "Helena Martins",
+        "rating": 5,
+        "role": "Literature Professor",
+        "text": "The condition quality exceeded my expectations. A treasure now part of my private library."
+      },
+      "testimonial3": {
+        "name": "Tomas Ferreira",
+        "rating": 5,
+        "role": "Passionate reader",
+        "text": "Flawless service from start to finish. I received an authenticated, well-packed book. Recommended without reservation."
+      },
+      "title": "What our collectors say"
+    }
+  },
+  "thankYou": {
+    "cta": {
+      "primary": "Track My Order",
+      "secondary": "Back to Home"
+    },
+    "hero": {
+      "subtitle": "Your literary treasure is on its way",
+      "title": "Thank you, Marcos! Your copy is reserved."
+    },
+    "orderSummary": {
+      "book": "Demian — First Portuguese Edition",
+      "companion": "Collector's Companion (guide + slipcase)",
+      "order": "Order",
+      "title": "Your order summary",
+      "total": "Total"
+    },
+    "nextSteps": {
+      "step1": {
+        "description": "You'll receive confirmation and a tracking number within 24 hours.",
+        "title": "1. Email confirmation"
+      },
+      "step2": {
+        "description": "The copy is packed with archival protection and shipped insured.",
+        "title": "2. Packing and shipping"
+      },
+      "step3": {
+        "description": "Receive your Demian at home and add it to your library.",
+        "title": "3. Secure delivery"
+      },
+      "title": "Next Steps"
+    },
+    "support": {
+      "description": "Our curatorial team is ready to assist you.",
+      "email": "curator@hwpublishing.com",
+      "title": "Need help?",
+      "whatsapp": "WhatsApp: +1 (555) 123-4567"
+    }
+  },
+  "upsell": {
+    "cta": {
+      "accept": "Yes, I want the Collector's Companion",
+      "decline": "No thanks. Continue with the book only."
+    },
+    "guarantee": {
+      "description": "If you don't love the companion, we refund 100% of your investment.",
+      "title": "Same 30-Day Guarantee"
+    },
+    "hero": {
+      "subtitle": "Before you finish, we have an exclusive offer for your copy...",
+      "title": "Congratulations! You've reserved your Demian."
+    },
+    "offer": {
+      "cta": "Add Collector's Companion",
+      "currentPrice": "$97.00",
+      "description": "An annotated reading guide to Demian, a handmade slipcase to protect the copy, and a numbered bookplate for your library.",
+      "discount": "50% OFF",
+      "features": {
+        "feature1": "Annotated reading guide to Hesse's work",
+        "feature2": "Handmade archival protective slipcase",
+        "feature3": "Numbered and personalized bookplate",
+        "feature4": "Exclusive collector's certificate",
+        "feature5": "Access to the literary rarities club"
+      },
+      "originalPrice": "$197.00",
+      "subtitle": "Complete your collection with care worthy of the copy",
+      "title": "Collector's Companion"
+    },
+    "video": {
+      "description": "Watch the video and discover this exclusive offer",
+      "title": "Discover the care that will wrap your copy"
+    }
+  }
+}
