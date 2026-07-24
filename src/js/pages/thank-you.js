@@ -1,4 +1,5 @@
 import '@css/styles.css';
+import '@core/view-transitions.js';
 
 import { pubSub } from '@core/pubsub.js';
 import Utils from '@core/utils.js';
