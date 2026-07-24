@@ -109,6 +109,12 @@ import I18n from '../core/i18n.js';
 - Testar em múltiplos browsers e dispositivos
 - Considerar progressive enhancement
 
+### Transições entre páginas (View Transitions)
+- `src/css/base/transitions.css` ativa **cross-document View Transitions** (`@view-transition { navigation: auto }`) — anima a navegação MPA (index → upsell → thank-you)
+- Progressive enhancement puro em CSS, zero JS; Firefox cai no fallback (navegação normal, sem quebra)
+- `prefers-reduced-motion` desativa a animação
+- Reveals **dentro** da mesma página (conteúdo após o vídeo, entrada/confete) continuam com GSAP — separação: VT = navegação, GSAP = in-page
+
 ---
 
 ## 🌐 Internacionalização (i18n)
