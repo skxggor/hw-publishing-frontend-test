@@ -120,6 +120,35 @@
   background-color: var(--color-bordeaux);
 }
 
+.carousel__cta {
+  align-items: center;
+  background-color: var(--surface-ink);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-inline: auto;
+  margin-top: var(--spacing-xl);
+  max-width: var(--container-max);
+  padding: var(--spacing-xl) var(--container-padding);
+  text-align: center;
+}
+
+.carousel__cta-text {
+  color: var(--on-dark);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+@media (min-width: 1366px) {
+  .carousel__cta {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
 @media (min-width: 1366px) {
   .carousel__slide {
     flex: 0 0 60%;
