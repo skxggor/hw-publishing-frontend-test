@@ -31,3 +31,6 @@ Thumbs.db
 
 # Design wireframes (reference only)
 wireframe*.png
+
+# Image backups
+public/images/backup/
