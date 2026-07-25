@@ -80,8 +80,14 @@
     <section class="hero" id="hero" aria-labelledby="hero-title">
       <div class="hero__container">
         <div class="hero__media">
-          <img class="hero__image hero__image--primary" src="./images/demian-luxo.png" alt="Livro Demian, de Hermann Hesse, Série Luxo" fetchpriority="high">
-          <img class="hero__image hero__image--alternate" src="./images/hero2.png" alt="" aria-hidden="true" loading="lazy">
+          <picture>
+            <source srcset="./images/demian-luxo.webp" type="image/webp">
+            <img class="hero__image hero__image--primary" src="./images/demian-luxo.png" alt="Livro Demian, de Hermann Hesse, Série Luxo" fetchpriority="high">
+          </picture>
+          <picture>
+            <source srcset="./images/hero2.webp" type="image/webp">
+            <img class="hero__image hero__image--alternate" src="./images/hero2.png" alt="" aria-hidden="true" loading="lazy">
+          </picture>
         </div>
 
         <div class="hero__content">
@@ -106,13 +112,22 @@
           <div class="carousel__viewport" data-carousel-viewport>
             <div class="carousel__container">
               <div class="carousel__slide">
-                <img class="carousel__image" src="./images/full-kit.jpg" alt="Kit completo do livro Demian, Série Luxo" loading="lazy">
+                <picture>
+                  <source srcset="./images/full-kit.webp" type="image/webp">
+                  <img class="carousel__image" src="./images/full-kit.jpg" alt="Kit completo do livro Demian, Série Luxo" loading="lazy">
+                </picture>
               </div>
               <div class="carousel__slide">
-                <img class="carousel__image" src="./images/detail.jpg" alt="Detalhe da encadernação do livro Demian, Série Luxo" loading="lazy">
+                <picture>
+                  <source srcset="./images/detail.webp" type="image/webp">
+                  <img class="carousel__image" src="./images/detail.jpg" alt="Detalhe da encadernação do livro Demian, Série Luxo" loading="lazy">
+                </picture>
               </div>
               <div class="carousel__slide">
-                <img class="carousel__image" src="./images/inside.jpg" alt="Miolo aberto do livro Demian, Série Luxo" loading="lazy">
+                <picture>
+                  <source srcset="./images/inside.webp" type="image/webp">
+                  <img class="carousel__image" src="./images/inside.jpg" alt="Miolo aberto do livro Demian, Série Luxo" loading="lazy">
+                </picture>
               </div>
             </div>
           </div>

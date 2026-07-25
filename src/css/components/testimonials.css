@@ -65,7 +65,7 @@
 
 .testimonial-card__name {
   color: var(--text);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
 }
 
 .testimonial-card__role {

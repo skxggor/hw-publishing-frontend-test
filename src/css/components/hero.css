@@ -104,7 +104,7 @@
 .hero__eyebrow {
   color: var(--color-bordeaux);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wider);
   margin-bottom: var(--spacing-md);
   text-transform: uppercase;

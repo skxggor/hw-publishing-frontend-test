@@ -53,7 +53,7 @@
 .cta-band__text {
   color: var(--on-dark);
   font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
 }

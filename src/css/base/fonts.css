@@ -20,14 +20,6 @@
   font-display: swap;
   font-family: 'Unbounded';
   font-style: normal;
-  font-weight: 600;
-  src: url('../../fonts/unbounded/Unbounded-SemiBold.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Unbounded';
-  font-style: normal;
   font-weight: 700;
   src: url('../../fonts/unbounded/Unbounded-Bold.woff2') format('woff2');
 }
