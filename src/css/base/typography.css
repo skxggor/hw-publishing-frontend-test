@@ -15,46 +15,53 @@ body {
   background-color: var(--color-background-primary);
 }
 
-/* Headings - Alphabetically ordered */
+/* Headings - fluid via clamp */
 h1 {
-  font-size: var(--font-size-5xl);
+  font-size: clamp(2.25rem, 1.8rem + 2vw, 3rem);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
+  text-wrap: balance;
 }
 
 h2 {
-  font-size: var(--font-size-4xl);
+  font-size: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
+  text-wrap: balance;
 }
 
 h3 {
-  font-size: var(--font-size-3xl);
+  font-size: clamp(1.4rem, 1.15rem + 1.1vw, 2rem);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-tight);
+  text-wrap: balance;
 }
 
 h4 {
-  font-size: var(--font-size-2xl);
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.5rem);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-tight);
+  text-wrap: balance;
 }
 
 h5 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-normal);
+  text-wrap: balance;
 }
 
 h6 {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-normal);
+  text-wrap: balance;
 }
 
 /* Text elements */
 p {
   margin-bottom: var(--spacing-md);
+  text-wrap: pretty;
 }
 
 p:last-child {
@@ -127,33 +134,4 @@ a:focus-visible {
 
 .text-success {
   color: var(--color-success);
-}
-
-/* Responsive typography */
-@media (max-width: 767px) {
-  h1 {
-    font-size: var(--font-size-4xl);
-  }
-
-  h2 {
-    font-size: var(--font-size-3xl);
-  }
-
-  h3 {
-    font-size: var(--font-size-2xl);
-  }
-
-  h4 {
-    font-size: var(--font-size-xl);
-  }
-
-  html {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  html {
-    font-size: 15px;
-  }
 }
