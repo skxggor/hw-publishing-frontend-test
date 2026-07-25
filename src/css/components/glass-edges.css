@@ -1,0 +1,27 @@
+/* Progressive blur edges (top & bottom) - layered backdrop blur, Framer-style.
+   Visual config (--glass-blur / --glass-mask) is set per layer from JS. */
+
+.glass-edge {
+  height: 8rem;
+  inset-inline: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: var(--z-dropdown);
+}
+
+.glass-edge--top {
+  top: 0;
+}
+
+.glass-edge--bottom {
+  bottom: 0;
+}
+
+.glass-edge__layer {
+  -webkit-backdrop-filter: blur(var(--glass-blur, 0));
+  -webkit-mask-image: var(--glass-mask, none);
+  backdrop-filter: blur(var(--glass-blur, 0));
+  inset: 0;
+  mask-image: var(--glass-mask, none);
+  position: absolute;
+}
