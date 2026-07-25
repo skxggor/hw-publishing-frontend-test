@@ -7,6 +7,11 @@ import I18n from '@core/i18n.js';
 
 const CONFETTI_COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
 const CONFETTI_COUNT = 50;
+const EASE_OUT = 'power2.out';
+const EASE_BACK = 'back.out(1.7)';
+const ORDER_TOTAL_WITH_COMPANION = 'R$ 694,00';
+const STEP_REVEAL_ROOT_MARGIN = '0px 0px -100px 0px';
+const STEP_REVEAL_THRESHOLD = 0.5;
 
 const generateOrderNumber = function generateOrderNumber() {
   const timestamp = Date.now();
@@ -39,7 +44,7 @@ const createThankYouPage = function createThankYouPage() {
         Utils.removeClass(companionItem, 'is-hidden');
 
         if (orderTotal) {
-          orderTotal.textContent = 'R$ 694,00';
+          orderTotal.textContent = ORDER_TOTAL_WITH_COMPANION;
         }
       } else {
         Utils.addClass(companionItem, 'is-hidden');
@@ -68,20 +73,20 @@ const createThankYouPage = function createThankYouPage() {
     timeline.fromTo(
       '.thank-you-hero__container > *',
       { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power2.out' }
+      { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: EASE_OUT }
     );
 
     timeline.fromTo(
       '.order-summary__card',
       { opacity: 0, scale: 0.95 },
-      { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)' },
+      { opacity: 1, scale: 1, duration: 0.6, ease: EASE_BACK },
       '-=0.4'
     );
 
     timeline.fromTo(
       '.step-card',
       { opacity: 0, x: -30 },
-      { opacity: 1, x: 0, duration: 0.6, stagger: 0.2, ease: 'power2.out' },
+      { opacity: 1, x: 0, duration: 0.6, stagger: 0.2, ease: EASE_OUT },
       '-=0.3'
     );
   };
@@ -107,7 +112,7 @@ const createThankYouPage = function createThankYouPage() {
           window.gsap.fromTo(
             number,
             { scale: 0.5, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(1.7)' }
+            { scale: 1, opacity: 1, duration: 0.4, ease: EASE_BACK }
           );
         }
 
@@ -116,8 +121,8 @@ const createThankYouPage = function createThankYouPage() {
     };
 
     const observer = new IntersectionObserver(observerCallback, {
-      threshold: 0.5,
-      rootMargin: '0px 0px -100px 0px',
+      rootMargin: STEP_REVEAL_ROOT_MARGIN,
+      threshold: STEP_REVEAL_THRESHOLD,
     });
 
     stepCards.forEach(function observeStep(card) {

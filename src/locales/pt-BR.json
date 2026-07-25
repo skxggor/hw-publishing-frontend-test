@@ -5,14 +5,6 @@
     "loading": "Carregando...",
     "retry": "Tentar novamente"
   },
-  "header": {
-    "about": "A Obra",
-    "contact": "Contato",
-    "courses": "Edição",
-    "home": "Início",
-    "language": "Idioma",
-    "logo": "H&W Publishing"
-  },
   "footer": {
     "contact": "Contato",
     "copyright": "© 2024 H&W Publishing. Todos os direitos reservados.",
@@ -20,36 +12,42 @@
     "social": "Siga-nos",
     "terms": "Termos de Uso"
   },
+  "header": {
+    "book": "Série Luxo",
+    "buyNow": "Comprar Agora",
+    "home": "Início",
+    "language": "Idioma",
+    "logo": "H&W Publishing",
+    "specialEdition": "Edição Especial",
+    "testimonials": "Depoimentos"
+  },
   "landing": {
     "cta": {
-      "primary": "Quero Adquirir Este Exemplar",
+      "primary": "Comprar Agora",
       "secondary": "Conhecer a Obra",
       "urgency": "Exemplar único disponível"
     },
-    "edition": {
-      "feature1": {
-        "description": "A primeira edição em português de Demian, um exemplar histórico das décadas de 1930.",
-        "title": "Primeira Edição em Português"
-      },
-      "feature2": {
-        "description": "Encadernação original preservada, miolo íntegro e páginas em excelente estado.",
-        "title": "Conservação Impecável"
-      },
-      "feature3": {
-        "description": "Obra de Hermann Hesse, vencedor do Nobel de Literatura de 1946.",
-        "title": "Um Clássico Premiada"
-      },
-      "title": "Por que este exemplar é único"
+    "details": {
+      "description": "Na compra dessa edição exclusiva, você receberá um kit especial com marcadores de página exclusivos, cartões com personagens e elementos da história, e uma surpresa especial.",
+      "title": "Detalhes da Edição"
     },
     "guarantee": {
-      "description": "Se o exemplar não corresponder à descrição, devolvemos 100% do valor. Autenticidade e estado garantidos.",
-      "title": "Garantia de Autenticidade e 30 Dias"
+      "item1": "Qualidade Premium",
+      "item1Description": "Cada exemplar é autenticado e vistoriado.",
+      "item2": "Envio Seguro",
+      "item2Description": "Embalagem archival com seguro total.",
+      "item3": "Pagamento Protegido",
+      "item3Description": "Transação criptografada e garantida.",
+      "item4": "Retorno Fácil",
+      "item4Description": "30 dias para devolução sem custos.",
+      "title": "Nossa Garantia"
     },
     "hero": {
-      "cta": "Quero Este Exemplar",
+      "cta": "Comprar Agora",
+      "eyebrow": "Hermann Hesse · Nobel 1946",
       "guarantee": "Garantia de 30 dias",
-      "subtitle": "A primeira edição em português da obra-prima de Hermann Hesse — um exemplar raro, para verdadeiros colecionadores.",
-      "title": "Possua a Primeira Edição em Português de Demian"
+      "subtitle": "A obra-prima de Hermann Hesse, Prêmio Nobel de 1946, em uma versão única para colecionadores, com encadernação artesanal, miolo íntegro e ex-libris numerado.",
+      "title": "Demian, Série Luxo"
     },
     "testimonials": {
       "testimonial1": {
@@ -70,7 +68,7 @@
         "role": "Leitor apaixonado",
         "text": "Atendimento impecável do início ao fim. Recebi o livro autenticado e bem embalado. Recomendo sem reservas."
       },
-      "title": "O que dizem nossos colecionadores"
+      "title": "O Que os Leitores Dizem"
     }
   },
   "thankYou": {
@@ -83,7 +81,7 @@
       "title": "Obrigado, Marcos! Seu exemplar está reservado."
     },
     "orderSummary": {
-      "book": "Demian — Primeira Edição em Português",
+      "book": "Demian, Série Luxo",
       "companion": "Companhão de Colecionador (guia + slipcase)",
       "order": "Pedido",
       "title": "Resumo do seu pedido",

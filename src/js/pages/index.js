@@ -4,23 +4,100 @@ import '@core/view-transitions.js';
 import { pubSub } from '@core/pubsub.js';
 import Utils from '@core/utils.js';
 import I18n from '@core/i18n.js';
+import { mountGlassEdges } from '@features/layout/glass-edges.js';
+import { mountCarousels } from '@features/landing/carousel.js';
+import { gsap } from 'gsap';
+
+const prefersReducedMotion = function prefersReducedMotion() {
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+    return false;
+  }
+
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+};
+
+const EASE_SMOOTH = 'sine.inOut';
+const EASE_SOFT = 'power2.inOut';
+const HERO_CROSSFADE_DURATION = 1.2;
+const HERO_CROSSFADE_HOLD = 5;
+const HERO_FLOAT_DISTANCE = -14;
+const HERO_FLOAT_DURATION = 2.6;
+const MENU_CLOSE_DURATION = 900;
+const PAGE_NAME = 'landing';
+const REVEAL_ROOT_MARGIN = '0px 0px -50px 0px';
+const REVEAL_THRESHOLD = 0.1;
+const SMOOTH_SCROLL_OFFSET = 80;
 
 const createHomePage = function createHomePage() {
   let isInitialized = false;
 
+  let carouselInstances = [];
+
+  let glassEdgesCleanup = null;
+
   const initMobileMenu = function initMobileMenu() {
     const toggleButton = Utils.getElement('#mobileMenuToggle');
     const header = Utils.getElement('.header');
+    const navLinks = Utils.getElements('.header__link');
 
     if (!toggleButton || !header) {
       return;
     }
 
+    let closeTimeout = null;
+
+    const clearCloseTimeout = function clearCloseTimeout() {
+      if (!closeTimeout) {
+        return;
+      }
+
+      clearTimeout(closeTimeout);
+      closeTimeout = null;
+    };
+
+    const closeMenu = function closeMenu() {
+      clearCloseTimeout();
+      Utils.removeClass(header, 'header--menu-open');
+      Utils.addClass(header, 'header--menu-closing');
+      Utils.removeClass(document.body, 'body--menu-open');
+      toggleButton.setAttribute('aria-expanded', 'false');
+
+      closeTimeout = setTimeout(function finishClosing() {
+        Utils.removeClass(header, 'header--menu-closing');
+        closeTimeout = null;
+      }, MENU_CLOSE_DURATION);
+    };
+
+    const openMenu = function openMenu() {
+      clearCloseTimeout();
+      Utils.removeClass(header, 'header--menu-closing');
+      Utils.addClass(header, 'header--menu-open');
+      Utils.addClass(document.body, 'body--menu-open');
+      toggleButton.setAttribute('aria-expanded', 'true');
+    };
+
     const toggleMenu = function toggleMenu() {
-      Utils.toggleClass(header, 'header--menu-open');
+      if (Utils.hasClass(header, 'header--menu-open')) {
+        closeMenu();
+
+        return;
+      }
+
+      openMenu();
+    };
+
+    const handleKeydown = function handleKeydown(event) {
+      if (event.key === 'Escape') {
+        closeMenu();
+      }
     };
 
     toggleButton.addEventListener('click', toggleMenu);
+    document.addEventListener('keydown', handleKeydown);
+
+    navLinks.forEach(function closeOnNavigate(link) {
+      link.addEventListener('click', closeMenu);
+    });
   };
 
   const initLanguageToggle = function initLanguageToggle() {
@@ -71,34 +148,12 @@ const createHomePage = function createHomePage() {
         return;
       }
 
-      Utils.smoothScroll(target, 80);
+      Utils.smoothScroll(target, SMOOTH_SCROLL_OFFSET);
     };
 
     links.forEach(function bindLink(link) {
       link.addEventListener('click', handleClick);
     });
-  };
-
-  const initHeaderScroll = function initHeaderScroll() {
-    const header = Utils.getElement('.header');
-
-    if (!header) {
-      return;
-    }
-
-    const handleScroll = Utils.throttle(function handleScroll() {
-      const currentScroll = window.pageYOffset;
-
-      if (currentScroll > 100) {
-        Utils.addClass(header, 'header--scrolled');
-
-        return;
-      }
-
-      Utils.removeClass(header, 'header--scrolled');
-    }, 100);
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
   };
 
   const initScrollAnimations = function initScrollAnimations() {
@@ -120,8 +175,8 @@ const createHomePage = function createHomePage() {
     };
 
     const observer = new IntersectionObserver(observerCallback, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px',
+      rootMargin: REVEAL_ROOT_MARGIN,
+      threshold: REVEAL_THRESHOLD,
     });
 
     animateElements.forEach(function observeElement(element) {
@@ -134,7 +189,7 @@ const createHomePage = function createHomePage() {
 
     pubSub.publish('cta:clicked', {
       button: buttonText,
-      page: 'landing',
+      page: PAGE_NAME,
     });
   };
 
@@ -146,36 +201,41 @@ const createHomePage = function createHomePage() {
     });
   };
 
-  const initTestimonialSlider = function initTestimonialSlider() {
-    const testimonials = Utils.getElements('.testimonial-card');
+  const initCarousels = function initCarousels() {
+    carouselInstances = mountCarousels();
+  };
 
-    if (testimonials.length === 0) {
+  const initHeroFloat = function initHeroFloat() {
+    const heroMedia = Utils.getElement('.hero__media');
+
+    if (!heroMedia || prefersReducedMotion()) {
       return;
     }
 
-    let currentIndex = 0;
+    gsap.to(heroMedia, {
+      duration: HERO_FLOAT_DURATION,
+      ease: EASE_SMOOTH,
+      repeat: -1,
+      y: HERO_FLOAT_DISTANCE,
+      yoyo: true,
+    });
+  };
 
-    const showTestimonial = function showTestimonial(index) {
-      testimonials.forEach(function toggleCard(card, cardIndex) {
-        if (cardIndex === index) {
-          Utils.addClass(card, 'testimonial-card--active');
+  const initHeroCrossfade = function initHeroCrossfade() {
+    const primary = Utils.getElement('.hero__image--primary');
+    const alternate = Utils.getElement('.hero__image--alternate');
 
-          return;
-        }
+    if (!primary || !alternate || prefersReducedMotion()) {
+      return;
+    }
 
-        Utils.removeClass(card, 'testimonial-card--active');
-      });
-    };
+    const timeline = gsap.timeline({ repeat: -1 });
 
-    const showNextTestimonial = function showNextTestimonial() {
-      currentIndex = (currentIndex + 1) % testimonials.length;
-
-      showTestimonial(currentIndex);
-    };
-
-    showTestimonial(0);
-
-    return setInterval(showNextTestimonial, 5000);
+    timeline
+      .to(alternate, { duration: HERO_CROSSFADE_DURATION, ease: EASE_SOFT, opacity: 1 }, HERO_CROSSFADE_HOLD)
+      .to(primary, { duration: HERO_CROSSFADE_DURATION, ease: EASE_SOFT, opacity: 0 }, HERO_CROSSFADE_HOLD)
+      .to(alternate, { duration: HERO_CROSSFADE_DURATION, ease: EASE_SOFT, opacity: 0 }, `+=${HERO_CROSSFADE_HOLD}`)
+      .to(primary, { duration: HERO_CROSSFADE_DURATION, ease: EASE_SOFT, opacity: 1 }, '<');
   };
 
   const init = function init() {
@@ -187,17 +247,37 @@ const createHomePage = function createHomePage() {
     initMobileMenu();
     initLanguageToggle();
     initSmoothScroll();
-    initHeaderScroll();
     initScrollAnimations();
     initCtaTracking();
-    initTestimonialSlider();
+    initCarousels();
+    initHeroFloat();
+    initHeroCrossfade();
+    glassEdgesCleanup = mountGlassEdges();
 
     pubSub.publish('landing:initialized', { locale: I18n.getCurrentLocale() });
 
     isInitialized = true;
   };
 
-  return Object.freeze({ init });
+  const destroy = function destroy() {
+    if (!isInitialized) {
+      return;
+    }
+
+    carouselInstances.forEach(function destroyCarousel(carousel) {
+      carousel.destroy();
+    });
+    carouselInstances = [];
+
+    if (glassEdgesCleanup) {
+      glassEdgesCleanup();
+      glassEdgesCleanup = null;
+    }
+
+    isInitialized = false;
+  };
+
+  return Object.freeze({ init, destroy });
 };
 
 const homePage = createHomePage();

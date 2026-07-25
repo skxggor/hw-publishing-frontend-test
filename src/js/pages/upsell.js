@@ -6,6 +6,8 @@ import Utils from '@core/utils.js';
 import I18n from '@core/i18n.js';
 
 const CONTENT_REVEAL_DELAY = 15000;
+const EASE_OUT = 'power2.out';
+const SCROLL_PROGRESS_THROTTLE = 50;
 
 const createUpsellPage = function createUpsellPage() {
   let isInitialized = false;
@@ -25,7 +27,7 @@ const createUpsellPage = function createUpsellPage() {
       window.gsap.fromTo(
         content,
         { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
+        { opacity: 1, y: 0, duration: 0.8, ease: EASE_OUT }
       );
     }
 
@@ -75,7 +77,7 @@ const createUpsellPage = function createUpsellPage() {
       const progress = documentHeight > 0 ? (scrollTop / documentHeight) * 100 : 0;
 
       scrollProgressElement.style.setProperty('--scroll-progress', `${Math.min(progress, 100)}%`);
-    }, 50);
+    }, SCROLL_PROGRESS_THROTTLE);
 
     window.addEventListener('scroll', updateProgress, { passive: true });
 
@@ -90,13 +92,13 @@ const createUpsellPage = function createUpsellPage() {
     window.gsap.fromTo(
       '.upsell-hero__container > *',
       { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power2.out' }
+      { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: EASE_OUT }
     );
 
     window.gsap.fromTo(
       '.video-section__wrapper',
       { opacity: 0, scale: 0.95 },
-      { opacity: 1, scale: 1, duration: 1, delay: 0.5, ease: 'power2.out' }
+      { opacity: 1, scale: 1, duration: 1, delay: 0.5, ease: EASE_OUT }
     );
   };
 

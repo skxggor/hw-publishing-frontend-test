@@ -3,220 +3,239 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Adquira a primeira edição em português de Demian, de Hermann Hesse. Exemplar raro de colecionador, autenticado e em impecável estado de conservação.">
-  <meta name="keywords" content="Demian, Hermann Hesse, primeira edição, livro raro, colecionador, literatura">
+  <meta name="description" content="Adquira Demian, de Hermann Hesse, na Série Luxo da H&W Publishing. Exemplar de colecionador, autenticado, com encadernação artesanal e ex-libris numerado.">
+  <meta name="keywords" content="Demian, Hermann Hesse, Série Luxo, livro raro, colecionador, Nobel de Literatura">
   <meta name="author" content="H&W Publishing">
+  <meta name="theme-color" content="#5f161d">
 
-  <meta property="og:title" content="Demian — Primeira Edição em Português | H&W Publishing">
-  <meta property="og:description" content="A primeira edição em português da obra-prima de Hermann Hesse. Exemplar raro para colecionadores.">
+  <meta property="og:title" content="Demian, Série Luxo | H&W Publishing">
+  <meta property="og:description" content="A obra-prima de Hermann Hesse em uma edição de colecionador. Encadernação artesanal, miolo íntegro e ex-libris numerado.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="/images/demian-luxo.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Demian — Primeira Edição em Português | H&W Publishing">
-  <meta name="twitter:description" content="A primeira edição em português da obra-prima de Hermann Hesse. Exemplar raro para colecionadores.">
+  <meta name="twitter:title" content="Demian, Série Luxo | H&W Publishing">
+  <meta name="twitter:description" content="A obra-prima de Hermann Hesse em uma edição de colecionador. Exemplar raro e autenticado.">
 
-  <title>Demian — Primeira Edição em Português | H&W Publishing</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Demian, Série Luxo | H&W Publishing</title>
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
   <header class="header">
     <div class="header__container">
-      <a href="/" class="header__logo" data-i18n="header.logo">H&W Publishing</a>
+      <button class="header__mobile-toggle" id="mobileMenuToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="headerNav">
+        <span class="header__hamburger" aria-hidden="true">
+          <span class="header__bar header__bar--top"></span>
+          <span class="header__bar header__bar--middle"></span>
+          <span class="header__bar header__bar--bottom"></span>
+        </span>
+      </button>
 
-      <nav class="header__nav">
+      <a href="/" class="header__logo" data-i18n="header.logo" aria-label="H&W Publishing, início">H&amp;W Publishing</a>
+
+      <nav class="header__nav" id="headerNav" aria-label="Navegação principal">
+        <div class="header__overlay" aria-hidden="true">
+          <span class="header__column"></span>
+          <span class="header__column"></span>
+          <span class="header__column"></span>
+          <span class="header__column"></span>
+          <span class="header__column"></span>
+        </div>
         <ul class="header__menu">
           <li class="header__menu-item">
-            <a href="#edition" class="header__link" data-i18n="header.courses">Edição</a>
+            <a href="#hero" class="header__link" data-i18n="header.book">Série Luxo</a>
           </li>
           <li class="header__menu-item">
-            <a href="#testimonials" class="header__link" data-i18n="header.about">A Obra</a>
+            <a href="#details" class="header__link" data-i18n="header.specialEdition">Edição Especial</a>
           </li>
           <li class="header__menu-item">
-            <button class="header__language-button" id="languageToggle" aria-label="Toggle language">
-              <span class="language__current" id="currentLanguage">PT</span>
+            <a href="#testimonials" class="header__link" data-i18n="header.testimonials">Depoimentos</a>
+          </li>
+          <li class="header__menu-item header__menu-item--cta">
+            <a href="/upsell.html" class="btn btn--primary btn--small" data-i18n="header.buyNow">Comprar Agora</a>
+          </li>
+          <li class="header__menu-item header__menu-item--lang">
+            <button class="header__language-button" id="languageToggle" type="button" aria-label="Alternar idioma">
+              <span class="header__language-current" id="currentLanguage">PT</span>
             </button>
           </li>
         </ul>
       </nav>
-
-      <button class="header__mobile-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
-        <span class="hamburger"></span>
-      </button>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
+  <main id="main">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
       <div class="hero__container">
+        <div class="hero__media">
+          <img class="hero__image hero__image--primary" src="/images/demian-luxo.png" alt="Livro Demian, de Hermann Hesse, Série Luxo" fetchpriority="high">
+          <img class="hero__image hero__image--alternate" src="/images/hero2.png" alt="" aria-hidden="true" loading="lazy">
+        </div>
+
         <div class="hero__content">
-          <h1 class="hero__title" data-i18n="landing.hero.title">
-            Possua a Primeira Edição em Português de Demian
-          </h1>
+          <p class="hero__eyebrow" data-i18n="landing.hero.eyebrow">Hermann Hesse · Nobel 1946</p>
+          <h1 class="hero__title" id="hero-title" data-i18n="landing.hero.title">Demian, Série Luxo</h1>
+          <p class="hero__subtitle" data-i18n="landing.hero.subtitle">A obra-prima de Hermann Hesse, Prêmio Nobel de 1946, em uma versão única para colecionadores.</p>
 
-          <p class="hero__subtitle" data-i18n="landing.hero.subtitle">
-            A primeira edição em português da obra-prima de Hermann Hesse — um exemplar raro, para verdadeiros colecionadores.
-          </p>
-
-          <div class="hero__cta">
-            <a href="/upsell.html" class="btn btn--primary btn--large" data-i18n="landing.hero.cta">
-              Quero Este Exemplar
-            </a>
-            <div class="hero__guarantee" data-i18n="landing.hero.guarantee">
-              ✓ Garantia de 30 dias
-            </div>
+          <div class="hero__actions">
+            <a href="/upsell.html" class="btn btn--primary btn--large" data-i18n="landing.hero.cta">Comprar Agora</a>
+            <span class="hero__guarantee" data-i18n="landing.hero.guarantee">Garantia de 30 dias</span>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="hero__image">
-          <img src="/images/demian-first-edition.jpg" alt="Capa da primeira edição em português do livro Demian, de Hermann Hesse" loading="lazy">
+    <section class="details" id="details" aria-labelledby="details-title">
+      <div class="details__container">
+        <h2 class="details__title section-title" id="details-title" data-i18n="landing.details.title" data-animate>Detalhes da Edição</h2>
+        <p class="details__description" data-i18n="landing.details.description" data-animate>Na compra dessa edição exclusiva, você receberá um kit especial com marcadores de página exclusivos, cartões com personagens e elementos da história, e uma surpresa especial.</p>
+
+        <div class="carousel" data-carousel>
+          <div class="carousel__viewport" data-carousel-viewport>
+            <div class="carousel__container">
+              <div class="carousel__slide">
+                <img class="carousel__image" src="/images/full-kit.jpg" alt="Kit completo do livro Demian, Série Luxo" loading="lazy">
+              </div>
+              <div class="carousel__slide">
+                <img class="carousel__image" src="/images/detail.jpg" alt="Detalhe da encadernação do livro Demian, Série Luxo" loading="lazy">
+              </div>
+              <div class="carousel__slide">
+                <img class="carousel__image" src="/images/inside.jpg" alt="Miolo aberto do livro Demian, Série Luxo" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel__controls">
+            <button class="carousel__button carousel__button--prev" type="button" data-carousel-prev aria-label="Slide anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="carousel__button carousel__button--next" type="button" data-carousel-next aria-label="Próximo slide">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+
+          <div class="carousel__dots" data-carousel-dots></div>
         </div>
       </div>
     </section>
 
-    <section class="edition" id="edition">
-      <div class="edition__container">
-        <h2 class="edition__title" data-i18n="landing.edition.title">
-          Por que este exemplar é único
-        </h2>
-
-        <div class="edition__grid">
-          <article class="feature-card" data-animate>
-            <div class="feature-card__icon">📖</div>
-            <h3 class="feature-card__title" data-i18n="landing.edition.feature1.title">
-              Primeira Edição em Português
-            </h3>
-            <p class="feature-card__description" data-i18n="landing.edition.feature1.description">
-              A primeira edição em português de Demian, um exemplar histórico das décadas de 1930.
-            </p>
-          </article>
-
-          <article class="feature-card" data-animate>
-            <div class="feature-card__icon">✨</div>
-            <h3 class="feature-card__title" data-i18n="landing.edition.feature2.title">
-              Conservação Impecável
-            </h3>
-            <p class="feature-card__description" data-i18n="landing.edition.feature2.description">
-              Encadernação original preservada, miolo íntegro e páginas em excelente estado.
-            </p>
-          </article>
-
-          <article class="feature-card" data-animate>
-            <div class="feature-card__icon">🏆</div>
-            <h3 class="feature-card__title" data-i18n="landing.edition.feature3.title">
-              Um Clássico Premiada
-            </h3>
-            <p class="feature-card__description" data-i18n="landing.edition.feature3.description">
-              Obra de Hermann Hesse, vencedor do Nobel de Literatura de 1946.
-            </p>
-          </article>
-        </div>
+    <section class="cta-band">
+      <div class="cta-band__container">
+        <p class="cta-band__text" data-i18n="landing.cta.urgency">Exemplar único disponível</p>
+        <a href="/upsell.html" class="btn btn--primary btn--large" data-i18n="landing.cta.primary">Comprar Agora</a>
       </div>
     </section>
 
-    <section class="testimonials" id="testimonials">
-      <div class="testimonials__container">
-        <h2 class="testimonials__title" data-i18n="landing.testimonials.title">
-          O que dizem nossos colecionadores
-        </h2>
-
-        <div class="testimonials__grid">
-          <article class="testimonial-card">
-            <div class="testimonial-card__rating" aria-label="5 de 5 estrelas">★★★★★</div>
-            <p class="testimonial-card__text" data-i18n="landing.testimonials.testimonial1.text">
-              Exemplar impecável e entrega cuidada.
-            </p>
-            <div class="testimonial-card__author">
-              <strong data-i18n="landing.testimonials.testimonial1.name">Ricardo Almeida</strong>
-              <span data-i18n="landing.testimonials.testimonial1.role">Colecionador</span>
-            </div>
-          </article>
-
-          <article class="testimonial-card">
-            <div class="testimonial-card__rating" aria-label="5 de 5 estrelas">★★★★★</div>
-            <p class="testimonial-card__text" data-i18n="landing.testimonials.testimonial2.text">
-              A qualidade da conservação superou minhas expectativas.
-            </p>
-            <div class="testimonial-card__author">
-              <strong data-i18n="landing.testimonials.testimonial2.name">Helena Martins</strong>
-              <span data-i18n="landing.testimonials.testimonial2.role">Professora de Literatura</span>
-            </div>
-          </article>
-
-          <article class="testimonial-card">
-            <div class="testimonial-card__rating" aria-label="5 de 5 estrelas">★★★★★</div>
-            <p class="testimonial-card__text" data-i18n="landing.testimonials.testimonial3.text">
-              Atendimento impecável do início ao fim.
-            </p>
-            <div class="testimonial-card__author">
-              <strong data-i18n="landing.testimonials.testimonial3.name">Tomás Ferreira</strong>
-              <span data-i18n="landing.testimonials.testimonial3.role">Leitor apaixonado</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="guarantee">
+    <section class="guarantee" aria-labelledby="guarantee-title">
       <div class="guarantee__container">
-        <div class="guarantee__badge">🛡️</div>
-        <h2 class="guarantee__title" data-i18n="landing.guarantee.title">
-          Garantia de Autenticidade e 30 Dias
-        </h2>
-        <p class="guarantee__description" data-i18n="landing.guarantee.description">
-          Se o exemplar não corresponder à descrição, devolvemos 100% do valor.
-        </p>
+        <h2 class="guarantee__title section-title" id="guarantee-title" data-i18n="landing.guarantee.title" data-animate>Nossa Garantia</h2>
+
+        <ul class="guarantee__list">
+          <li class="guarantee__item" data-animate>
+            <span class="guarantee__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg>
+            </span>
+            <strong class="guarantee__label" data-i18n="landing.guarantee.item1">Qualidade Premium</strong>
+            <span class="guarantee__desc" data-i18n="landing.guarantee.item1Description">Cada exemplar é autenticado e vistoriado.</span>
+          </li>
+          <li class="guarantee__item" data-animate>
+            <span class="guarantee__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
+            </span>
+            <strong class="guarantee__label" data-i18n="landing.guarantee.item2">Envio Seguro</strong>
+            <span class="guarantee__desc" data-i18n="landing.guarantee.item2Description">Embalagem archival com seguro total.</span>
+          </li>
+          <li class="guarantee__item" data-animate>
+            <span class="guarantee__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10V7a6 6 0 0 1 12 0v3"/><rect x="4" y="10" width="16" height="11" rx="2"/><circle cx="12" cy="15" r="1.6"/></svg>
+            </span>
+            <strong class="guarantee__label" data-i18n="landing.guarantee.item3">Pagamento Protegido</strong>
+            <span class="guarantee__desc" data-i18n="landing.guarantee.item3Description">Transação criptografada e garantida.</span>
+          </li>
+          <li class="guarantee__item" data-animate>
+            <span class="guarantee__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2"/><path d="M18.5 4v4h-4"/><path d="M21 12a9 9 0 0 1-15.5 6.2"/><path d="M5.5 20v-4h4"/></svg>
+            </span>
+            <strong class="guarantee__label" data-i18n="landing.guarantee.item4">Retorno Fácil</strong>
+            <span class="guarantee__desc" data-i18n="landing.guarantee.item4Description">30 dias para devolução sem custos.</span>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section class="cta-section">
-      <div class="cta-section__container">
-        <h2 class="cta-section__title" data-i18n="landing.cta.urgency">
-          Exemplar único disponível
-        </h2>
-        <a href="/upsell.html" class="btn btn--primary btn--xlarge" data-i18n="landing.cta.primary">
-          Quero Adquirir Este Exemplar
-        </a>
+    <section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
+      <div class="testimonials__container">
+        <h2 class="testimonials__title section-title" id="testimonials-title" data-i18n="landing.testimonials.title" data-animate>O Que os Leitores Dizem</h2>
+
+        <ul class="testimonials__list">
+          <li class="testimonial-card" data-animate>
+            <img class="testimonial-card__avatar" src="/images/avatar-ricardo.svg" alt="Ricardo Almeida" width="120" height="120" loading="lazy">
+            <div class="testimonial-card__body">
+              <p class="testimonial-card__rating" role="img" aria-label="Avaliação: 5 de 5 estrelas"><span aria-hidden="true">★★★★★</span></p>
+              <blockquote class="testimonial-card__text" data-i18n="landing.testimonials.testimonial1.text">Exemplar impecável e entrega cuidada.</blockquote>
+              <div class="testimonial-card__author">
+                <strong class="testimonial-card__name" data-i18n="landing.testimonials.testimonial1.name">Ricardo Almeida</strong>
+                <span class="testimonial-card__role" data-i18n="landing.testimonials.testimonial1.role">Colecionador</span>
+              </div>
+            </div>
+          </li>
+          <li class="testimonial-card" data-animate>
+            <img class="testimonial-card__avatar" src="/images/avatar-helena.svg" alt="Helena Martins" width="120" height="120" loading="lazy">
+            <div class="testimonial-card__body">
+              <p class="testimonial-card__rating" role="img" aria-label="Avaliação: 5 de 5 estrelas"><span aria-hidden="true">★★★★★</span></p>
+              <blockquote class="testimonial-card__text" data-i18n="landing.testimonials.testimonial2.text">A qualidade da conservação superou minhas expectativas.</blockquote>
+              <div class="testimonial-card__author">
+                <strong class="testimonial-card__name" data-i18n="landing.testimonials.testimonial2.name">Helena Martins</strong>
+                <span class="testimonial-card__role" data-i18n="landing.testimonials.testimonial2.role">Professora de Literatura</span>
+              </div>
+            </div>
+          </li>
+          <li class="testimonial-card" data-animate>
+            <img class="testimonial-card__avatar" src="/images/avatar-tomas.svg" alt="Tomás Ferreira" width="120" height="120" loading="lazy">
+            <div class="testimonial-card__body">
+              <p class="testimonial-card__rating" role="img" aria-label="Avaliação: 5 de 5 estrelas"><span aria-hidden="true">★★★★★</span></p>
+              <blockquote class="testimonial-card__text" data-i18n="landing.testimonials.testimonial3.text">Atendimento impecável do início ao fim.</blockquote>
+              <div class="testimonial-card__author">
+                <strong class="testimonial-card__name" data-i18n="landing.testimonials.testimonial3.name">Tomás Ferreira</strong>
+                <span class="testimonial-card__role" data-i18n="landing.testimonials.testimonial3.role">Leitor apaixonado</span>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="footer__container">
-      <div class="footer__content">
-        <div class="footer__section">
-          <h3 class="footer__title">H&W Publishing</h3>
-          <p class="footer__description">
-            Curadoria de edições raras e exemplares de colecionador.
-          </p>
-        </div>
-
-        <div class="footer__section">
-          <h4 class="footer__heading">Links Úteis</h4>
-          <ul class="footer__links">
-            <li><a href="#edition">A Edição</a></li>
-            <li><a href="#testimonials">Avaliações</a></li>
-            <li><a href="/terms.html">Termos de Uso</a></li>
-            <li><a href="/privacy.html">Política de Privacidade</a></li>
-          </ul>
-        </div>
-
-        <div class="footer__section">
-          <h4 class="footer__heading">Contato</h4>
-          <ul class="footer__links">
-            <li><a href="mailto:curadoria@hwpublishing.com">curadoria@hwpublishing.com</a></li>
-            <li><a href="tel:+5511999999999">(11) 99999-9999</a></li>
-          </ul>
-        </div>
+      <div class="footer__brand">
+        <p class="footer__logo" data-i18n="header.logo">H&amp;W Publishing</p>
+        <p class="footer__tagline">Curadoria de edições raras e exemplares de colecionador.</p>
       </div>
 
-      <div class="footer__bottom">
-        <p data-i18n="footer.copyright">© 2024 H&W Publishing. Todos os direitos reservados.</p>
+      <nav class="footer__links" aria-label="Links institucionais">
+        <a href="#details" data-i18n="header.specialEdition">Edição Especial</a>
+        <a href="#testimonials" data-i18n="header.testimonials">Depoimentos</a>
+        <a href="/terms.html" data-i18n="footer.terms">Termos de Uso</a>
+        <a href="/privacy.html" data-i18n="footer.privacy">Política de Privacidade</a>
+      </nav>
+
+      <div class="footer__social" aria-label="Redes sociais">
+        <a class="footer__social-link" href="https://instagram.com" aria-label="Instagram" rel="noopener" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        </a>
+        <a class="footer__social-link" href="https://facebook.com" aria-label="Facebook" rel="noopener" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M14 8h2V5h-2a3 3 0 0 0-3 3v2H9v3h2v6h3v-6h2.2l.8-3H14V8.5a.5.5 0 0 1 .5-.5z"/></svg>
+        </a>
+        <a class="footer__social-link" href="https://youtube.com" aria-label="YouTube" rel="noopener" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M11 9.5l4 2.5-4 2.5z" fill="currentColor" stroke="none"/></svg>
+        </a>
       </div>
+
+      <p class="footer__copyright" data-i18n="footer.copyright">© 2024 H&amp;W Publishing. Todos os direitos reservados.</p>
     </div>
   </footer>
 </body>
