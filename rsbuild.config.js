@@ -10,6 +10,8 @@ export default defineConfig({
       index: './src/js/pages/index.js',
       upsell: './src/js/pages/upsell.js',
       'thank-you': './src/js/pages/thank-you.js',
+      terms: './src/js/pages/terms.js',
+      privacy: './src/js/pages/privacy.js',
     },
   },
   resolve: {

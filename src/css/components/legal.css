@@ -1,0 +1,56 @@
+/* Legal pages - Terms and Privacy */
+
+.legal-page {
+  padding-block: var(--spacing-3xl);
+  padding-inline: var(--container-padding);
+}
+
+.legal-page__container {
+  margin-inline: auto;
+  max-width: 48rem;
+}
+
+.legal-page__title {
+  color: var(--text);
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+  text-wrap: balance;
+}
+
+.legal-page__updated {
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-3xl);
+  text-align: center;
+}
+
+.legal-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.legal-page__content h2 {
+  color: var(--text);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-sm);
+  text-wrap: balance;
+}
+
+.legal-page__content p {
+  color: var(--text-muted);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-loose);
+  margin-bottom: var(--spacing-md);
+  text-wrap: pretty;
+}
+
+.legal-page__content p:last-child {
+  margin-bottom: 0;
+}
