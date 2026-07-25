@@ -26,6 +26,9 @@ export default defineConfig({
       config.template = `./pages/${entryName}.html`;
       config.filename = `${entryName}.html`;
       config.inject = true;
+      config.title = '';
+      config.meta = {};
+      config.favicon = undefined;
     },
   },
   server: {
