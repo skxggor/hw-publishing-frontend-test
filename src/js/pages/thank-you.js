@@ -4,6 +4,7 @@ import '@core/view-transitions.js';
 import { pubSub } from '@core/pubsub.js';
 import Utils from '@core/utils.js';
 import I18n from '@core/i18n.js';
+import { initPageTransition } from '@features/layout/transition.js';
 
 const CONFETTI_COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
 const CONFETTI_COUNT = 50;
@@ -200,6 +201,7 @@ const createThankYouPage = function createThankYouPage() {
     }
 
     I18n.init();
+    initPageTransition();
     updateOrderSummary();
     initEntranceAnimations();
     initStepAnimations();

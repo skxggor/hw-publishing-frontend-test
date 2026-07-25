@@ -6,6 +6,7 @@ import Utils from '@core/utils.js';
 import I18n from '@core/i18n.js';
 import { mountGlassEdges } from '@features/layout/glass-edges.js';
 import { mountCarousels } from '@features/landing/carousel.js';
+import { initPageTransition } from '@features/layout/transition.js';
 import { gsap } from 'gsap';
 
 const prefersReducedMotion = function prefersReducedMotion() {
@@ -244,6 +245,7 @@ const createHomePage = function createHomePage() {
     }
 
     I18n.init();
+    initPageTransition();
     initMobileMenu();
     initLanguageToggle();
     initSmoothScroll();

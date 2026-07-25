@@ -1,0 +1,93 @@
+/* Page transition overlay — full-screen H&W reveal */
+
+body {
+  background-color: var(--color-ink);
+}
+
+body[data-loaded="true"] {
+  background-color: var(--color-background-primary);
+}
+
+body[data-scroll-locked="true"] {
+  overflow: hidden;
+}
+
+.page-transition {
+  align-items: center;
+  background-color: var(--color-ink);
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: var(--z-modal);
+}
+
+.page-transition[data-state="closed"] {
+  display: none;
+}
+
+.page-transition__logo {
+  display: flex;
+  gap: 0.15em;
+  overflow: hidden;
+}
+
+.page-transition__letter {
+  color: var(--color-gold);
+  font-family: var(--font-family-primary);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-wider);
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.page-transition__ampersand {
+  color: var(--color-gold);
+  font-family: var(--font-family-primary);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-wider);
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.page-transition__tagline {
+  color: var(--color-gold);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-top: var(--spacing-sm);
+  opacity: 0;
+  text-transform: uppercase;
+}
+
+/* Shimmer effect on letters */
+.page-transition__letter,
+.page-transition__ampersand {
+  background: linear-gradient(
+    110deg,
+    var(--color-gold) 0%,
+    var(--color-gold) 40%,
+    var(--color-paper) 50%,
+    var(--color-gold) 60%,
+    var(--color-gold) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition__letter,
+  .page-transition__ampersand,
+  .page-transition__tagline {
+    opacity: 1;
+    transform: none;
+  }
+}

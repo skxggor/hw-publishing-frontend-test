@@ -4,6 +4,7 @@ import '@core/view-transitions.js';
 import { pubSub } from '@core/pubsub.js';
 import Utils from '@core/utils.js';
 import I18n from '@core/i18n.js';
+import { initPageTransition } from '@features/layout/transition.js';
 
 const CONTENT_REVEAL_DELAY = 15000;
 const EASE_OUT = 'power2.out';
@@ -120,6 +121,7 @@ const createUpsellPage = function createUpsellPage() {
     }
 
     I18n.init();
+    initPageTransition();
     initVideoTracking();
     initCtaTracking();
     createScrollProgress();

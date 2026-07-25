@@ -2,7 +2,11 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { installIntersectionObserver } from '../helpers.js';
 
 vi.mock('gsap', () => {
-  const chain = { to: vi.fn(function returnChain() { return chain; }) };
+  const chain = {
+    eventCallback: vi.fn(function returnChain() { return chain; }),
+    set: vi.fn(function returnChain() { return chain; }),
+    to: vi.fn(function returnChain() { return chain; }),
+  };
 
   return {
     gsap: {
