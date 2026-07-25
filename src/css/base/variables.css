@@ -1,30 +1,47 @@
-/* CSS Variables - Theme Configuration */
-/* Alphabetically ordered */
+/* CSS Variables - Editorial luxury theme (AAA >= 7:1 contrast) */
+/* Fixed materials stay identical across light & dark; semantic tokens adapt */
 
 :root {
-  /* Colors - Primary */
-  --color-primary: #3b82f6;
-  --color-primary-dark: #1e40af;
-  --color-primary-light: #60a5fa;
+  /* Fixed brand materials (identical in light & dark) */
+  --color-bordeaux: #5f161d;
+  --color-bordeaux-dark: #3d0b10;
+  --color-gold: #9a7b3c;
+  --color-gold-dark: #6f5526;
+  --color-ink: #1a1410;
+  --color-paper: #f7f2e9;
+  --color-paper-deep: #e6dcc7;
+  --color-paper-dim: #efe7d8;
 
-  /* Colors - Neutral */
-  --color-black: #000000;
-  --color-dark-gray: #1f2937;
-  --color-gray: #4b5563;
-  --color-light-gray: #d1d5db;
-  --color-white: #ffffff;
+  /* Semantic surfaces & text (overridden in dark mode) */
+  --border: #e6dcc7;
+  --on-dark: #f7f2e9;
+  --surface: #f7f2e9;
+  --surface-alt: #efe7d8;
+  --surface-ink: #1a1410;
+  --text: #1a1410;
+  --text-muted: #5a4530;
 
-  /* Colors - Semantic */
-  --color-error: #ef4444;
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
+  /* Legacy aliases (mapped to semantic palette) */
+  --color-black: #1a1410;
+  --color-dark-gray: #1a1410;
+  --color-gray: #5a4530;
+  --color-light-gray: #d8cdb8;
+  --color-white: #f7f2e9;
 
-  /* Colors - Background */
-  --color-background-primary: #ffffff;
-  --color-background-secondary: #f3f4f6;
-  --color-background-dark: #1f2937;
+  --color-primary: #5f161d;
+  --color-primary-dark: #3d0b10;
+  --color-primary-light: #8a3340;
+
+  --color-error: #b3261e;
+  --color-success: #2e7d4f;
+  --color-warning: #b26a00;
+
+  --color-background-primary: #f7f2e9;
+  --color-background-secondary: #efe7d8;
+  --color-background-dark: #1a1410;
 
   /* Spacing */
+  --spacing-xxs: 0.125rem;
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
@@ -60,6 +77,10 @@
   --line-height-normal: 1.5;
   --line-height-loose: 1.75;
 
+  /* Typography - Letter Spacing */
+  --letter-spacing-wide: 0.12em;
+  --letter-spacing-wider: 0.2em;
+
   /* Border Radius */
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
@@ -68,21 +89,26 @@
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  --shadow-sm: 0 1px 2px rgba(26, 20, 16, 0.06);
+  --shadow-md: 0 4px 12px rgba(26, 20, 16, 0.1);
+  --shadow-lg: 0 12px 24px rgba(26, 20, 16, 0.12);
+  --shadow-xl: 0 20px 40px rgba(26, 20, 16, 0.18);
 
   /* Transitions */
   --transition-fast: 150ms ease-in-out;
   --transition-normal: 250ms ease-in-out;
   --transition-slow: 350ms ease-in-out;
 
+  /* Layout */
+  --container-max: 75rem;
+  --container-padding: 1.25rem;
+  --header-height: 4rem;
+
   /* Breakpoints (for JS reference) */
   --breakpoint-mobile: 320px;
   --breakpoint-tablet: 768px;
-  --breakpoint-desktop: 1024px;
-  --breakpoint-wide: 1280px;
+  --breakpoint-desktop: 1366px;
+  --breakpoint-wide: 1536px;
 
   /* Z-index */
   --z-base: 1;
@@ -94,15 +120,35 @@
   --z-tooltip: 600;
 }
 
-/* Dark mode overrides */
+/* Dark mode overrides - only surfaces & text adapt; materials stay fixed */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background-primary: #1f2937;
-    --color-background-secondary: #111827;
-    --color-black: #ffffff;
-    --color-white: #000000;
-    --color-dark-gray: #d1d5db;
-    --color-gray: #9ca3af;
-    --color-light-gray: #4b5563;
+    --border: #3a2f22;
+    --surface: #15100c;
+    --surface-alt: #1f1810;
+    --surface-ink: #261d13;
+    --text: #f4ecd9;
+    --text-muted: #c7baa0;
+
+    --color-black: #f4ecd9;
+    --color-dark-gray: #f4ecd9;
+    --color-gray: #c7baa0;
+    --color-light-gray: #3a2f22;
+    --color-white: #15100c;
+
+    --color-bordeaux: #c44554;
+    --color-bordeaux-dark: #5f161d;
+    --color-primary: #c44554;
+    --color-primary-dark: #5f161d;
+    --color-primary-light: #d96672;
+
+    --color-background-primary: #15100c;
+    --color-background-secondary: #1f1810;
+    --color-background-dark: #261d13;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.55);
+    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.6);
   }
 }
