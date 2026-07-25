@@ -22,7 +22,7 @@ Teste técnico frontend que simula uma jornada de compra em 3 etapas:
 - **Build**: Rsbuild (camada oficial sobre Rspack)
 - **Animações**: GSAP
 - **Testes**: Vitest + Testing Library
-- **Fontes**: Google Fonts (Montserrat)
+- **Fontes**: Unbounded + Liter (self-hosted via fonts.css)
 
 ### Características Técnicas
 - ✅ Funções puras e nomeadas (sem anonymous functions)

@@ -63,7 +63,7 @@ import I18n from '../core/i18n.js';
 
 ### Tecnologia e Ferramentas
 - **Tecnologia**: CSS puro (sem preprocessors)
-- **Fonte**: Montserrat (Google Fonts)
+- **Fontes**: Unbounded + Liter (self-hosted via fonts.css)
 - **Abordagem**: Mobile-first
 - **Organização**: Sempre em ordem alfabética
 - **Tema**: Variáveis CSS custom properties
