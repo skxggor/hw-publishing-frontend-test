@@ -131,6 +131,7 @@
   margin-top: var(--spacing-xl);
   max-width: var(--container-max);
   padding: var(--spacing-xl) var(--container-padding);
+  position: relative;
   text-align: center;
 }
 
@@ -140,6 +141,23 @@
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
+}
+
+.carousel__price {
+  bottom: var(--spacing-md);
+  position: absolute;
+  right: var(--spacing-md);
+}
+
+.carousel__price .price-badge {
+  transform: rotate(6deg);
+}
+
+@media (max-width: 768px) {
+  .carousel__price {
+    bottom: calc(-1 * var(--spacing-3xl));
+    right: var(--spacing-sm);
+  }
 }
 
 @media (min-width: 1366px) {

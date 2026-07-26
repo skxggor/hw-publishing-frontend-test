@@ -1,0 +1,60 @@
+/* Price badge - Hero section */
+
+.hero__price {
+  position: absolute;
+  right: var(--spacing-md);
+  top: var(--spacing-xs);
+  z-index: 2;
+}
+
+.price-badge {
+  background-color: var(--color-gold);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  color: var(--color-ink);
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--spacing-xxs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transform: rotate(-6deg);
+}
+
+.price-badge__original {
+  color: var(--color-ink);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xs);
+  opacity: 0.7;
+  text-decoration: line-through;
+}
+
+.price-badge__current {
+  align-items: baseline;
+  color: var(--color-paper);
+  display: inline-flex;
+  gap: var(--spacing-xxs);
+}
+
+.price-badge__currency {
+  color: var(--color-paper);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.price-badge__amount {
+  color: var(--color-paper);
+  font-family: var(--font-family-primary);
+  font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+}
+
+.price-badge__cents {
+  color: var(--color-paper);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  margin-left: var(--spacing-xxs);
+  vertical-align: super;
+}

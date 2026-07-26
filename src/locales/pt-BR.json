@@ -102,6 +102,12 @@
       "cta": "Comprar Agora",
       "eyebrow": "Hermann Hesse · Nobel 1946",
       "guarantee": "Garantia de 30 dias",
+      "price": {
+        "amount": "109",
+        "cents": ",99",
+        "currency": "R$",
+        "original": "R$ 299,99"
+      },
       "subtitle": "A obra-prima de Hermann Hesse, Prêmio Nobel de 1946, em uma edição especial para colecionadores, com encadernação artesanal, miolo íntegro e ex-libris numerado.",
       "title": "Demian, Série Luxo"
     },

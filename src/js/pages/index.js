@@ -25,6 +25,8 @@ const HERO_FLOAT_DISTANCE = -14;
 const HERO_FLOAT_DURATION = 2.6;
 const MENU_CLOSE_DURATION = 900;
 const PAGE_NAME = 'landing';
+const PRICE_FLOAT_DISTANCE = -6;
+const PRICE_FLOAT_DURATION = 3;
 const REVEAL_ROOT_MARGIN = '0px 0px -50px 0px';
 const REVEAL_THRESHOLD = 0.1;
 const SMOOTH_SCROLL_OFFSET = 80;
@@ -239,6 +241,35 @@ const createHomePage = function createHomePage() {
       .to(primary, { duration: HERO_CROSSFADE_DURATION, ease: EASE_SOFT, opacity: 1 }, '<');
   };
 
+  const initPriceBadges = function initPriceBadges() {
+    if (prefersReducedMotion()) {
+      return;
+    }
+
+    const heroPrice = Utils.getElement('.hero__price .price-badge');
+    const ctaPrice = Utils.getElement('.carousel__price .price-badge');
+
+    if (heroPrice) {
+      gsap.to(heroPrice, {
+        duration: PRICE_FLOAT_DURATION,
+        ease: EASE_SMOOTH,
+        repeat: -1,
+        y: PRICE_FLOAT_DISTANCE,
+        yoyo: true,
+      });
+    }
+
+    if (ctaPrice) {
+      gsap.to(ctaPrice, {
+        duration: PRICE_FLOAT_DURATION,
+        ease: EASE_SMOOTH,
+        repeat: -1,
+        y: PRICE_FLOAT_DISTANCE,
+        yoyo: true,
+      });
+    }
+  };
+
   const init = function init() {
     if (isInitialized) {
       return;
@@ -254,6 +285,7 @@ const createHomePage = function createHomePage() {
     initCarousels();
     initHeroFloat();
     initHeroCrossfade();
+    initPriceBadges();
     glassEdgesCleanup = mountGlassEdges();
 
     pubSub.publish('landing:initialized', { locale: I18n.getCurrentLocale() });

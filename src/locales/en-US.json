@@ -102,6 +102,12 @@
       "cta": "Buy Now",
       "eyebrow": "Hermann Hesse · Nobel Laureate",
       "guarantee": "30-day guarantee",
+      "price": {
+        "amount": "109",
+        "cents": ",99",
+        "currency": "R$",
+        "original": "R$ 299,99"
+      },
       "subtitle": "The masterpiece by Hermann Hesse, 1946 Nobel laureate, in a special collector's edition, hand-bound, pristine folio and numbered ex-libris.",
       "title": "Demian, Luxury Series"
     },
