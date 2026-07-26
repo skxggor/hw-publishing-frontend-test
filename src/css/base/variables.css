@@ -5,8 +5,9 @@
   /* Fixed brand materials (identical in light & dark) */
   --color-bordeaux: #5f161d;
   --color-bordeaux-dark: #3d0b10;
-  --color-gold: #9a7b3c;
+  --color-gold: #a08030;
   --color-gold-dark: #6f5526;
+  --color-gold-on-dark: #d4b45c;
   --color-ink: #1a1410;
   --color-paper: #f7f2e9;
   --color-paper-deep: #e6dcc7;

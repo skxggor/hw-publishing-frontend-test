@@ -23,7 +23,6 @@
   color: var(--color-ink);
   font-family: var(--font-family-primary);
   font-size: var(--font-size-xs);
-  opacity: 0.7;
   text-decoration: line-through;
 }
 
