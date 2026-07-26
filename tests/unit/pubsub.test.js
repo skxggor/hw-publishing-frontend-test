@@ -1,22 +1,22 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { pubSub, createPubSub } from '@core/pubsub.js';
 
-describe('PubSub - Publish-Subscribe Pattern', function() {
+describe('PubSub - Publish-Subscribe Pattern', function () {
   let testPubSub;
 
-  beforeEach(function() {
+  beforeEach(function () {
     testPubSub = createPubSub();
   });
 
-  describe('subscribe', function() {
-    it('should subscribe to event and return unsubscribe function', function() {
+  describe('subscribe', function () {
+    it('should subscribe to event and return unsubscribe function', function () {
       const callback = vi.fn();
       const unsubscribe = testPubSub.subscribe('test-event', callback);
 
       expect(typeof unsubscribe).toBe('function');
     });
 
-    it('should not subscribe if event name is missing', function() {
+    it('should not subscribe if event name is missing', function () {
       const callback = vi.fn();
       const unsubscribe = testPubSub.subscribe('', callback);
       const unsubscribe2 = testPubSub.subscribe(null, callback);
@@ -25,7 +25,7 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
       expect(unsubscribe2).toBe(undefined);
     });
 
-    it('should not subscribe if callback is missing', function() {
+    it('should not subscribe if callback is missing', function () {
       const unsubscribe1 = testPubSub.subscribe('test-event', null);
       const unsubscribe2 = testPubSub.subscribe('test-event', undefined);
       const unsubscribe3 = testPubSub.subscribe('test-event', 'not-a-function');
@@ -35,7 +35,7 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
       expect(unsubscribe3).toBe(undefined);
     });
 
-    it('should call callback when event is published', function() {
+    it('should call callback when event is published', function () {
       const callback = vi.fn();
       testPubSub.subscribe('test-event', callback);
 
@@ -45,7 +45,7 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
       expect(callback).toHaveBeenCalledWith({ data: 'test' });
     });
 
-    it('should support multiple subscribers for same event', function() {
+    it('should support multiple subscribers for same event', function () {
       const callback1 = vi.fn();
       const callback2 = vi.fn();
       const callback3 = vi.fn();
@@ -61,7 +61,7 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
       expect(callback3).toHaveBeenCalledTimes(1);
     });
 
-    it('should not call callback after unsubscribe', function() {
+    it('should not call callback after unsubscribe', function () {
       const callback = vi.fn();
       const unsubscribe = testPubSub.subscribe('test-event', callback);
 
@@ -74,18 +74,18 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
     });
   });
 
-  describe('publish', function() {
-    it('should not throw if event name is missing', function() {
-      expect(function() {
+  describe('publish', function () {
+    it('should not throw if event name is missing', function () {
+      expect(function () {
         testPubSub.publish('');
       }).not.toThrow();
 
-      expect(function() {
+      expect(function () {
         testPubSub.publish(null);
       }).not.toThrow();
     });
 
-    it('should not call subscribers for non-existent event', function() {
+    it('should not call subscribers for non-existent event', function () {
       const callback = vi.fn();
       testPubSub.subscribe('different-event', callback);
 
@@ -94,8 +94,8 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
       expect(callback).not.toHaveBeenCalled();
     });
 
-    it('should handle errors in callbacks gracefully', function() {
-      const errorCallback = vi.fn(function() {
+    it('should handle errors in callbacks gracefully', function () {
+      const errorCallback = vi.fn(function () {
         throw new Error('Test error');
       });
       const normalCallback = vi.fn();
@@ -103,7 +103,7 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
       testPubSub.subscribe('test-event', errorCallback);
       testPubSub.subscribe('test-event', normalCallback);
 
-      expect(function() {
+      expect(function () {
         testPubSub.publish('test-event', { data: 'test' });
       }).not.toThrow();
 
@@ -111,7 +111,7 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
       expect(normalCallback).toHaveBeenCalled();
     });
 
-    it('should pass data to all subscribers', function() {
+    it('should pass data to all subscribers', function () {
       const callback1 = vi.fn();
       const callback2 = vi.fn();
       const testData = { message: 'test data', value: 123 };
@@ -126,8 +126,8 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
     });
   });
 
-  describe('clear', function() {
-    it('should clear all events when no event name provided', function() {
+  describe('clear', function () {
+    it('should clear all events when no event name provided', function () {
       const callback1 = vi.fn();
       const callback2 = vi.fn();
 
@@ -143,7 +143,7 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
       expect(callback2).not.toHaveBeenCalled();
     });
 
-    it('should clear specific event when event name provided', function() {
+    it('should clear specific event when event name provided', function () {
       const callback1 = vi.fn();
       const callback2 = vi.fn();
 
@@ -160,23 +160,23 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
     });
   });
 
-  describe('hasSubscribers', function() {
-    it('should return false when no subscribers', function() {
+  describe('hasSubscribers', function () {
+    it('should return false when no subscribers', function () {
       expect(testPubSub.hasSubscribers('test-event')).toBe(false);
     });
 
-    it('should return false when event name is missing', function() {
+    it('should return false when event name is missing', function () {
       testPubSub.subscribe('test-event', vi.fn());
       expect(testPubSub.hasSubscribers('')).toBe(false);
       expect(testPubSub.hasSubscribers(null)).toBe(false);
     });
 
-    it('should return true when event has subscribers', function() {
+    it('should return true when event has subscribers', function () {
       testPubSub.subscribe('test-event', vi.fn());
       expect(testPubSub.hasSubscribers('test-event')).toBe(true);
     });
 
-    it('should return false after unsubscribing all', function() {
+    it('should return false after unsubscribing all', function () {
       const unsubscribe = testPubSub.subscribe('test-event', vi.fn());
       expect(testPubSub.hasSubscribers('test-event')).toBe(true);
 
@@ -185,17 +185,17 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
     });
   });
 
-  describe('getEventCount', function() {
-    it('should return 0 when no subscribers', function() {
+  describe('getEventCount', function () {
+    it('should return 0 when no subscribers', function () {
       expect(testPubSub.getEventCount('test-event')).toBe(0);
     });
 
-    it('should return 0 when event name is missing', function() {
+    it('should return 0 when event name is missing', function () {
       expect(testPubSub.getEventCount('')).toBe(0);
       expect(testPubSub.getEventCount(null)).toBe(0);
     });
 
-    it('should return correct subscriber count', function() {
+    it('should return correct subscriber count', function () {
       const callback1 = vi.fn();
       const callback2 = vi.fn();
       const callback3 = vi.fn();
@@ -208,7 +208,7 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
       expect(testPubSub.getEventCount('test-event')).toBe(3);
     });
 
-    it('should decrease count when unsubscribing', function() {
+    it('should decrease count when unsubscribing', function () {
       const unsubscribe = testPubSub.subscribe('test-event', vi.fn());
       expect(testPubSub.getEventCount('test-event')).toBe(1);
 
@@ -217,12 +217,12 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
     });
   });
 
-  describe('frozen API', function() {
-    it('should return frozen object with immutable API', function() {
+  describe('frozen API', function () {
+    it('should return frozen object with immutable API', function () {
       expect(Object.isFrozen(testPubSub)).toBe(true);
     });
 
-    it('should have required methods', function() {
+    it('should have required methods', function () {
       expect(typeof testPubSub.subscribe).toBe('function');
       expect(typeof testPubSub.publish).toBe('function');
       expect(typeof testPubSub.clear).toBe('function');
@@ -230,22 +230,22 @@ describe('PubSub - Publish-Subscribe Pattern', function() {
       expect(typeof testPubSub.getEventCount).toBe('function');
     });
 
-    it('should not allow adding new properties', function() {
-      expect(function() {
-        testPubSub.newMethod = function() {};
+    it('should not allow adding new properties', function () {
+      expect(function () {
+        testPubSub.newMethod = function () {};
       }).toThrow();
     });
   });
 });
 
-describe('Global pubSub instance', function() {
-  it('should export global pubSub instance', function() {
+describe('Global pubSub instance', function () {
+  it('should export global pubSub instance', function () {
     expect(pubSub).toBeDefined();
     expect(typeof pubSub.subscribe).toBe('function');
     expect(typeof pubSub.publish).toBe('function');
   });
 
-  it('should work independently from other instances', function() {
+  it('should work independently from other instances', function () {
     const localPubSub = createPubSub();
     const globalCallback = vi.fn();
     const localCallback = vi.fn();

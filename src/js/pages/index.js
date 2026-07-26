@@ -234,9 +234,21 @@ const createHomePage = function createHomePage() {
     const timeline = gsap.timeline({ repeat: -1 });
 
     timeline
-      .to(alternate, { duration: HERO_CROSSFADE_DURATION, ease: EASE_SOFT, opacity: 1 }, HERO_CROSSFADE_HOLD)
-      .to(primary, { duration: HERO_CROSSFADE_DURATION, ease: EASE_SOFT, opacity: 0 }, HERO_CROSSFADE_HOLD)
-      .to(alternate, { duration: HERO_CROSSFADE_DURATION, ease: EASE_SOFT, opacity: 0 }, `+=${HERO_CROSSFADE_HOLD}`)
+      .to(
+        alternate,
+        { duration: HERO_CROSSFADE_DURATION, ease: EASE_SOFT, opacity: 1 },
+        HERO_CROSSFADE_HOLD
+      )
+      .to(
+        primary,
+        { duration: HERO_CROSSFADE_DURATION, ease: EASE_SOFT, opacity: 0 },
+        HERO_CROSSFADE_HOLD
+      )
+      .to(
+        alternate,
+        { duration: HERO_CROSSFADE_DURATION, ease: EASE_SOFT, opacity: 0 },
+        `+=${HERO_CROSSFADE_HOLD}`
+      )
       .to(primary, { duration: HERO_CROSSFADE_DURATION, ease: EASE_SOFT, opacity: 1 }, '<');
   };
 

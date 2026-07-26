@@ -12,7 +12,10 @@
   padding: var(--spacing-md) var(--spacing-xl);
   text-align: center;
   text-transform: uppercase;
-  transition: background-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-fast);
+  transition:
+    background-color var(--transition-normal),
+    box-shadow var(--transition-normal),
+    transform var(--transition-fast);
 }
 
 .btn:active {

@@ -75,7 +75,10 @@
   left: 0;
   position: absolute;
   transform-origin: center;
-  transition: background-color var(--transition-normal), opacity var(--transition-normal), transform var(--transition-normal);
+  transition:
+    background-color var(--transition-normal),
+    opacity var(--transition-normal),
+    transform var(--transition-normal);
   width: 100%;
 }
 
@@ -236,7 +239,9 @@
 .header__menu-item {
   opacity: 0;
   transform: translateY(1.5rem);
-  transition: opacity var(--transition-normal), transform var(--transition-normal);
+  transition:
+    opacity var(--transition-normal),
+    transform var(--transition-normal);
 }
 
 .header--menu-open .header__menu-item {

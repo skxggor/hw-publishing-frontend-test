@@ -37,8 +37,12 @@ describe('GlassEdges', function () {
   it('sets a band mask gradient per layer', function () {
     cleanup = mountGlassEdges();
 
-    const topMask = document.querySelector('.glass-edge--top .glass-edge__layer').style.getPropertyValue('--glass-mask');
-    const bottomMask = document.querySelector('.glass-edge--bottom .glass-edge__layer').style.getPropertyValue('--glass-mask');
+    const topMask = document
+      .querySelector('.glass-edge--top .glass-edge__layer')
+      .style.getPropertyValue('--glass-mask');
+    const bottomMask = document
+      .querySelector('.glass-edge--bottom .glass-edge__layer')
+      .style.getPropertyValue('--glass-mask');
 
     expect(topMask).toContain('linear-gradient(to top');
     expect(bottomMask).toContain('linear-gradient(to bottom');

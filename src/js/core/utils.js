@@ -316,8 +316,7 @@ const Utils = Object.freeze({
       return;
     }
 
-    const targetPosition =
-      targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
 
     window.scrollTo({
       top: targetPosition,
@@ -342,9 +341,13 @@ const Utils = Object.freeze({
     setTimeout(function fadeOutLoader() {
       loader.setAttribute('aria-hidden', 'true');
 
-      loader.addEventListener('transitionend', function removeLoader() {
-        loader.remove();
-      }, { once: true });
+      loader.addEventListener(
+        'transitionend',
+        function removeLoader() {
+          loader.remove();
+        },
+        { once: true }
+      );
     }, delay);
   },
 });

@@ -43,9 +43,35 @@ const createUpsellPage = function createUpsellPage() {
     crossfadeTimeline = gsap.timeline({ repeat: -1 });
 
     crossfadeTimeline
-      .to(alternate, { duration: IMAGE_CROSSFADE_DURATION, ease: EASE_OUT, opacity: 1, onStart: function showAlternate() { alternate.style.display = 'block'; } }, IMAGE_CROSSFADE_HOLD)
-      .to(primary, { duration: IMAGE_CROSSFADE_DURATION, ease: EASE_OUT, opacity: 0 }, IMAGE_CROSSFADE_HOLD)
-      .to(alternate, { duration: IMAGE_CROSSFADE_DURATION, ease: EASE_OUT, opacity: 0, onComplete: function hideAlternate() { alternate.style.display = 'none'; } }, `+=${IMAGE_CROSSFADE_HOLD}`)
+      .to(
+        alternate,
+        {
+          duration: IMAGE_CROSSFADE_DURATION,
+          ease: EASE_OUT,
+          opacity: 1,
+          onStart: function showAlternate() {
+            alternate.style.display = 'block';
+          },
+        },
+        IMAGE_CROSSFADE_HOLD
+      )
+      .to(
+        primary,
+        { duration: IMAGE_CROSSFADE_DURATION, ease: EASE_OUT, opacity: 0 },
+        IMAGE_CROSSFADE_HOLD
+      )
+      .to(
+        alternate,
+        {
+          duration: IMAGE_CROSSFADE_DURATION,
+          ease: EASE_OUT,
+          opacity: 0,
+          onComplete: function hideAlternate() {
+            alternate.style.display = 'none';
+          },
+        },
+        `+=${IMAGE_CROSSFADE_HOLD}`
+      )
       .to(primary, { duration: IMAGE_CROSSFADE_DURATION, ease: EASE_OUT, opacity: 1 }, '<');
   };
 

@@ -353,7 +353,9 @@
   gap: var(--spacing-sm);
   padding-block: var(--spacing-sm);
   padding-inline: var(--spacing-lg);
-  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+  transition:
+    background-color var(--transition-normal),
+    border-color var(--transition-normal);
 }
 
 .support-section__contact:hover {

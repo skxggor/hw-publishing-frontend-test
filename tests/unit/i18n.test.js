@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { createI18n } from '@core/i18n.js';
 
 describe('I18n - Internationalization Module', function () {
@@ -166,11 +166,14 @@ describe('I18n - Internationalization Module', function () {
     });
 
     it('should translate elements with data-i18n attribute', function () {
-      document.body.innerHTML = '<div data-i18n="header.logo"></div><span data-i18n="header.home"></span>';
+      document.body.innerHTML =
+        '<div data-i18n="header.logo"></div><span data-i18n="header.home"></span>';
 
       i18n.translatePage();
 
-      expect(document.querySelector('[data-i18n="header.logo"]').textContent).toBe('H&W Publishing');
+      expect(document.querySelector('[data-i18n="header.logo"]').textContent).toBe(
+        'H&W Publishing'
+      );
       expect(document.querySelector('[data-i18n="header.home"]').textContent).toBe('Início');
     });
 
@@ -234,7 +237,14 @@ describe('I18n - Internationalization Module', function () {
 
   describe('frozen API', function () {
     it('should expose the expected methods', function () {
-      const methods = ['init', 'get', 'setLocale', 'getCurrentLocale', 'getSupportedLocales', 'translatePage'];
+      const methods = [
+        'init',
+        'get',
+        'setLocale',
+        'getCurrentLocale',
+        'getSupportedLocales',
+        'translatePage',
+      ];
 
       methods.forEach(function (method) {
         expect(typeof i18n[method]).toBe('function');

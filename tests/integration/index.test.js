@@ -3,15 +3,23 @@ import { installIntersectionObserver } from '../helpers.js';
 
 vi.mock('gsap', () => {
   const chain = {
-    eventCallback: vi.fn(function returnChain() { return chain; }),
-    set: vi.fn(function returnChain() { return chain; }),
-    to: vi.fn(function returnChain() { return chain; }),
+    eventCallback: vi.fn(function returnChain() {
+      return chain;
+    }),
+    set: vi.fn(function returnChain() {
+      return chain;
+    }),
+    to: vi.fn(function returnChain() {
+      return chain;
+    }),
   };
 
   return {
     gsap: {
       to: vi.fn(),
-      timeline: vi.fn(function createTimeline() { return chain; }),
+      timeline: vi.fn(function createTimeline() {
+        return chain;
+      }),
     },
   };
 });

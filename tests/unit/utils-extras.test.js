@@ -126,7 +126,11 @@ describe('Utils - URL Functions', function () {
 
 describe('Utils - getDeviceType', function () {
   afterEach(function () {
-    Object.defineProperty(window, 'innerWidth', { value: 1024, configurable: true, writable: true });
+    Object.defineProperty(window, 'innerWidth', {
+      value: 1024,
+      configurable: true,
+      writable: true,
+    });
   });
 
   it('should return mobile for width < 768', function () {
@@ -142,7 +146,11 @@ describe('Utils - getDeviceType', function () {
   });
 
   it('should return desktop for width >= 1024', function () {
-    Object.defineProperty(window, 'innerWidth', { value: 1280, configurable: true, writable: true });
+    Object.defineProperty(window, 'innerWidth', {
+      value: 1280,
+      configurable: true,
+      writable: true,
+    });
 
     expect(Utils.getDeviceType()).toBe('desktop');
   });
