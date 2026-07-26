@@ -324,6 +324,15 @@ const Utils = Object.freeze({
       behavior: 'smooth',
     });
   },
+
+  updateCopyrightYear: function updateCopyrightYear() {
+    const year = new Date().getFullYear();
+    const elements = Utils.getElements('.footer__copyright');
+
+    elements.forEach(function replaceYear(element) {
+      element.textContent = element.textContent.replace(/\d{4}/, String(year));
+    });
+  },
 });
 
 export default Utils;
