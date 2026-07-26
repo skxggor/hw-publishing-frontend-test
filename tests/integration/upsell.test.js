@@ -3,15 +3,32 @@ import { createUpsellPage } from '@pages/upsell.js';
 import { pubSub } from '@core/pubsub.js';
 import { installGsap } from '../helpers.js';
 
-const CONTENT_REVEAL_DELAY = 15000;
+const VIDEO_REVEAL_TIME = 10000;
 
 const setupUpsellDom = function setupUpsellDom() {
   document.body.innerHTML = `
-    <div class="upsell-hero__container"><h1>Title</h1></div>
-    <div class="video-section__wrapper">
-      <iframe id="upsellVideo" src="https://example.com"></iframe>
+    <div class="upsell-hero__content">
+      <p class="upsell-hero__eyebrow">Hermann Hesse</p>
+      <h1 class="upsell-hero__title">O Lobo da Estepe</h1>
+      <p class="upsell-hero__subtitle">Subtitle</p>
     </div>
-    <div id="upsellContent" class="is-hidden"></div>
+    <div class="upsell-hero__images" id="upsellImages">
+      <img class="upsell-hero__image--primary" src="upsell1.webp" alt="">
+      <img class="upsell-hero__image--alternate" src="upsell2.webp" alt="">
+    </div>
+    <div class="upsell-hero__video" id="upsellVideo"></div>
+    <div class="upsell-countdown" id="upsellCountdown">
+      <span class="upsell-countdown__number" id="countdownNumber">10</span>
+    </div>
+    <div class="upsell-hero__container is-hidden" id="upsellContent">
+      <div class="upsell-hero__media"></div>
+    </div>
+    <div class="upsell-offer" id="upsellOffer">
+      <div class="upsell-offer__container">
+        <h2>Offer</h2>
+      </div>
+    </div>
+    <div class="price-badge--upsell"></div>
     <a class="btn" href="/thank-you.html?companion=true">Accept</a>
     <a class="btn" href="/thank-you.html?companion=false">Decline</a>
   `;
@@ -52,44 +69,63 @@ describe('Upsell Page - Integration', function () {
     });
   });
 
-  describe('initVideoTracking / revealHiddenContent', function () {
+  describe('initVideoTracking / initImageCrossfade', function () {
     beforeEach(function () {
       vi.useFakeTimers();
     });
 
     it('should keep content hidden before the delay', function () {
       upsellPage.init();
-      vi.advanceTimersByTime(CONTENT_REVEAL_DELAY - 1);
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME - 1);
 
       expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(true);
     });
 
     it('should reveal content after the delay', function () {
       upsellPage.init();
-      vi.advanceTimersByTime(CONTENT_REVEAL_DELAY);
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
 
       expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(false);
     });
 
-    it('should publish content-revealed event after delay', function () {
+    it('should publish images-revealed event after delay', function () {
       const handler = vi.fn();
 
-      pubSub.subscribe('upsell:content-revealed', handler);
+      pubSub.subscribe('upsell:images-revealed', handler);
 
       upsellPage.init();
-      vi.advanceTimersByTime(CONTENT_REVEAL_DELAY);
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
 
       expect(handler).toHaveBeenCalledTimes(1);
       expect(handler.mock.calls[0][0].method).toBe('timeout');
     });
 
-    it('should still reveal when video iframe is missing', function () {
+    it('should still reveal content when video element is missing', function () {
       document.querySelector('#upsellVideo').remove();
 
       upsellPage.init();
-      vi.advanceTimersByTime(CONTENT_REVEAL_DELAY);
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
 
       expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(false);
+    });
+
+    it('should update countdown number each second', function () {
+      upsellPage.init();
+
+      expect(document.querySelector('#countdownNumber').textContent).toBe('10');
+
+      vi.advanceTimersByTime(1000);
+      expect(document.querySelector('#countdownNumber').textContent).toBe('9');
+
+      vi.advanceTimersByTime(1000);
+      expect(document.querySelector('#countdownNumber').textContent).toBe('8');
+    });
+
+    it('should hide countdown after reaching zero', function () {
+      upsellPage.init();
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
+
+      expect(document.querySelector('#upsellCountdown').classList.contains('is-hidden')).toBe(true);
     });
   });
 
@@ -144,7 +180,7 @@ describe('Upsell Page - Integration', function () {
 
       upsellPage.init();
       upsellPage.destroy();
-      vi.advanceTimersByTime(CONTENT_REVEAL_DELAY);
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
 
       expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(true);
     });
@@ -161,7 +197,7 @@ describe('Upsell Page - Integration', function () {
         upsellPage.init();
       }).not.toThrow();
 
-      vi.advanceTimersByTime(CONTENT_REVEAL_DELAY);
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
 
       expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(false);
     });
@@ -177,13 +213,13 @@ describe('Upsell Page - Integration', function () {
       }).not.toThrow();
     });
 
-    it('should reveal content even when target container is missing', function () {
+    it('should reveal content even when container is missing', function () {
       document.querySelector('#upsellContent').remove();
       vi.useFakeTimers();
 
       expect(function safeInit() {
         upsellPage.init();
-        vi.advanceTimersByTime(CONTENT_REVEAL_DELAY);
+        vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
       }).not.toThrow();
     });
   });

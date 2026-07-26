@@ -4,19 +4,55 @@ import '@core/view-transitions.js';
 import { pubSub } from '@core/pubsub.js';
 import Utils from '@core/utils.js';
 import I18n from '@core/i18n.js';
+import { mountGlassEdges } from '@features/layout/glass-edges.js';
 import { initPageTransition } from '@features/layout/transition.js';
+import { gsap } from 'gsap';
 
-const CONTENT_REVEAL_DELAY = 15000;
+const EASE_SMOOTH = 'sine.inOut';
 const EASE_OUT = 'power2.out';
+const IMAGE_CROSSFADE_DURATION = 1.2;
+const IMAGE_CROSSFADE_HOLD = 5;
+const VIDEO_REVEAL_TIME = 10000;
 const SCROLL_PROGRESS_THROTTLE = 50;
 
 const createUpsellPage = function createUpsellPage() {
   let isInitialized = false;
+  let glassEdgesCleanup = null;
   let revealTimeout = null;
   let scrollProgressElement = null;
+  let crossfadeTimeline = null;
 
-  const revealHiddenContent = function revealHiddenContent() {
+  const prefersReducedMotion = function prefersReducedMotion() {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return false;
+    }
+
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  };
+
+  const initImageCrossfade = function initImageCrossfade() {
+    const primary = Utils.getElement('.upsell-hero__image--primary');
+    const alternate = Utils.getElement('.upsell-hero__image--alternate');
+
+    if (!primary || !alternate || prefersReducedMotion()) {
+      return;
+    }
+
+    gsap.set(primary, { opacity: 1 });
+    gsap.set(alternate, { opacity: 0 });
+
+    crossfadeTimeline = gsap.timeline({ repeat: -1 });
+
+    crossfadeTimeline
+      .to(alternate, { duration: IMAGE_CROSSFADE_DURATION, ease: EASE_OUT, opacity: 1, onStart: function showAlternate() { alternate.style.display = 'block'; } }, IMAGE_CROSSFADE_HOLD)
+      .to(primary, { duration: IMAGE_CROSSFADE_DURATION, ease: EASE_OUT, opacity: 0 }, IMAGE_CROSSFADE_HOLD)
+      .to(alternate, { duration: IMAGE_CROSSFADE_DURATION, ease: EASE_OUT, opacity: 0, onComplete: function hideAlternate() { alternate.style.display = 'none'; } }, `+=${IMAGE_CROSSFADE_HOLD}`)
+      .to(primary, { duration: IMAGE_CROSSFADE_DURATION, ease: EASE_OUT, opacity: 1 }, '<');
+  };
+
+  const revealHeroContent = function revealHeroContent() {
     const content = Utils.getElement('#upsellContent');
+    const header = Utils.getElement('#upsellHeader');
 
     if (!content) {
       return;
@@ -24,42 +60,136 @@ const createUpsellPage = function createUpsellPage() {
 
     Utils.removeClass(content, 'is-hidden');
 
-    if (window.gsap) {
-      window.gsap.fromTo(
-        content,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.8, ease: EASE_OUT }
+    if (header) {
+      Utils.removeClass(header, 'is-hidden');
+    }
+
+    if (prefersReducedMotion()) {
+      return;
+    }
+
+    const elements = Utils.getElements('#upsellContent > *');
+
+    gsap.fromTo(
+      elements,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: EASE_OUT }
+    );
+
+    if (header) {
+      gsap.fromTo(
+        header,
+        { opacity: 0, y: -20 },
+        { opacity: 1, y: 0, duration: 0.6, ease: EASE_OUT }
       );
     }
 
-    pubSub.publish('upsell:content-revealed', { method: 'timeout' });
+    initImageCrossfade();
   };
 
   const initVideoTracking = function initVideoTracking() {
-    const iframe = Utils.getElement('#upsellVideo');
+    const countdownElement = Utils.getElement('#upsellCountdown');
+    const countdownNumber = Utils.getElement('#countdownNumber');
+    let remaining = 10;
 
-    if (!iframe) {
-      revealTimeout = setTimeout(revealHiddenContent, CONTENT_REVEAL_DELAY);
+    document.body.style.overflow = 'hidden';
 
+    if (countdownNumber) {
+      countdownNumber.textContent = remaining;
+    }
+
+    const countdownInterval = setInterval(function updateCountdown() {
+      remaining -= 1;
+
+      if (countdownNumber) {
+        countdownNumber.textContent = remaining;
+      }
+
+      if (remaining <= 0) {
+        clearInterval(countdownInterval);
+        document.body.style.overflow = '';
+
+        if (countdownElement) {
+          Utils.addClass(countdownElement, 'is-hidden');
+        }
+
+        revealHeroContent();
+        pubSub.publish('upsell:images-revealed', { method: 'timeout' });
+      }
+    }, 1000);
+
+    revealTimeout = countdownInterval;
+    pubSub.publish('upsell:video-tracking-initialized', { delay: VIDEO_REVEAL_TIME });
+  };
+
+  const initLanguageToggle = function initLanguageToggle() {
+    const languageToggle = Utils.getElement('#languageToggle');
+    const currentLanguageSpan = Utils.getElement('#currentLanguage');
+
+    if (!languageToggle || !currentLanguageSpan) {
       return;
     }
 
-    revealTimeout = setTimeout(revealHiddenContent, CONTENT_REVEAL_DELAY);
+    const handleToggle = function handleToggle() {
+      const currentLocale = I18n.getCurrentLocale();
+      const nextLocale = currentLocale === 'pt-BR' ? 'en-US' : 'pt-BR';
 
-    pubSub.publish('upsell:video-tracking-initialized', { delay: CONTENT_REVEAL_DELAY });
+      const switched = I18n.setLocale(nextLocale);
+
+      if (!switched) {
+        return;
+      }
+
+      currentLanguageSpan.textContent = nextLocale === 'pt-BR' ? 'PT' : 'EN';
+      I18n.translatePage();
+      pubSub.publish('language:changed', nextLocale);
+    };
+
+    languageToggle.addEventListener('click', handleToggle);
+  };
+
+  const initPriceBadge = function initPriceBadge() {
+    if (prefersReducedMotion()) {
+      return;
+    }
+
+    const priceBadge = Utils.getElement('.price-badge--upsell');
+    const bookImages = Utils.getElement('.upsell-hero__images');
+
+    if (priceBadge) {
+      gsap.to(priceBadge, {
+        duration: 3,
+        ease: EASE_SMOOTH,
+        repeat: -1,
+        y: -6,
+        yoyo: true,
+      });
+    }
+
+    if (bookImages) {
+      gsap.to(bookImages, {
+        duration: 3,
+        ease: EASE_SMOOTH,
+        repeat: -1,
+        y: -8,
+        yoyo: true,
+      });
+    }
   };
 
   const initCtaTracking = function initCtaTracking() {
-    const acceptButton = Utils.getElement('a[href*="companion=true"]');
+    const acceptButtons = Utils.getElements('a[href*="companion=true"]');
     const declineButton = Utils.getElement('a[href*="companion=false"]');
 
-    if (!acceptButton || !declineButton) {
+    acceptButtons.forEach(function trackAcceptButton(button) {
+      button.addEventListener('click', function trackAccept() {
+        pubSub.publish('upsell:cta:accept', { timestamp: Date.now() });
+      });
+    });
+
+    if (!declineButton) {
       return;
     }
-
-    acceptButton.addEventListener('click', function trackAccept() {
-      pubSub.publish('upsell:cta:accept', { timestamp: Date.now() });
-    });
 
     declineButton.addEventListener('click', function trackDecline() {
       pubSub.publish('upsell:cta:decline', { timestamp: Date.now() });
@@ -85,28 +215,17 @@ const createUpsellPage = function createUpsellPage() {
     updateProgress();
   };
 
-  const initEntranceAnimations = function initEntranceAnimations() {
-    if (!window.gsap) {
-      return;
-    }
-
-    window.gsap.fromTo(
-      '.upsell-hero__container > *',
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: EASE_OUT }
-    );
-
-    window.gsap.fromTo(
-      '.video-section__wrapper',
-      { opacity: 0, scale: 0.95 },
-      { opacity: 1, scale: 1, duration: 1, delay: 0.5, ease: EASE_OUT }
-    );
-  };
-
   const cleanup = function cleanup() {
     if (revealTimeout) {
-      clearTimeout(revealTimeout);
+      clearInterval(revealTimeout);
       revealTimeout = null;
+    }
+
+    document.body.style.overflow = '';
+
+    if (crossfadeTimeline) {
+      crossfadeTimeline.kill();
+      crossfadeTimeline = null;
     }
 
     if (scrollProgressElement && scrollProgressElement.parentNode) {
@@ -122,10 +241,13 @@ const createUpsellPage = function createUpsellPage() {
 
     I18n.init();
     initPageTransition();
+    initLanguageToggle();
     initVideoTracking();
+    initPriceBadge();
     initCtaTracking();
     createScrollProgress();
-    initEntranceAnimations();
+    glassEdgesCleanup = mountGlassEdges();
+    Utils.updateCopyrightYear();
 
     pubSub.publish('upsell:initialized', { locale: I18n.getCurrentLocale() });
 
@@ -138,6 +260,12 @@ const createUpsellPage = function createUpsellPage() {
     }
 
     cleanup();
+
+    if (glassEdgesCleanup) {
+      glassEdgesCleanup();
+      glassEdgesCleanup = null;
+    }
+
     pubSub.clear('upsell:initialized');
     isInitialized = false;
   };

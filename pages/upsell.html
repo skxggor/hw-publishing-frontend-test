@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Oferta exclusiva: o Companheiro de Colecionador para a sua primeira edição de Demian.">
-  <meta name="keywords" content="Demian, Hermann Hesse, companheiro de colecionador, slipcase, ex-libris">
+  <meta name="description" content="Oferta exclusiva: O Lobo da Estepe de Hermann Hesse para complementar sua coleção.">
+  <meta name="keywords" content="O Lobo da Estepe, Hermann Hesse, Série Luxo, livro raro, colecionador">
 
-  <title>Oferta Exclusiva | H&W Publishing</title>
+  <title>Oferta Exclusiva | H&amp;W Publishing</title>
 
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 </head>
-<body>
+<body class="page--upsell">
   <div class="page-transition" data-state="open">
     <div class="page-transition__logo">
       <span class="page-transition__letter">H</span>
@@ -20,134 +20,218 @@
     <p class="page-transition__tagline">Publishing</p>
   </div>
 
-  <header class="header header--simple">
+  <header class="header header--simple header--upsell is-hidden" id="upsellHeader">
     <div class="header__container">
-      <a href="./" class="header__logo" data-i18n="header.logo">H&W Publishing</a>
+      <a href="./" class="header__logo" data-i18n="header.logo">H&amp;W Publishing</a>
+      <button class="header__language-button header__language-button--upsell" id="languageToggle" type="button" aria-label="Alternar idioma">
+        <span class="header__language-current" id="currentLanguage">PT</span>
+      </button>
     </div>
   </header>
 
-  <footer class="footer footer--minimal">
+  <main>
+    <section class="upsell-hero">
+      <div class="upsell-hero__video-wrapper">
+        <div class="upsell-hero__video" id="upsellVideo"></div>
+        <div class="upsell-hero__texture"></div>
+        <div class="upsell-hero__gradient"></div>
+      </div>
+
+      <div class="upsell-countdown" id="upsellCountdown">
+        <span class="upsell-countdown__number" id="countdownNumber">10</span>
+      </div>
+
+      <div class="upsell-hero__container is-hidden" id="upsellContent">
+        <div class="upsell-hero__media">
+          <div class="upsell-hero__images" id="upsellImages">
+            <picture>
+              <source srcset="./images/upsell/upsell1.webp" type="image/webp">
+              <img class="upsell-hero__image upsell-hero__image--primary" src="./images/upsell/upsell1.png" alt="O Lobo da Estepe - Hermann Hesse" loading="lazy">
+            </picture>
+            <picture>
+              <source srcset="./images/upsell/upsell2.webp" type="image/webp">
+              <img class="upsell-hero__image upsell-hero__image--alternate" src="./images/upsell/upsell2.png" alt="O Lobo da Estepe - Edição Especial" loading="lazy">
+            </picture>
+          </div>
+
+          <div class="price-badge price-badge--upsell upsell-hero__price">
+            <span class="price-badge__original" data-i18n="upsell.hero.price.original">R$ 149,99</span>
+            <span class="price-badge__current">
+              <span class="price-badge__currency" data-i18n="upsell.hero.price.currency">+</span>
+              <span class="price-badge__amount"><span data-i18n="upsell.hero.price.amount">59</span><span class="price-badge__cents" data-i18n="upsell.hero.price.cents">,99</span></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="upsell-hero__content">
+          <p class="upsell-hero__eyebrow" data-i18n="upsell.hero.eyebrow">Hermann Hesse</p>
+          <h1 class="upsell-hero__title" data-i18n="upsell.hero.title">O Lobo da Estepe</h1>
+          <p class="upsell-hero__subtitle" data-i18n="upsell.hero.subtitle">Complete sua coleção com a obra que acompanhou Demian na jornada de autodescoberta de Hesse.</p>
+
+          <a href="./thank-you.html?companion=true" class="btn btn--primary btn--large upsell-hero__cta" data-i18n="upsell.hero.cta">
+            Adicionar à minha compra
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="upsell-offer" id="upsellOffer">
+      <div class="upsell-offer__container">
+        <div class="upsell-offer__badge">
+          <span data-i18n="upsell.offer.badge">Oferta Exclusiva</span>
+        </div>
+
+        <h2 class="upsell-offer__title" data-i18n="upsell.offer.title">Adicione à sua coleção</h2>
+        <p class="upsell-offer__description" data-i18n="upsell.offer.description">O Lobo da Estepe é uma das obras mais introspectivas de Hesse. Uma edição de colecionador que complementa perfeitamente o Demian.</p>
+
+        <div class="upsell-offer__features">
+          <ul class="upsell-offer__list">
+            <li class="upsell-offer__item">
+              <span class="upsell-offer__check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span data-i18n="upsell.offer.features.feature1">Edição especial com capa dura</span>
+            </li>
+            <li class="upsell-offer__item">
+              <span class="upsell-offer__check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span data-i18n="upsell.offer.features.feature2">Miolo em papel premium</span>
+            </li>
+            <li class="upsell-offer__item">
+              <span class="upsell-offer__check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span data-i18n="upsell.offer.features.feature3">Ilustrações exclusivas</span>
+            </li>
+            <li class="upsell-offer__item">
+              <span class="upsell-offer__check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span data-i18n="upsell.offer.features.feature4">Assinatura do autor na capa</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="upsell-offer__actions">
+          <a href="./thank-you.html?companion=true" class="btn btn--primary btn--large" data-i18n="upsell.offer.cta">
+            Adicionar por +R$ 59,99
+          </a>
+          <a href="./thank-you.html?companion=false" class="btn btn--secondary" data-i18n="upsell.cta.decline">
+            Não, obrigado.
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="upsell-guarantee">
+      <div class="upsell-guarantee__container">
+        <h2 class="upsell-guarantee__title" data-i18n="upsell.guarantee.title">Mesma Garantia de 30 Dias</h2>
+
+        <ul class="upsell-guarantee__list">
+          <li class="upsell-guarantee__item">
+            <span class="upsell-guarantee__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg>
+            </span>
+            <strong class="upsell-guarantee__label" data-i18n="upsell.guarantee.item1">Qualidade Premium</strong>
+            <span class="upsell-guarantee__desc" data-i18n="upsell.guarantee.item1Description">Edição idêntica em acabamento ao Demian.</span>
+          </li>
+          <li class="upsell-guarantee__item">
+            <span class="upsell-guarantee__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
+            </span>
+            <strong class="upsell-guarantee__label" data-i18n="upsell.guarantee.item2">Envio Conjunto</strong>
+            <span class="upsell-guarantee__desc" data-i18n="upsell.guarantee.item2Description">Embalado junto com o Demian, sem custo extra.</span>
+          </li>
+          <li class="upsell-guarantee__item">
+            <span class="upsell-guarantee__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10V7a6 6 0 0 1 12 0v3"/><rect x="4" y="10" width="16" height="11" rx="2"/><circle cx="12" cy="15" r="1.6"/></svg>
+            </span>
+            <strong class="upsell-guarantee__label" data-i18n="upsell.guarantee.item3">Pagamento Protegido</strong>
+            <span class="upsell-guarantee__desc" data-i18n="upsell.guarantee.item3Description">Transação criptografada e garantida.</span>
+          </li>
+          <li class="upsell-guarantee__item">
+            <span class="upsell-guarantee__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2"/><path d="M18.5 4v4h-4"/><path d="M21 12a9 9 0 0 1-15.5 6.2"/><path d="M5.5 20v-4h4"/></svg>
+            </span>
+            <strong class="upsell-guarantee__label" data-i18n="upsell.guarantee.item4">Devolução Fácil</strong>
+            <span class="upsell-guarantee__desc" data-i18n="upsell.guarantee.item4Description">30 dias para devolução sem custos.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="upsell-info">
+      <div class="upsell-info__container">
+        <h2 class="upsell-info__title" data-i18n="upsell.info.title">Por que O Lobo da Estepe?</h2>
+        <div class="upsell-info__content">
+          <p data-i18n="upsell.info.paragraph1">Publicado em 1927, O Lobo da Estepe é considerado uma das obras mais autobiográficas de Hermann Hesse. Enquanto Demian explora a dualidade entre o bem e o mal, O Lobo da Estepe mergulha na solidão existencial de Harry Haller.</p>
+          <p data-i18n="upsell.info.paragraph2">Juntos, esses dois livros formam um retrato completo da visão filosófica de Hesse sobre a condition humaine. Uma coleção que nenhum apreciador da literatura deveria ficar sem.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
     <div class="footer__container">
-      <p data-i18n="footer.copyright">© 2024 H&W Publishing. Todos os direitos reservados.</p>
+      <div class="footer__brand">
+        <p class="footer__logo" data-i18n="header.logo">H&amp;W Publishing</p>
+        <p class="footer__tagline">Curadoria de edições raras e exemplares de colecionador.</p>
+      </div>
+
+      <nav class="footer__links" aria-label="Links institucionais">
+        <a href="./" data-i18n="header.home">Início</a>
+        <a href="./terms.html" data-i18n="footer.terms">Termos de Uso</a>
+        <a href="./privacy.html" data-i18n="footer.privacy">Política de Privacidade</a>
+      </nav>
+
+      <div class="footer__social" aria-label="Redes sociais">
+        <a class="footer__social-link" href="https://instagram.com" aria-label="Instagram" rel="noopener" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        </a>
+        <a class="footer__social-link" href="https://facebook.com" aria-label="Facebook" rel="noopener" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M14 8h2V5h-2a3 3 0 0 0-3 3v2H9v3h2v6h3v-6h2.2l.8-3H14V8.5a.5.5 0 0 1 .5-.5z"/></svg>
+        </a>
+        <a class="footer__social-link" href="https://youtube.com" aria-label="YouTube" rel="noopener" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M11 9.5l4 2.5-4 2.5z" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+
+      <p class="footer__copyright" data-i18n="footer.copyright">© 2024 H&amp;W Publishing. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <main>
-    <section class="upsell-hero">
-      <div class="upsell-hero__container">
-        <div class="upsell-hero__badge">🎉</div>
-        <h1 class="upsell-hero__title" data-i18n="upsell.hero.title">
-          Parabéns! Você reservou seu Demian.
-        </h1>
-        <p class="upsell-hero__subtitle" data-i18n="upsell.hero.subtitle">
-          Antes de finalizar, temos uma oferta exclusiva para o seu exemplar...
-        </p>
-      </div>
-    </section>
+  <script>
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    <section class="video-section">
-      <div class="video-section__container">
-        <h2 class="video-section__title" data-i18n="upsell.video.title">
-          Conheça o cuidado que envolverá o seu exemplar
-        </h2>
-        <p class="video-section__description" data-i18n="upsell.video.description">
-          Assista ao vídeo e conheça esta oferta exclusiva
-        </p>
-
-        <div class="video-section__wrapper">
-          <iframe
-            class="video-section__iframe"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1"
-            title="Oferta exclusiva: Companheiro de Colecionador"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            id="upsellVideo"
-          >
-          </iframe>
-        </div>
-      </div>
-    </section>
-
-    <div class="upsell-content is-hidden" id="upsellContent">
-      <section class="offer-section">
-        <div class="offer-section__container">
-          <div class="offer-section__badge">
-            <span data-i18n="upsell.offer.discount">50% OFF</span>
-          </div>
-
-          <h2 class="offer-section__title" data-i18n="upsell.offer.title">
-            Companheiro de Colecionador
-          </h2>
-          <h3 class="offer-section__subtitle" data-i18n="upsell.offer.subtitle">
-            Complete a sua coleção com um cuidado à altura do exemplar
-          </h3>
-
-          <p class="offer-section__description" data-i18n="upsell.offer.description">
-            Um guia de leitura anotado de Demian, uma slipcase artesanal e um ex-libris numerado.
-          </p>
-
-          <div class="offer-section__price">
-            <div class="offer-section__original">
-              <span data-i18n="upsell.offer.originalPrice">R$ 397,00</span>
-            </div>
-            <div class="offer-section__current">
-              <span data-i18n="upsell.offer.currentPrice">R$ 197,00</span>
-            </div>
-          </div>
-
-          <div class="offer-section__features">
-            <ul class="offer-section__list">
-              <li class="offer-section__item">
-                <span class="offer-section__check">✓</span>
-                <span data-i18n="upsell.offer.features.feature1">Guia de leitura anotado sobre a obra de Hesse</span>
-              </li>
-              <li class="offer-section__item">
-                <span class="offer-section__check">✓</span>
-                <span data-i18n="upsell.offer.features.feature2">Slipcase artesanal de proteção archival</span>
-              </li>
-              <li class="offer-section__item">
-                <span class="offer-section__check">✓</span>
-                <span data-i18n="upsell.offer.features.feature3">Ex-libris numerado e personalizado</span>
-              </li>
-              <li class="offer-section__item">
-                <span class="offer-section__check">✓</span>
-                <span data-i18n="upsell.offer.features.feature4">Certificado de colecionador exclusivo</span>
-              </li>
-              <li class="offer-section__item">
-                <span class="offer-section__check">✓</span>
-                <span data-i18n="upsell.offer.features.feature5">Acesso ao clube de raridades literárias</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="offer-section__actions">
-            <a href="./thank-you.html?companion=true" class="btn btn--primary btn--large" data-i18n="upsell.offer.cta">
-              Adicionar Companheiro de Colecionador
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="guarantee">
-        <div class="guarantee__container">
-          <div class="guarantee__badge">🛡️</div>
-          <h2 class="guarantee__title" data-i18n="upsell.guarantee.title">
-            Mesma Garantia de 30 Dias
-          </h2>
-          <p class="guarantee__description" data-i18n="upsell.guarantee.description">
-            Se você não amar o companheiro, devolvemos 100% do investimento.
-          </p>
-        </div>
-      </section>
-
-      <section class="decline-section">
-        <div class="decline-section__container">
-          <a href="./thank-you.html?companion=false" class="btn btn--secondary" data-i18n="upsell.cta.decline">
-            Não, obrigado. Continuar apenas com o livro.
-          </a>
-        </div>
-      </section>
-    </div>
-  </main>
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('upsellVideo', {
+        videoId: 'pGkPOcnEuSE',
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          disablekb: 1,
+          enablejsapi: 1,
+          iv_load_policy: 3,
+          loop: 1,
+          modestbranding: 1,
+          playlist: 'pGkPOcnEuSE',
+          rel: 0,
+          showinfo: 0,
+          start: 0,
+          mute: 1
+        },
+        events: {
+          onReady: function onPlayerReady(event) {
+            event.target.playVideo();
+          }
+        }
+      });
+    }
+  </script>
 </body>
 </html>
