@@ -113,22 +113,40 @@
     },
     "testimonials": {
       "testimonial1": {
-        "name": "Richard Almeida",
-        "rating": 5,
-        "role": "Collector",
-        "text": "Flawless copy and careful delivery. Owning the first Portuguese edition is a dream for any Hesse collector."
+        "date": "March 2025",
+        "name": "Ana Luiza Ferreira",
+        "role": "Avid Reader",
+        "text": "Flawless copy and careful delivery. Owning the first Portuguese edition is a dream."
       },
       "testimonial2": {
-        "name": "Helena Martins",
-        "rating": 5,
-        "role": "Literature Professor",
-        "text": "The conservation quality exceeded my expectations. A relic that now belongs in my private library."
+        "date": "June 2025",
+        "name": "Pedro Henrique Almeida",
+        "role": "Collector",
+        "text": "The conservation quality exceeded my expectations. A relic that belongs in my library."
       },
       "testimonial3": {
-        "name": "Thomas Ferreira",
-        "rating": 5,
-        "role": "Passionate reader",
-        "text": "Impeccable service from start to finish. I received an authenticated, well-packed book. Highly recommended."
+        "date": "January 2026",
+        "name": "Mariana Costa",
+        "role": "Literature Professor",
+        "text": "The edition is beautiful, but it took a little longer than expected to arrive. Overall, worth it."
+      },
+      "testimonial4": {
+        "date": "August 2025",
+        "name": "Lucas Oliveira",
+        "role": "Literature Student",
+        "text": "Impeccable service from start to finish. I received an authenticated, well-packed book."
+      },
+      "testimonial5": {
+        "date": "December 2025",
+        "name": "Fernanda Lima",
+        "role": "Librarian",
+        "text": "I bought it for my personal collection. Handcrafted finish and numbered bookplate are perfect."
+      },
+      "testimonial6": {
+        "date": "March 2026",
+        "name": "Rafael Santos",
+        "role": "Editor",
+        "text": "Rare and well-cared copy. H&W Publishing delivers exactly what they promise."
       },
       "title": "What Readers Say"
     }

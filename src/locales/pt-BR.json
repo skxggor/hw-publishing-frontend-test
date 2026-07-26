@@ -113,22 +113,40 @@
     },
     "testimonials": {
       "testimonial1": {
-        "name": "Ricardo Almeida",
-        "rating": 5,
-        "role": "Colecionador",
-        "text": "Exemplar impecável e entrega cuidada. Ter a primeira edição em português é um sonho para qualquer colecionador de Hesse."
+        "date": "março 2025",
+        "name": "Ana Luiza Ferreira",
+        "role": "Leitora ávida",
+        "text": "Exemplar impecável e entrega cuidada. Ter a primeira edição em português é um sonho."
       },
       "testimonial2": {
-        "name": "Helena Martins",
-        "rating": 5,
-        "role": "Professora de Literatura",
-        "text": "A qualidade da conservação superou minhas expectativas. Uma relíquia que agora faz parte da minha biblioteca particular."
+        "date": "junho 2025",
+        "name": "Pedro Henrique Almeida",
+        "role": "Colecionador",
+        "text": "A qualidade da conservação superou minhas expectativas. Relíquia que faz parte da minha biblioteca."
       },
       "testimonial3": {
-        "name": "Tomás Ferreira",
-        "rating": 5,
-        "role": "Leitor apaixonado",
-        "text": "Atendimento impecável do início ao fim. Recebi o livro autenticado e bem embalado. Recomendo sem reservas."
+        "date": "janeiro 2026",
+        "name": "Mariana Costa",
+        "role": "Professora de Literatura",
+        "text": "A edição é linda, mas demorou um pouco mais que o previsto para chegar. No geral, valeu a pena."
+      },
+      "testimonial4": {
+        "date": "agosto 2025",
+        "name": "Lucas Oliveira",
+        "role": "Estudante de Literatura",
+        "text": "Atendimento impecável do início ao fim. Recebi o livro autenticado e bem embalado."
+      },
+      "testimonial5": {
+        "date": "dezembro 2025",
+        "name": "Fernanda Lima",
+        "role": "Bibliotecária",
+        "text": "Comprei para minha coleção pessoal. Acabamento artesanal e ex-libris numerado são perfeitos."
+      },
+      "testimonial6": {
+        "date": "março 2026",
+        "name": "Rafael Santos",
+        "role": "Editor",
+        "text": "Exemplar raro e bem cuidado. A H&W Publishing entrega exatamente o que promete."
       },
       "title": "O Que os Leitores Dizem"
     }
