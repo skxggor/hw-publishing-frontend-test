@@ -78,14 +78,8 @@
     <section class="hero" id="hero" aria-labelledby="hero-title">
       <div class="hero__container">
         <div class="hero__media">
-          <picture>
-            <source srcset="./images/hero/demian-luxo.webp" type="image/webp">
-            <img class="hero__image hero__image--primary" src="./images/hero/demian-luxo.png" alt="Livro Demian, de Hermann Hesse, Série Luxo" fetchpriority="high">
-          </picture>
-          <picture>
-            <source srcset="./images/hero/hero2.webp" type="image/webp">
-            <img class="hero__image hero__image--alternate" src="./images/hero/hero2.png" alt="" aria-hidden="true" loading="lazy">
-          </picture>
+          <img class="hero__image hero__image--primary" src="./images/hero/demian-luxo.webp" srcset="./images/hero/demian-luxo-480.webp 480w, ./images/hero/demian-luxo-768.webp 768w, ./images/hero/demian-luxo.webp 847w" sizes="(max-width: 768px) 100vw, 50vw" alt="Livro Demian, de Hermann Hesse, Série Luxo" fetchpriority="high" width="847" height="673">
+          <img class="hero__image hero__image--alternate" src="./images/hero/hero2.webp" srcset="./images/hero/hero2-480.webp 480w, ./images/hero/hero2-768.webp 768w, ./images/hero/hero2.webp 707w" sizes="(max-width: 768px) 100vw, 50vw" alt="" aria-hidden="true" loading="lazy" width="707" height="675">
 
           <div class="hero__price">
             <div class="price-badge">
