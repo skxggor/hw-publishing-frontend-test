@@ -12,7 +12,7 @@
 /* Header upsell variant */
 .header--upsell {
   background-color: transparent;
-  position: sticky;
+  position: fixed;
   width: 100%;
   z-index: var(--z-fixed);
 }

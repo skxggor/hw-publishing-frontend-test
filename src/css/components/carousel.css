@@ -1,6 +1,7 @@
 /* Details carousel (Embla) - full-bleed, centered images */
 
 .details {
+  background-color: var(--surface);
   padding-block: var(--spacing-3xl);
   padding-inline: 0;
 }
