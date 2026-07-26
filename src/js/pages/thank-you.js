@@ -4,13 +4,15 @@ import '@core/view-transitions.js';
 import { pubSub } from '@core/pubsub.js';
 import Utils from '@core/utils.js';
 import I18n from '@core/i18n.js';
+import { mountGlassEdges } from '@features/layout/glass-edges.js';
 import { initPageTransition } from '@features/layout/transition.js';
+import { gsap } from 'gsap';
 
 const CONFETTI_COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
 const CONFETTI_COUNT = 50;
 const EASE_OUT = 'power2.out';
 const EASE_BACK = 'back.out(1.7)';
-const ORDER_TOTAL_WITH_COMPANION = 'R$ 694,00';
+const ORDER_TOTAL_WITH_COMPANION = 'R$ 169,98';
 const STEP_REVEAL_ROOT_MARGIN = '0px 0px -100px 0px';
 const STEP_REVEAL_THRESHOLD = 0.5;
 
@@ -23,6 +25,41 @@ const generateOrderNumber = function generateOrderNumber() {
 
 const createThankYouPage = function createThankYouPage() {
   let isInitialized = false;
+  let glassEdgesCleanup = null;
+
+  const prefersReducedMotion = function prefersReducedMotion() {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return false;
+    }
+
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  };
+
+  const initLanguageToggle = function initLanguageToggle() {
+    const languageToggle = Utils.getElement('#languageToggle');
+    const currentLanguageSpan = Utils.getElement('#currentLanguage');
+
+    if (!languageToggle || !currentLanguageSpan) {
+      return;
+    }
+
+    const handleToggle = function handleToggle() {
+      const currentLocale = I18n.getCurrentLocale();
+      const nextLocale = currentLocale === 'pt-BR' ? 'en-US' : 'pt-BR';
+
+      const switched = I18n.setLocale(nextLocale);
+
+      if (!switched) {
+        return;
+      }
+
+      currentLanguageSpan.textContent = nextLocale === 'pt-BR' ? 'PT' : 'EN';
+      I18n.translatePage();
+      pubSub.publish('language:changed', nextLocale);
+    };
+
+    languageToggle.addEventListener('click', handleToggle);
+  };
 
   const updateOrderSummary = function updateOrderSummary() {
     const orderNumberElement = Utils.getElement('#orderNumber');
@@ -65,11 +102,11 @@ const createThankYouPage = function createThankYouPage() {
   };
 
   const initEntranceAnimations = function initEntranceAnimations() {
-    if (!window.gsap) {
+    if (prefersReducedMotion()) {
       return;
     }
 
-    const timeline = window.gsap.timeline();
+    const timeline = gsap.timeline();
 
     timeline.fromTo(
       '.thank-you-hero__container > *',
@@ -107,11 +144,11 @@ const createThankYouPage = function createThankYouPage() {
 
         Utils.addClass(entry.target, 'is-visible');
 
-        const number = entry.target.querySelector('.step-card__number');
+        const icon = entry.target.querySelector('.step-card__icon');
 
-        if (number && window.gsap) {
-          window.gsap.fromTo(
-            number,
+        if (icon && !prefersReducedMotion()) {
+          gsap.fromTo(
+            icon,
             { scale: 0.5, opacity: 0 },
             { scale: 1, opacity: 1, duration: 0.4, ease: EASE_BACK }
           );
@@ -132,21 +169,11 @@ const createThankYouPage = function createThankYouPage() {
   };
 
   const initCtaTracking = function initCtaTracking() {
-    const primaryCta = Utils.getElement('.cta-section .btn--primary');
-    const secondaryCta = Utils.getElement('.cta-section .btn--secondary');
+    const secondaryCta = Utils.getElement('.thank-you-hero__actions .btn--secondary');
 
-    if (!primaryCta || !secondaryCta) {
+    if (!secondaryCta) {
       return;
     }
-
-    primaryCta.addEventListener('click', function trackPrimary() {
-      const orderData = Utils.getFromLocalStorage('lastOrder');
-
-      pubSub.publish('thank-you:cta:primary-clicked', {
-        orderNumber: orderData ? orderData.orderNumber : 'unknown',
-        timestamp: Date.now(),
-      });
-    });
 
     secondaryCta.addEventListener('click', function trackSecondary() {
       pubSub.publish('thank-you:cta:secondary-clicked', { timestamp: Date.now() });
@@ -168,8 +195,8 @@ const createThankYouPage = function createThankYouPage() {
 
     container.appendChild(particle);
 
-    if (window.gsap) {
-      window.gsap.to(particle, {
+    if (!prefersReducedMotion()) {
+      gsap.to(particle, {
         y: window.innerHeight + 100,
         rotation: Math.random() * 720 - 360,
         opacity: 1,
@@ -202,11 +229,14 @@ const createThankYouPage = function createThankYouPage() {
 
     I18n.init();
     initPageTransition();
+    initLanguageToggle();
     updateOrderSummary();
     initEntranceAnimations();
     initStepAnimations();
     initCtaTracking();
     initConfettiEffect();
+    glassEdgesCleanup = mountGlassEdges();
+    Utils.updateCopyrightYear();
 
     pubSub.publish('thank-you:initialized', { locale: I18n.getCurrentLocale() });
 
@@ -219,6 +249,12 @@ const createThankYouPage = function createThankYouPage() {
     }
 
     pubSub.clear('thank-you:initialized');
+
+    if (glassEdgesCleanup) {
+      glassEdgesCleanup();
+      glassEdgesCleanup = null;
+    }
+
     isInitialized = false;
   };
 

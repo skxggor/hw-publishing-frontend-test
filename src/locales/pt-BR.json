@@ -140,11 +140,13 @@
     },
     "hero": {
       "subtitle": "Sua relíquia literária está a caminho",
-      "title": "Obrigado, Marcos! Seu exemplar está reservado."
+      "title": "Obrigado! Seu exemplar está reservado."
     },
     "orderSummary": {
       "book": "Demian, Série Luxo",
-      "companion": "Companhão de Colecionador (guia + slipcase)",
+      "bookPrice": "R$ 109,99",
+      "companion": "O Lobo da Estepe (+ R$ 59,99)",
+      "companionPrice": "R$ 59,99",
       "order": "Pedido",
       "title": "Resumo do seu pedido",
       "total": "Total"
@@ -173,36 +175,48 @@
   },
   "upsell": {
     "cta": {
-      "accept": "Sim, quero o Companhão de Colecionador",
-      "decline": "Não, obrigado. Continuar apenas com o livro."
+      "accept": "Sim, quero O Lobo da Estepe",
+      "decline": "Não, obrigado."
     },
     "guarantee": {
-      "description": "Se você não amar o companheiro, devolvemos 100% do investimento.",
+      "item1": "Qualidade Premium",
+      "item1Description": "Edição idêntica em acabamento ao Demian.",
+      "item2": "Envio Conjunto",
+      "item2Description": "Embalado junto com o Demian, sem custo extra.",
+      "item3": "Pagamento Protegido",
+      "item3Description": "Transação criptografada e garantida.",
+      "item4": "Devolução Fácil",
+      "item4Description": "30 dias para devolução sem custos.",
       "title": "Mesma Garantia de 30 Dias"
     },
     "hero": {
-      "subtitle": "Antes de finalizar, temos uma oferta exclusiva para o seu exemplar...",
-      "title": "Parabéns! Você reservou seu Demian."
+      "cta": "Adicionar à minha compra",
+      "eyebrow": "Hermann Hesse",
+      "price": {
+        "amount": "59",
+        "cents": ",99",
+        "currency": "+",
+        "original": "R$ 149,99"
+      },
+      "subtitle": "Complete sua coleção com a obra que acompanhou Demian na jornada de autodescoberta de Hesse.",
+      "title": "O Lobo da Estepe"
+    },
+    "info": {
+      "paragraph1": "Publicado em 1927, O Lobo da Estepe é considerado uma das obras mais autobiográficas de Hermann Hesse. Enquanto Demian explora a dualidade entre o bem e o mal, O Lobo da Estepe mergulha na solidão existencial de Harry Haller.",
+      "paragraph2": "Juntos, esses dois livros formam um retrato completo da visão filosófica de Hesse sobre a condition humaine. Uma coleção que nenhum apreciador da literatura deveria ficar sem.",
+      "title": "Por que O Lobo da Estepe?"
     },
     "offer": {
-      "cta": "Adicionar Companheiro de Colecionador",
-      "currentPrice": "R$ 197,00",
-      "description": "Um guia de leitura anotado de Demian, uma slipcase artesanal para proteger o exemplar e um ex-libris numerado para a sua biblioteca.",
-      "discount": "50% OFF",
+      "badge": "Oferta Exclusiva",
+      "cta": "Adicionar por +R$ 59,99",
+      "description": "O Lobo da Estepe é uma das obras mais introspectivas de Hesse. Uma edição de colecionador que complementa perfeitamente o Demian.",
       "features": {
-        "feature1": "Guia de leitura anotado sobre a obra de Hesse",
-        "feature2": "Slipcase artesanal de proteção archival",
-        "feature3": "Ex-libris numerado e personalizado",
-        "feature4": "Certificado de colecionador exclusivo",
-        "feature5": "Acesso ao clube de raridades literárias"
+        "feature1": "Edição especial com capa dura",
+        "feature2": "Miolo em papel premium",
+        "feature3": "Ilustrações exclusivas",
+        "feature4": "Assinatura do autor na capa"
       },
-      "originalPrice": "R$ 397,00",
-      "subtitle": "Complete a sua coleção com um cuidado à altura do exemplar",
-      "title": "Companheiro de Colecionador"
-    },
-    "video": {
-      "description": "Assista ao vídeo e conheça esta oferta exclusiva",
-      "title": "Conheça o cuidado que envolverá o seu exemplar"
+      "title": "Adicione à sua coleção"
     }
   }
 }

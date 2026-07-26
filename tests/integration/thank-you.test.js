@@ -5,17 +5,19 @@ import { installGsap, installIntersectionObserver } from '../helpers.js';
 
 const setupThankYouDom = function setupThankYouDom() {
   document.body.innerHTML = `
-    <div class="thank-you-hero__container"></div>
+    <div class="thank-you-hero__container">
+      <div class="thank-you-hero__media"></div>
+      <div class="thank-you-hero__content"></div>
+    </div>
     <section class="order-summary">
       <span id="orderNumber"></span>
       <div id="companionItem" class="is-hidden order-summary__item--bonus"></div>
       <span id="orderTotal">R$ 0,00</span>
     </section>
-    <div class="step-card"><div class="step-card__number">1</div></div>
-    <section class="cta-section">
-      <a class="btn btn--primary" href="#">Acessar</a>
+    <div class="step-card"><div class="step-card__icon">1</div></div>
+    <div class="thank-you-hero__actions">
       <a class="btn btn--secondary" href="#">Voltar</a>
-    </section>
+    </div>
   `;
 };
 
@@ -62,7 +64,7 @@ describe('Thank You Page - Integration', function () {
 
       thankYouPage.init();
 
-      expect(document.querySelector('#orderTotal').textContent).toBe('R$ 694,00');
+      expect(document.querySelector('#orderTotal').textContent).toBe('R$ 169,98');
     });
 
     it('should keep companion item hidden when companion=false', function () {
@@ -135,17 +137,6 @@ describe('Thank You Page - Integration', function () {
   });
 
   describe('initCtaTracking', function () {
-    it('should publish primary CTA event on click', function () {
-      const handler = vi.fn();
-
-      pubSub.subscribe('thank-you:cta:primary-clicked', handler);
-
-      thankYouPage.init();
-      document.querySelector('.btn--primary').click();
-
-      expect(handler).toHaveBeenCalledTimes(1);
-    });
-
     it('should publish secondary CTA event on click', function () {
       const handler = vi.fn();
 
@@ -215,8 +206,7 @@ describe('Thank You Page - Integration', function () {
       }).not.toThrow();
     });
 
-    it('should skip CTA tracking when buttons are missing', function () {
-      document.querySelector('.btn--primary').remove();
+    it('should skip CTA tracking when button is missing', function () {
       document.querySelector('.btn--secondary').remove();
 
       expect(function safeInit() {

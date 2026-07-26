@@ -140,11 +140,13 @@
     },
     "hero": {
       "subtitle": "Your literary relic is on its way",
-      "title": "Thank you, Marcos! Your copy is reserved."
+      "title": "Thank you! Your copy is reserved."
     },
     "orderSummary": {
       "book": "Demian, Luxury Series",
-      "companion": "Collector's Companion (guide + slipcase)",
+      "bookPrice": "R$ 109.99",
+      "companion": "Steppenwolf (+ R$ 59.99)",
+      "companionPrice": "R$ 59.99",
       "order": "Order",
       "title": "Your order summary",
       "total": "Total"
@@ -173,36 +175,48 @@
   },
   "upsell": {
     "cta": {
-      "accept": "Yes, I want the Collector's Companion",
-      "decline": "No, thanks. Continue with the book only."
+      "accept": "Yes, I want Steppenwolf",
+      "decline": "No, thanks."
     },
     "guarantee": {
-      "description": "If you don't love the companion, we refund 100% of your investment.",
+      "item1": "Premium Quality",
+      "item1Description": "Identical edition finish to Demian.",
+      "item2": "Combined Shipping",
+      "item2Description": "Packed together with Demian, no extra cost.",
+      "item3": "Protected Payment",
+      "item3Description": "Encrypted and guaranteed transaction.",
+      "item4": "Easy Returns",
+      "item4Description": "30 days to return at no cost.",
       "title": "Same 30-Day Guarantee"
     },
     "hero": {
-      "subtitle": "Before you finish, we have an exclusive offer for your copy...",
-      "title": "Congratulations! You've reserved your Demian."
+      "cta": "Add to my order",
+      "eyebrow": "Hermann Hesse",
+      "price": {
+        "amount": "59",
+        "cents": ",99",
+        "currency": "+",
+        "original": "R$ 149,99"
+      },
+      "subtitle": "Complete your collection with the work that accompanied Demian on Hesse's journey of self-discovery.",
+      "title": "Steppenwolf"
+    },
+    "info": {
+      "paragraph1": "Published in 1927, Steppenwolf is considered one of Hermann Hesse's most autobiographical works. While Demian explores the duality between good and evil, Steppenwolf dives into the existential loneliness of Harry Haller.",
+      "paragraph2": "Together, these two books form a complete portrait of Hesse's philosophical view on the human condition. A collection that no literature lover should be without.",
+      "title": "Why Steppenwolf?"
     },
     "offer": {
-      "cta": "Add Collector's Companion",
-      "currentPrice": "$97.00",
-      "description": "An annotated reading guide to Demian, a handcrafted slipcase to protect the copy, and a numbered ex-libris for your library.",
-      "discount": "50% OFF",
+      "badge": "Exclusive Offer",
+      "cta": "Add for +R$ 59.99",
+      "description": "Steppenwolf is one of Hesse's most introspective works. A collector's edition that perfectly complements Demian.",
       "features": {
-        "feature1": "Annotated reading guide on Hesse's work",
-        "feature2": "Handcrafted archival slipcase",
-        "feature3": "Numbered, personalized ex-libris",
-        "feature4": "Exclusive collector's certificate",
-        "feature5": "Access to the rare books club"
+        "feature1": "Special hardcover edition",
+        "feature2": "Premium paper interior",
+        "feature3": "Exclusive illustrations",
+        "feature4": "Author signature on cover"
       },
-      "originalPrice": "$197.00",
-      "subtitle": "Complete your collection with care worthy of the copy",
-      "title": "Collector's Companion"
-    },
-    "video": {
-      "description": "Watch the video and discover this exclusive offer",
-      "title": "Discover the care that will surround your copy"
+      "title": "Add to your collection"
     }
   }
 }
