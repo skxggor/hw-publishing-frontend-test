@@ -5,6 +5,7 @@ import { pubSub } from '@core/pubsub.js';
 import Utils from '@core/utils.js';
 import I18n from '@core/i18n.js';
 import { mountGlassEdges } from '@features/layout/glass-edges.js';
+import { initLanguageToggle } from '@features/layout/language-toggle.js';
 import { mountCarousels } from '@features/landing/carousel.js';
 import { gsap } from 'gsap';
 
@@ -100,32 +101,6 @@ const createHomePage = function createHomePage() {
     navLinks.forEach(function closeOnNavigate(link) {
       link.addEventListener('click', closeMenu);
     });
-  };
-
-  const initLanguageToggle = function initLanguageToggle() {
-    const languageToggle = Utils.getElement('#languageToggle');
-    const currentLanguageSpan = Utils.getElement('#currentLanguage');
-
-    if (!languageToggle || !currentLanguageSpan) {
-      return;
-    }
-
-    const handleToggle = function handleToggle() {
-      const currentLocale = I18n.getCurrentLocale();
-      const nextLocale = currentLocale === 'pt-BR' ? 'en-US' : 'pt-BR';
-
-      const switched = I18n.setLocale(nextLocale);
-
-      if (!switched) {
-        return;
-      }
-
-      currentLanguageSpan.textContent = nextLocale === 'pt-BR' ? 'PT' : 'EN';
-      I18n.translatePage();
-      pubSub.publish('language:changed', nextLocale);
-    };
-
-    languageToggle.addEventListener('click', handleToggle);
   };
 
   const initSmoothScroll = function initSmoothScroll() {

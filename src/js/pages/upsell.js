@@ -5,6 +5,7 @@ import { pubSub } from '@core/pubsub.js';
 import Utils from '@core/utils.js';
 import I18n from '@core/i18n.js';
 import { mountGlassEdges } from '@features/layout/glass-edges.js';
+import { initLanguageToggle } from '@features/layout/language-toggle.js';
 import { gsap } from 'gsap';
 
 const EASE_SMOOTH = 'sine.inOut';
@@ -145,32 +146,6 @@ const createUpsellPage = function createUpsellPage() {
 
     revealTimeout = countdownInterval;
     pubSub.publish('upsell:video-tracking-initialized', { delay: VIDEO_REVEAL_TIME });
-  };
-
-  const initLanguageToggle = function initLanguageToggle() {
-    const languageToggle = Utils.getElement('#languageToggle');
-    const currentLanguageSpan = Utils.getElement('#currentLanguage');
-
-    if (!languageToggle || !currentLanguageSpan) {
-      return;
-    }
-
-    const handleToggle = function handleToggle() {
-      const currentLocale = I18n.getCurrentLocale();
-      const nextLocale = currentLocale === 'pt-BR' ? 'en-US' : 'pt-BR';
-
-      const switched = I18n.setLocale(nextLocale);
-
-      if (!switched) {
-        return;
-      }
-
-      currentLanguageSpan.textContent = nextLocale === 'pt-BR' ? 'PT' : 'EN';
-      I18n.translatePage();
-      pubSub.publish('language:changed', nextLocale);
-    };
-
-    languageToggle.addEventListener('click', handleToggle);
   };
 
   const initPriceBadge = function initPriceBadge() {
