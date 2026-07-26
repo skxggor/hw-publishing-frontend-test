@@ -287,6 +287,7 @@ const createHomePage = function createHomePage() {
     initHeroCrossfade();
     initPriceBadges();
     glassEdgesCleanup = mountGlassEdges();
+    Utils.updateCopyrightYear();
 
     pubSub.publish('landing:initialized', { locale: I18n.getCurrentLocale() });
 
