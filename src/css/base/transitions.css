@@ -1,16 +1,14 @@
 /* Cross-document View Transitions (MPA) — progressive enhancement */
-/* Animates same-origin navigation between pages (index -> upsell -> thank-you). */
-/* Pure CSS, zero JS. Chrome/Edge 126+ and Safari 18.2+ animate; */
+/* Animates same-origin navigation between pages. */
+/* Chrome/Edge 126+ and Safari 18.2+ animate; */
 /* unsupported browsers (e.g. Firefox) navigate normally with no broken UX. */
 
 @view-transition {
   navigation: auto;
 }
 
-/* Users who prefer reduced motion get an instant transition */
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation: none;
-  }
+/* Disable default crossfade — loader handles visual transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
 }

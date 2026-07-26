@@ -5,7 +5,6 @@ import { pubSub } from '@core/pubsub.js';
 import Utils from '@core/utils.js';
 import I18n from '@core/i18n.js';
 import { mountGlassEdges } from '@features/layout/glass-edges.js';
-import { initPageTransition } from '@features/layout/transition.js';
 
 const createTermsPage = function createTermsPage() {
   let isInitialized = false;
@@ -43,10 +42,10 @@ const createTermsPage = function createTermsPage() {
     }
 
     I18n.init();
-    initPageTransition();
     initLanguageToggle();
     glassEdgesCleanup = mountGlassEdges();
     Utils.updateCopyrightYear();
+    Utils.hideLoader();
 
     isInitialized = true;
   };

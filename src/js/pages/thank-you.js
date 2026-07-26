@@ -5,7 +5,6 @@ import { pubSub } from '@core/pubsub.js';
 import Utils from '@core/utils.js';
 import I18n from '@core/i18n.js';
 import { mountGlassEdges } from '@features/layout/glass-edges.js';
-import { initPageTransition } from '@features/layout/transition.js';
 import { gsap } from 'gsap';
 
 const CONFETTI_COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
@@ -228,7 +227,6 @@ const createThankYouPage = function createThankYouPage() {
     }
 
     I18n.init();
-    initPageTransition();
     initLanguageToggle();
     updateOrderSummary();
     initEntranceAnimations();
@@ -237,6 +235,7 @@ const createThankYouPage = function createThankYouPage() {
     initConfettiEffect();
     glassEdgesCleanup = mountGlassEdges();
     Utils.updateCopyrightYear();
+    Utils.hideLoader();
 
     pubSub.publish('thank-you:initialized', { locale: I18n.getCurrentLocale() });
 

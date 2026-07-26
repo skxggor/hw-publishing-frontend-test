@@ -5,7 +5,6 @@ import { pubSub } from '@core/pubsub.js';
 import Utils from '@core/utils.js';
 import I18n from '@core/i18n.js';
 import { mountGlassEdges } from '@features/layout/glass-edges.js';
-import { initPageTransition } from '@features/layout/transition.js';
 import { gsap } from 'gsap';
 
 const EASE_SMOOTH = 'sine.inOut';
@@ -240,7 +239,6 @@ const createUpsellPage = function createUpsellPage() {
     }
 
     I18n.init();
-    initPageTransition();
     initLanguageToggle();
     initVideoTracking();
     initPriceBadge();
@@ -248,6 +246,7 @@ const createUpsellPage = function createUpsellPage() {
     createScrollProgress();
     glassEdgesCleanup = mountGlassEdges();
     Utils.updateCopyrightYear();
+    Utils.hideLoader();
 
     pubSub.publish('upsell:initialized', { locale: I18n.getCurrentLocale() });
 

@@ -1,0 +1,28 @@
+/* Page loader — covers content until page is ready */
+
+.page-loader {
+  align-items: center;
+  background-color: var(--surface-ink);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  opacity: 1;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 0.4s ease-out;
+  z-index: var(--z-modal);
+}
+
+.page-loader[aria-hidden="true"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page-loader__icon {
+  color: var(--on-dark);
+  height: 3rem;
+  opacity: 0.7;
+  width: 3rem;
+}

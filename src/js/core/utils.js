@@ -333,6 +333,20 @@ const Utils = Object.freeze({
       element.textContent = element.textContent.replace(/\d{4}/, String(year));
     });
   },
+
+  hideLoader: function hideLoader(delay = 500) {
+    const loader = Utils.getElement('#pageLoader');
+
+    if (!loader) return;
+
+    setTimeout(function fadeOutLoader() {
+      loader.setAttribute('aria-hidden', 'true');
+
+      loader.addEventListener('transitionend', function removeLoader() {
+        loader.remove();
+      }, { once: true });
+    }, delay);
+  },
 });
 
 export default Utils;
