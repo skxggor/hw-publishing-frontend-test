@@ -1,45 +1,44 @@
-/* CSS Variables - Editorial luxury theme (AAA >= 7:1 contrast) */
-/* Fixed materials stay identical across light & dark; semantic tokens adapt */
+/* CSS Variables - Editorial luxury theme (dark mode forced) */
 
 :root {
-  /* Fixed brand materials (identical in light & dark) */
-  --color-bordeaux: #5f161d;
-  --color-bordeaux-dark: #3d0b10;
+  /* Fixed brand materials */
+  --color-bordeaux: #c44554;
+  --color-bordeaux-dark: #5f161d;
   --color-gold: #a08030;
   --color-gold-dark: #6f5526;
   --color-gold-on-dark: #d4b45c;
-  --color-ink: #1a1410;
-  --color-paper: #f7f2e9;
-  --color-paper-deep: #e6dcc7;
-  --color-paper-dim: #efe7d8;
+  --color-ink: #f4ecd9;
+  --color-paper: #15100c;
+  --color-paper-deep: #261d13;
+  --color-paper-dim: #1f1810;
 
-  /* Semantic surfaces & text (overridden in dark mode) */
-  --border: #e6dcc7;
+  /* Semantic surfaces & text */
+  --border: #3a2f22;
   --on-dark: #f7f2e9;
-  --surface: #f7f2e9;
-  --surface-alt: #efe7d8;
-  --surface-ink: #1a1410;
-  --text: #1a1410;
-  --text-muted: #5a4530;
+  --surface: #15100c;
+  --surface-alt: #1f1810;
+  --surface-ink: #261d13;
+  --text: #f4ecd9;
+  --text-muted: #c7baa0;
 
-  /* Legacy aliases (mapped to semantic palette) */
-  --color-black: #1a1410;
-  --color-dark-gray: #1a1410;
-  --color-gray: #5a4530;
-  --color-light-gray: #d8cdb8;
-  --color-white: #f7f2e9;
+  /* Legacy aliases */
+  --color-black: #f4ecd9;
+  --color-dark-gray: #f4ecd9;
+  --color-gray: #c7baa0;
+  --color-light-gray: #3a2f22;
+  --color-white: #15100c;
 
-  --color-primary: #5f161d;
-  --color-primary-dark: #3d0b10;
-  --color-primary-light: #8a3340;
+  --color-primary: #c44554;
+  --color-primary-dark: #5f161d;
+  --color-primary-light: #d96672;
 
   --color-error: #b3261e;
   --color-success: #2e7d4f;
   --color-warning: #b26a00;
 
-  --color-background-primary: #f7f2e9;
-  --color-background-secondary: #efe7d8;
-  --color-background-dark: #1a1410;
+  --color-background-primary: #15100c;
+  --color-background-secondary: #1f1810;
+  --color-background-dark: #261d13;
 
   /* Spacing */
   --spacing-xxs: 0.125rem;
@@ -90,10 +89,10 @@
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(26, 20, 16, 0.06);
-  --shadow-md: 0 4px 12px rgba(26, 20, 16, 0.1);
-  --shadow-lg: 0 12px 24px rgba(26, 20, 16, 0.12);
-  --shadow-xl: 0 20px 40px rgba(26, 20, 16, 0.18);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.55);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.6);
 
   /* Transitions */
   --transition-fast: 150ms ease-in-out;
@@ -121,35 +120,8 @@
   --z-tooltip: 600;
 }
 
-/* Dark mode overrides - only surfaces & text adapt; materials stay fixed */
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --border: #3a2f22;
-    --surface: #15100c;
-    --surface-alt: #1f1810;
-    --surface-ink: #261d13;
-    --text: #f4ecd9;
-    --text-muted: #c7baa0;
-
-    --color-black: #f4ecd9;
-    --color-dark-gray: #f4ecd9;
-    --color-gray: #c7baa0;
-    --color-light-gray: #3a2f22;
-    --color-white: #15100c;
-
-    --color-bordeaux: #c44554;
-    --color-bordeaux-dark: #5f161d;
-    --color-primary: #c44554;
-    --color-primary-dark: #5f161d;
-    --color-primary-light: #d96672;
-
-    --color-background-primary: #15100c;
-    --color-background-secondary: #1f1810;
-    --color-background-dark: #261d13;
-
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
-    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.55);
-    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
   }
 }
