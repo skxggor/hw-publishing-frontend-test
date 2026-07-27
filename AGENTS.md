@@ -1,280 +1,149 @@
-# AGENTS.md - Especificações Técnicas do Projeto
+# AGENTS.md - Project Technical Specifications
 
-## 🎯 Contexto
-Case Técnico Frontend para H&W Publishing - Fluxo de vendas de 3 páginas para produto digital.
+## Project Overview
+H&W Publishing frontend test case. 5-page sales funnel for a rare first-edition Demian by Hermann Hesse.
 
 ---
 
-## 📐 Arquitetura JavaScript
+## Architecture
 
-### Padrões e Princípios
-- **Pattern**: Pub/Sub (Publish-Subscribe) para desacoplamento
-- **Funções**: Sempre funções puras (pure functions)
-- **Nomenclatura**: Nunca usar funções anônimas - todas nomeadas
-- **Controle de Fluxo**: Early return sempre
-- **Formatação**: Sempre deixar uma linha em branco após declarar variáveis (const/let/var)
-- **Imports**: Usar aliases de caminho - nunca usar `../` (apenas `./mesmo-arquivo` é permitido)
-- **Arquitetura**: Event-driven
-- **Testes**: TDD estrito (RED, GREEN, REFACTOR) com Vitest
+### Core Principles
+- Pub/Sub pattern for decoupling
+- Pure functions only (no anonymous functions)
+- Early return always
+- Event-driven architecture
+- TDD workflow (RED, GREEN, REFACTOR) with Vitest
+- Mobile-first CSS
+- No inline styles
+- Path aliases for all imports (never relative `../`)
 
-### Bibliotecas Permitidas
-- **Animações**: GSAP (permitido)
-- **Build/Bundling**: Rsbuild (camada oficial sobre Rspack, https://rspack.rs/) para compressão de source
-- **Testes**: Vitest + Testing Library
+### Allowed Libraries
+- GSAP for animations
+- Embla Carousel (vanilla) for carousel
+- Rsbuild (layer over Rspack) for build/bundle
+- Vitest + Testing Library for tests
 
-### Aliases de Caminho
-Definidos em `jsconfig.json`, `rsbuild.config.js` (`source.alias`) e `vitest.config.js` (`resolve.alias`):
+### Path Aliases (defined in jsconfig.json, rsbuild.config.js, vitest.config.js)
 
-| Alias | Caminho |
+| Alias | Path |
 |---|---|
-| `@core` | `src/js/core` |
-| `@features` | `src/js/features` |
-| `@pages` | `src/js/pages` |
-| `@locales` | `src/locales` |
-| `@css` | `src/css` |
-
-### Regras de Código
-```javascript
-// ✅ CORRETO - early return, linha em branco após declarar variável, função nomeada
-function handleUserClick(event) {
-  if (!event) return;
-
-  const user = getUserData();
-
-  if (!user) return;
-
-  processUser(user);
-}
-
-// ❌ ERRADO - sem linha em branco após declarar variável
-function detectLocale() {
-  const stored = localStorage.getItem('preferred-locale');
-  if (stored) return stored; // falta linha em branco acima
-}
-
-// ❌ ERRADO - função anônima e caminho relativo ../
-element.addEventListener('click', (event) => {});
-import I18n from '../core/i18n.js';
-```
+| @core | src/js/core |
+| @features | src/js/features |
+| @pages | src/js/pages |
+| @locales | src/locales |
+| @css | src/css |
 
 ---
 
-## 🎨 CSS
+## CSS Rules
 
-### Tecnologia e Ferramentas
-- **Tecnologia**: CSS puro (sem preprocessors)
-- **Fontes**: Unbounded + Liter (self-hosted via fonts.css)
-- **Abordagem**: Mobile-first
-- **Organização**: Sempre em ordem alfabética
-- **Tema**: Variáveis CSS custom properties
-
-### Regras de Estilo
-```css
-/* ✅ CORRETO - Variáveis, Mobile-first, Ordem alfabética */
-:root {
-  --color-black: #000000;
-  --color-primary: #3b82f6;
-  --color-white: #ffffff;
-}
-
-.component {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-@media (min-width: 768px) {
-  .component {
-    flex-direction: row;
-  }
-}
-
-/* ❌ ERRADO - Inline styles */
-<div style="display: flex;">...</div>
-```
-
-### Entry de CSS
-- `src/css/styles.css` importa os arquivos base (variables, reset, typography) e componentes
-- Cada página importa seu CSS no JS: `import '@css/styles.css'` (+ CSS específico da página)
-- CSS local entre arquivos via `@import` é processado pelo bundler (inlineado no build) — OK
-- Fontes do Google carregam via `<link>` no HTML (com `preconnect`) — **nunca** via `@import url()` no CSS (bloqueia render)
-
-### Classes utilitárias para JS
-- `is-hidden` (`display: none`) para mostrar/ocultar elementos sem inline style
-- Toda a apresentação (cor, posição, tamanho) vem de classes, nunca de `element.style.<propriedade>`
-- **Única exceção**: valores puramente dinâmicos (scroll %, posição/cor aleatória de partículas) podem ser passados via CSS custom properties com `element.style.setProperty('--nome', valor)`, com a regra visual correspondente definida em uma classe (ex.: `.scroll-progress { width: var(--scroll-progress) }`)
-
-### Compatibilidade
-- Sempre usar features com maior compatibilidade cross-device
-- Testar em múltiplos browsers e dispositivos
-- Considerar progressive enhancement
-
-### Transições entre páginas (View Transitions)
-- `src/css/base/transitions.css` ativa **cross-document View Transitions** (`@view-transition { navigation: auto }`) — anima a navegação MPA (index → upsell → thank-you)
-- Progressive enhancement puro em CSS, zero JS; Firefox cai no fallback (navegação normal, sem quebra)
-- `prefers-reduced-motion` desativa a animação
-- Reveals **dentro** da mesma página (conteúdo após o vídeo, entrada/confete) continuam com GSAP — separação: VT = navegação, GSAP = in-page
+- Pure CSS, no preprocessors
+- CSS custom properties for theming
+- Mobile-first with `@media (min-width:)` breakpoints
+- Properties in alphabetical order within rules
+- Google Fonts loaded via `<link>` in HTML with `preconnect`, never via `@import url()` in CSS
+- `is-hidden` class for visibility toggling, no `element.style.*`
+- `src/css/styles.css` is the single entry point importing all base layers and components
+- Cross-document View Transitions in `src/css/base/transitions.css`, progressive enhancement only
+- Transitions within a page (reveals, confetti) use GSAP, separate from View Transitions
 
 ---
 
-## 🌐 Internacionalização (i18n)
+## i18n
 
-### Estrutura de Locales
-```json
-// locales/pt-BR.json
-{
-  "landing": {
-    "hero": {
-      "title": "Transforme sua Carreira",
-      "subtitle": "O curso completo de desenvolvimento web"
-    },
-    "cta": {
-      "buy": "Comprar Agora",
-      "upsell": "Aproveite Oferta Especial"
-    }
-  }
-}
-
-// locales/en-US.json
-{
-  "landing": {
-    "hero": {
-      "title": "Transform Your Career",
-      "subtitle": "The complete web development course"
-    },
-    "cta": {
-      "buy": "Buy Now",
-      "upsell": "Get Special Offer"
-    }
-  }
-}
-```
-
-### Implementação
-- Detectar locale do navegador ou usar seleção manual
-- Importar os JSON como módulos (`import ptBR from '@locales/pt-BR.json'`) — nunca via `fetch('/src/...')`, que quebra em produção após o bundle
-- Fallback para pt-BR como padrão
-- Armazenar preferência no localStorage
+- Two locales: pt-BR (default) and en-US
+- JSON files imported as ES modules
+- Browser locale detection with localStorage override
+- Copyright strings use `{year}` placeholder
 
 ---
 
-## 🧪 Testes (TDD)
+## Project Structure
 
-### Fluxo de Trabalho
-1. **RED**: Escrever teste falhando
-2. **GREEN**: Fazer teste passar (implementação mínima)
-3. **REFACTOR**: Melhorar código mantendo testes passando
-
-### Cobertura e Tipos
-- Testes de funcionalidades core
-- Testes de componentes visuais
-- Testes de i18n
-- Testes de performance
-- Mínimo 80% de cobertura em código crítico
-
----
-
-## 📁 Estrutura de Projeto
-
-```
-hw-publishing-frontend-test-2026-07-24/
-├── public/
-│   ├── images/
-│   └── videos/
-├── src/
-│   ├── js/
-│   │   ├── core/
-│   │   │   ├── i18n.js
-│   │   │   ├── pubsub.js
-│   │   │   └── utils.js
-│   │   ├── features/
-│   │   │   ├── landing/
-│   │   │   ├── upsell/
-│   │   │   └── thank-you/
-│   │   └── pages/
-│   │       ├── index.js
-│   │       ├── upsell.js
-│   │       └── thank-you.js
-│   ├── css/
-│   │   ├── base/
-│   │   │   ├── reset.css
-│   │   │   ├── typography.css
-│   │   │   └── variables.css
-│   │   ├── components/
-│   │   ├── pages/
-│   │   └── styles.css
-│   └── locales/
-│       ├── en-US.json
-│       └── pt-BR.json
-├── tests/
-│   ├── unit/
-│   ├── integration/
-│   └── setup.js
-├── pages/
-│   ├── index.html
-│   ├── upsell.html
-│   └── thank-you.html
-├── jsconfig.json
-├── rsbuild.config.js
-├── vitest.config.js
-├── package.json
-└── README.md
-```
+pages/
+  index.html
+  upsell.html
+  thank-you.html
+  terms.html
+  privacy.html
+src/
+  css/
+    base/ (fonts.css, reset.css, transitions.css, typography.css, utilities.css, variables.css)
+    components/ (buttons.css, carousel.css, footer.css, glass-edges.css, guarantee.css, header.css, hero.css, layout.css, legal.css, loader.css, price.css, testimonials.css, thank-you.css, upsell.css)
+    styles.css
+  js/
+    core/ (i18n.js, pubsub.js, utils.js, view-transitions.js)
+    features/
+      landing/ (carousel.js)
+      layout/ (glass-edges.js, language-toggle.js)
+    pages/ (index.js, upsell.js, thank-you.js, terms.js, privacy.js)
+  locales/ (en-US.json, pt-BR.json)
+tests/
+  unit/ (carousel.test.js, glass-edges.test.js, i18n.test.js, pubsub.test.js, utils-extras.test.js, utils.test.js, view-transitions.test.js)
+  integration/ (index.test.js, thank-you.test.js, upsell.test.js)
+  helpers.js, setup.js
 
 ---
 
-## 🚀 Build e Deploy
+## Build & Scripts (Rsbuild)
 
-### Rsbuild Configuration
-- Cada entry em `source.entry` gera seu próprio HTML via `html.templateByEntry`
-- Minificação e code-split nativos (Rspack por baixo)
-- Source maps em desenvolvimento
-- Aliases em `source.alias` espelhando `jsconfig.json`
+| Script | Description |
+|---|---|
+| npm run dev | Development server (port 3000) |
+| npm run build | Production build |
+| npm run preview | Preview build output |
+| npm test | Vitest watch mode |
+| npm run test:run | Vitest single run |
+| npm run test:coverage | Vitest with coverage |
+| npm run lint | ESLint on src/js/ |
+| npm run lint:css | Stylelint on src/css/ |
+| npm run format | Prettier write |
+| npm run format:check | Prettier check |
+| npm run check | lint + lint:css + format:check |
 
 ### Deploy
-- **Plataforma**: Vercel (recomendado)
-- **Performance**: Lighthouse scores >90
-- **Evidências**: Screenshots no README
+Vercel recommended. Target Lighthouse scores >90.
 
 ---
 
-## ✅ Critérios de Sucesso
+## Product Details
 
-### Responsividade (CRÍTICO)
-- Excelente adaptação: Mobile, Tablet, Desktop
-- Layout consistente across devices
-- Hierarquia visual adequada
-- Navegação fluida
-
-### Performance (OBRIGATÓRIO)
-- Lighthouse scores >90
-- Carregamento eficiente
-- Imagens otimizadas
-- Performance consistente em mobile
-
-### Código
-- HTML semântico
-- CSS sem inline styles
-- JS com funções puras e nomeadas
-- Testes TDD
+- Product: First Portuguese edition of Demian (Hermann Hesse), collector's item
+- Landing page: highlights edition quality, Nobel Prize 1946, authenticity, sealed condition
+- Upsell page: companion book Offer (Steppenwolf), revealed after video, 10s countdown
+- Thank You page: order confirmation with summary (book + companion), next steps
 
 ---
 
-## 🎨 Produto
+## i18n Key Structure
 
-**Primeira edição em português de *Demian* (Hermann Hesse)** — exemplar raro de colecionador.
-- Landing Page: venda do exemplar (autenticidade, conservação, Nobel 1946)
-- Upsell: oferta complementar — *Companheiro de Colecionador* (guia anotado + slipcase + ex-libris), revelada após o vídeo
-- Thank You: confirmação do pedido com resumo (livro + companheiro) e próximos passos de envio
-
-Marca/loja: **H&W Publishing** (curadoria de edições raras).
+```json
+{
+  "common": { "currency": "R$", "error": "...", "loading": "..." },
+  "header": { "logo", "book", "buyNow", "home", "language", ... },
+  "footer": { "copyright", "tagline", "terms", "privacy", "contact", "social" },
+  "landing": { "hero", "details", "guarantee", "testimonials", "cta" },
+  "upsell": { "hero", "offer", "guarantee", "info", "cta" },
+  "thankYou": { "hero", "orderSummary", "nextSteps", "support" },
+  "legal": { "privacy", "terms" }
+}
+```
 
 ---
 
-## 📝 Notas Importantes
+## Code Style
 
-- Design é livre - foco em qualidade técnica
-- Não é necessário backend
-- Foco principal: domínio de frontend base, responsividade e performance
-- Criatividade e capricho visual são valorizados
-- Autonomia na tomada de decisões técnicas
+```javascript
+// Pure function, named, early return
+function handleClick(event) {
+  if (!event) return;
+
+  const target = getTarget(event);
+
+  if (!target) return;
+
+  process(target);
+}
+```
+
+No anonymous functions in callbacks. No `../` imports. Blank line after variable declarations.
