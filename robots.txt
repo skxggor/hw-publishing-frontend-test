@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Accessible for AI and crawlers to understand project structure
+Sitemap: https://hw-publishing-frontend-test.pages.dev/sitemap.xml
+
+# Project documentation for LLMs
+# This file provides structured information about the project architecture,
+# technology stack, and development patterns to help AI models understand the codebase.
+
+# Source code documentation
+# The llms.txt file in the project root contains:
+# - Project overview and purpose
+# - Technical architecture details
+# - Build and testing procedures
+# - Directory structure explanation
+# - Code style guidelines
+
+# For comprehensive information, visit:
+# https://hw-publishing-frontend-test.pages.dev/llms.txt

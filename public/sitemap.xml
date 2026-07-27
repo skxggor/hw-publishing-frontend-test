@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.1">
+
+<url>
+  <loc>https://hw-publishing-frontend-test.pages.dev/</loc>
+  <lastmod>2026-07-27T11:47:00+00:00</lastmod>
+  <priority>1.0</priority>
+</url>
+
+<url>
+  <loc>https://hw-publishing-frontend-test.pages.dev/upsell.html</loc>
+  <lastmod>2026-07-27T11:47:00+00:00</lastmod>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://hw-publishing-frontend-test.pages.dev/thank-you.html</loc>
+  <lastmod>2026-07-27T11:47:00+00:00</lastmod>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://hw-publishing-frontend-test.pages.dev/terms.html</loc>
+  <lastmod>2026-07-27T11:47:00+00:00</lastmod>
+  <priority>0.5</priority>
+</url>
+
+<url>
+  <loc>https://hw-publishing-frontend-test.pages.dev/privacy.html</loc>
+  <lastmod>2026-07-27T11:47:00+00:00</lastmod>
+  <priority>0.5</priority>
+</url>
+
+<url>
+  <loc>https://hw-publishing-frontend-test.pages.dev/llms.txt</loc>
+  <lastmod>2026-07-27T11:47:00+00:00</lastmod>
+  <priority>0.3</priority>
+</url>
+
+<url>
+  <loc>https://hw-publishing-frontend-test.pages.dev/robots.txt</loc>
+  <lastmod>2026-07-27T11:47:00+00:00</lastmod>
+  <priority>0.3</priority>
+</url>
+
+</urlset>

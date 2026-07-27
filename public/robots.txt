@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Project documentation for AI and crawlers
+# This file provides structured information about the H&W Publishing frontend test case
+
+Sitemap: https://hw-publishing-frontend-test.pages.dev/sitemap.xml
+
+User-agent: *
+Description: H&W Publishing frontend test case. 5-page sales funnel for a rare first-edition Demian by Hermann Hesse.
+
+User-agent: GPTBot
+User-agent: ChatGPT-Web-To-Text
+
+# Location of project documentation for AI models
+# Access structured project information for better understanding and development
+import: https://hw-publishing-frontend-test.pages.dev/llms.txt
+
+# Source code documentation for development tools
+# This directory contains:
+# - documentation for AI understanding of project architecture
+# - code documentation for development tools
+# - structured information for better project comprehension
+
+# For comprehensive project details:
+# - View project architecture: https://hw-publishing-frontend-test.pages.dev/llms.txt
+# - Access documentation and documentation tools: https://hw-publishing-frontend-test.pages.dev/
