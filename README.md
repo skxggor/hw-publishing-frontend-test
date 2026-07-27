@@ -11,6 +11,24 @@ npm run build      # Produção
 npm run preview    # Preview do build
 ```
 
+## Performance
+
+Relatório do [PageSpeed Insights](https://pagespeed.web.dev/analysis/https-hw-publishing-frontend-test-pages-dev/fb9lrsa6i8?form_factor=desktop) (Lighthouse) para
+`https://hw-publishing-frontend-test.pages.dev/` — capturado em 27/07/2026.
+
+| Dispositivo | Performance | Acessibilidade | Best Practices | SEO |
+| ----------- | :---------: | :------------: | :------------: | :-: |
+| Mobile      |     96      |       92       |       96       | 92  |
+| Desktop     |     99      |       92       |       96       | 92  |
+
+**Mobile** — FCP 1.8s · LCP 2.3s · TBT 0ms · CLS 0.067 · SI 2.7s
+
+![PageSpeed Insights — Mobile](docs/pagespeed-mobile.png)
+
+**Desktop** — FCP 0.4s · LCP 0.6s · TBT 0ms · CLS 0.03 · SI 1.3s
+
+![PageSpeed Insights — Desktop](docs/pagespeed-desktop.png)
+
 ## Lint e Teste
 
 ```bash
