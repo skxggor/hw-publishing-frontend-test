@@ -45,8 +45,7 @@
   container-type: size;
   display: flex;
   justify-content: center;
-  height: 100vh;
-  height: 100dvh;
+  height: calc(var(--vh, 1vh) * 100);
   padding-inline: var(--container-padding);
   position: relative;
   overflow: hidden;
@@ -272,15 +271,6 @@
   }
 }
 
-/* Price badge upsell variant */
-.price-badge--upsell {
-  background-color: var(--color-gold-on-dark);
-}
-
-.price-badge--upsell .price-badge__currency {
-  font-size: var(--font-size-lg);
-}
-
 /* Offer section */
 .upsell-offer {
   background-color: var(--color-upsell);
@@ -425,6 +415,7 @@
 .upsell-guarantee__label {
   color: var(--color-upsell-text);
   font-size: var(--font-size-lg);
+  text-align: center;
 }
 
 .upsell-guarantee__desc {

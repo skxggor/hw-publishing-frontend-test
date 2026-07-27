@@ -200,6 +200,26 @@ const createUpsellPage = function createUpsellPage() {
     }
   };
 
+  const setViewportHeight = function setViewportHeight() {
+    const vh = window.innerHeight * 0.01;
+
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+
+  const cleanupViewportHeight = function cleanupViewportHeight() {
+    document.documentElement.style.removeProperty('--vh');
+  };
+
+  const initMobileScrollFix = function initMobileScrollFix() {
+    setViewportHeight();
+
+    window.addEventListener('orientationchange', setViewportHeight, { passive: true });
+  };
+
+  const cleanupMobileScrollFix = function cleanupMobileScrollFix() {
+    cleanupViewportHeight();
+  };
+
   const initCtaTracking = function initCtaTracking() {
     const acceptButtons = Utils.getElements('a[href*="companion=true"]');
     const declineButton = Utils.getElement('a[href*="companion=false"]');
@@ -261,7 +281,7 @@ const createUpsellPage = function createUpsellPage() {
       scrollProgressElement = null;
     }
 
-    delete window.startUpsellCountdown;
+    cleanupMobileScrollFix();
   };
 
   const init = function init() {
@@ -274,6 +294,7 @@ const createUpsellPage = function createUpsellPage() {
     initVideoTracking();
     initPriceBadge();
     initCtaTracking();
+    initMobileScrollFix();
     createScrollProgress();
     glassEdgesCleanup = mountGlassEdges();
     Utils.updateCopyrightYear();
