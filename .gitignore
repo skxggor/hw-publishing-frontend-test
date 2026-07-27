@@ -26,11 +26,5 @@ Thumbs.db
 *.swp
 *.swo
 
-# Project brief (internal document, not part of the deliverable)
-/Teste técnico Frontend T3.pdf
-
 # Design wireframes (reference only)
 wireframe*.png
-
-# Image backups
-public/images/backup/
