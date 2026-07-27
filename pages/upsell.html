@@ -56,7 +56,7 @@
           <div class="price-badge price-badge--upsell upsell-hero__price">
             <span class="price-badge__original" data-i18n="upsell.hero.price.original">R$ 149,99</span>
             <span class="price-badge__current">
-              <span class="price-badge__currency" data-i18n="upsell.hero.price.currency">+</span>
+              <span class="price-badge__currency" data-i18n="upsell.hero.price.currency">R$</span>
               <span class="price-badge__amount"><span data-i18n="upsell.hero.price.amount">59</span><span class="price-badge__cents" data-i18n="upsell.hero.price.cents">,99</span></span>
             </span>
           </div>
@@ -227,6 +227,11 @@
         events: {
           onReady: function onPlayerReady(event) {
             event.target.playVideo();
+          },
+          onStateChange: function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.PLAYING && typeof window.startUpsellCountdown === 'function') {
+              window.startUpsellCountdown();
+            }
           }
         }
       });

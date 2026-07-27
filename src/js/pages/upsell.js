@@ -21,6 +21,7 @@ const createUpsellPage = function createUpsellPage() {
   let revealTimeout = null;
   let scrollProgressElement = null;
   let crossfadeTimeline = null;
+  let fallbackTimeout = null;
 
   const prefersReducedMotion = function prefersReducedMotion() {
     if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
@@ -113,7 +114,11 @@ const createUpsellPage = function createUpsellPage() {
     initImageCrossfade();
   };
 
-  const initVideoTracking = function initVideoTracking() {
+  const startCountdown = function startCountdown() {
+    if (revealTimeout) {
+      return;
+    }
+
     const countdownElement = Utils.getElement('#upsellCountdown');
     const countdownNumber = Utils.getElement('#countdownNumber');
     let remaining = 10;
@@ -140,12 +145,30 @@ const createUpsellPage = function createUpsellPage() {
         }
 
         revealHeroContent();
-        pubSub.publish('upsell:images-revealed', { method: 'timeout' });
+        pubSub.publish('upsell:images-revealed', { method: 'video' });
       }
     }, 1000);
 
     revealTimeout = countdownInterval;
-    pubSub.publish('upsell:video-tracking-initialized', { delay: VIDEO_REVEAL_TIME });
+  };
+
+  const initVideoTracking = function initVideoTracking() {
+    window.startUpsellCountdown = startCountdown;
+
+    fallbackTimeout = setTimeout(function fallbackReveal() {
+      if (revealTimeout) {
+        return;
+      }
+
+      const countdownElement = Utils.getElement('#upsellCountdown');
+
+      if (countdownElement) {
+        Utils.addClass(countdownElement, 'is-hidden');
+      }
+
+      revealHeroContent();
+      pubSub.publish('upsell:images-revealed', { method: 'fallback' });
+    }, VIDEO_REVEAL_TIME);
   };
 
   const initPriceBadge = function initPriceBadge() {
@@ -221,6 +244,11 @@ const createUpsellPage = function createUpsellPage() {
       revealTimeout = null;
     }
 
+    if (fallbackTimeout) {
+      clearTimeout(fallbackTimeout);
+      fallbackTimeout = null;
+    }
+
     document.body.style.overflow = '';
 
     if (crossfadeTimeline) {
@@ -232,6 +260,8 @@ const createUpsellPage = function createUpsellPage() {
       scrollProgressElement.parentNode.removeChild(scrollProgressElement);
       scrollProgressElement = null;
     }
+
+    delete window.startUpsellCountdown;
   };
 
   const init = function init() {

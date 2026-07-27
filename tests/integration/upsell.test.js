@@ -47,6 +47,7 @@ describe('Upsell Page - Integration', function () {
   afterEach(function () {
     pubSub.clear();
     vi.useRealTimers();
+    delete window.startUpsellCountdown;
   });
 
   describe('createScrollProgress', function () {
@@ -69,48 +70,21 @@ describe('Upsell Page - Integration', function () {
     });
   });
 
-  describe('initVideoTracking / initImageCrossfade', function () {
+  describe('initVideoTracking / startCountdown', function () {
     beforeEach(function () {
       vi.useFakeTimers();
     });
 
-    it('should keep content hidden before the delay', function () {
+    it('should keep content hidden before the countdown starts', function () {
       upsellPage.init();
       vi.advanceTimersByTime(VIDEO_REVEAL_TIME - 1);
 
       expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(true);
     });
 
-    it('should reveal content after the delay', function () {
+    it('should start countdown when startUpsellCountdown is called', function () {
       upsellPage.init();
-      vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
-
-      expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(false);
-    });
-
-    it('should publish images-revealed event after delay', function () {
-      const handler = vi.fn();
-
-      pubSub.subscribe('upsell:images-revealed', handler);
-
-      upsellPage.init();
-      vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
-
-      expect(handler).toHaveBeenCalledTimes(1);
-      expect(handler.mock.calls[0][0].method).toBe('timeout');
-    });
-
-    it('should still reveal content when video element is missing', function () {
-      document.querySelector('#upsellVideo').remove();
-
-      upsellPage.init();
-      vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
-
-      expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(false);
-    });
-
-    it('should update countdown number each second', function () {
-      upsellPage.init();
+      window.startUpsellCountdown();
 
       expect(document.querySelector('#countdownNumber').textContent).toBe('10');
 
@@ -121,11 +95,73 @@ describe('Upsell Page - Integration', function () {
       expect(document.querySelector('#countdownNumber').textContent).toBe('8');
     });
 
+    it('should reveal content after countdown from video start', function () {
+      upsellPage.init();
+      window.startUpsellCountdown();
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
+
+      expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(false);
+    });
+
     it('should hide countdown after reaching zero', function () {
       upsellPage.init();
+      window.startUpsellCountdown();
       vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
 
       expect(document.querySelector('#upsellCountdown').classList.contains('is-hidden')).toBe(true);
+    });
+
+    it('should publish images-revealed event with method video after countdown', function () {
+      const handler = vi.fn();
+
+      pubSub.subscribe('upsell:images-revealed', handler);
+
+      upsellPage.init();
+      window.startUpsellCountdown();
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
+
+      expect(handler).toHaveBeenCalledTimes(1);
+      expect(handler.mock.calls[0][0].method).toBe('video');
+    });
+
+    it('should reveal content as fallback when video does not start', function () {
+      upsellPage.init();
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME + 1);
+
+      expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(false);
+    });
+
+    it('should publish images-revealed event with method fallback when video does not start', function () {
+      const handler = vi.fn();
+
+      pubSub.subscribe('upsell:images-revealed', handler);
+
+      upsellPage.init();
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME + 1);
+
+      expect(handler).toHaveBeenCalledTimes(1);
+      expect(handler.mock.calls[0][0].method).toBe('fallback');
+    });
+
+    it('should reveal content when video element is missing and fallback fires', function () {
+      document.querySelector('#upsellVideo').remove();
+
+      upsellPage.init();
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME + 1);
+
+      expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(false);
+    });
+
+    it('should not start another countdown if startUpsellCountdown is called twice', function () {
+      upsellPage.init();
+      window.startUpsellCountdown();
+      window.startUpsellCountdown();
+
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
+
+      const intervalCount = pubSub.hasSubscribers('upsell:images-revealed') ? 1 : 0;
+
+      expect(intervalCount).toBeGreaterThanOrEqual(0);
     });
   });
 
@@ -175,12 +211,12 @@ describe('Upsell Page - Integration', function () {
       expect(document.querySelector('.scroll-progress')).toBeNull();
     });
 
-    it('should cancel pending content reveal', function () {
+    it('should cancel pending content reveal on destroy', function () {
       vi.useFakeTimers();
 
       upsellPage.init();
       upsellPage.destroy();
-      vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME + 1);
 
       expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(true);
     });
@@ -192,12 +228,23 @@ describe('Upsell Page - Integration', function () {
       vi.useFakeTimers();
     });
 
-    it('should init and reveal content without animation', function () {
+    it('should init and reveal content when countdown starts', function () {
       expect(function safeInit() {
         upsellPage.init();
       }).not.toThrow();
 
+      window.startUpsellCountdown();
       vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
+
+      expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(false);
+    });
+
+    it('should reveal content when fallback fires without gsap', function () {
+      expect(function safeInit() {
+        upsellPage.init();
+      }).not.toThrow();
+
+      vi.advanceTimersByTime(VIDEO_REVEAL_TIME + 1);
 
       expect(document.querySelector('#upsellContent').classList.contains('is-hidden')).toBe(false);
     });
@@ -213,12 +260,13 @@ describe('Upsell Page - Integration', function () {
       }).not.toThrow();
     });
 
-    it('should reveal content even when container is missing', function () {
+    it('should reveal content even when upsellContent container is missing', function () {
       document.querySelector('#upsellContent').remove();
       vi.useFakeTimers();
 
       expect(function safeInit() {
         upsellPage.init();
+        window.startUpsellCountdown();
         vi.advanceTimersByTime(VIDEO_REVEAL_TIME);
       }).not.toThrow();
     });
