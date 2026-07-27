@@ -1,0 +1,9 @@
+H&W Publishing - Frontend Test Case
+
+A 5-page sales funnel website for a rare first-edition Demian by Hermann Hesse. Built with vanilla JavaScript, pure CSS, and Rsbuild.
+
+Pages: landing (index.html), upsell/offer (upsell.html), order confirmation (thank-you.html), legal (terms.html, privacy.html).
+
+Tech stack: HTML5, CSS3, Vanilla JS, GSAP (animations), Embla Carousel, Rsbuild (bundler), Vitest (tests).
+
+Architecture: Pub/Sub pattern, pure functions, early return, event-driven, mobile-first CSS with custom properties. Path aliases: @core, @features, @pages, @locales, @css. i18n with pt-BR and en-US locales.
