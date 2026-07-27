@@ -14,7 +14,7 @@
 
 @media (orientation: landscape) {
   .hero {
-    min-height: 844px;
+    min-height: max(calc(100dvh - var(--header-height)), 844px);
   }
 }
 

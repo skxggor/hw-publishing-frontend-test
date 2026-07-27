@@ -53,7 +53,7 @@
 
 @media (orientation: landscape) {
   .upsell-hero {
-    min-height: 844px;
+    min-height: max(100dvh, 844px);
   }
 }
 
