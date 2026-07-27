@@ -49,6 +49,8 @@ const createHomePage = function createHomePage() {
 
     let closeTimeout = null;
 
+    let savedScrollY = 0;
+
     const clearCloseTimeout = function clearCloseTimeout() {
       if (!closeTimeout) {
         return;
@@ -58,11 +60,35 @@ const createHomePage = function createHomePage() {
       closeTimeout = null;
     };
 
+    const lockBodyScroll = function lockBodyScroll() {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+      savedScrollY = window.scrollY;
+
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+
+      document.body.style.position = 'fixed';
+      document.body.style.top = `${-savedScrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+    };
+
+    const unlockBodyScroll = function unlockBodyScroll() {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.paddingRight = '';
+      window.scrollTo(0, savedScrollY);
+    };
+
     const closeMenu = function closeMenu() {
       clearCloseTimeout();
       Utils.removeClass(header, 'header--menu-open');
       Utils.addClass(header, 'header--menu-closing');
-      Utils.removeClass(document.body, 'body--menu-open');
+      unlockBodyScroll();
       toggleButton.setAttribute('aria-expanded', 'false');
 
       closeTimeout = setTimeout(function finishClosing() {
@@ -74,8 +100,8 @@ const createHomePage = function createHomePage() {
     const openMenu = function openMenu() {
       clearCloseTimeout();
       Utils.removeClass(header, 'header--menu-closing');
+      lockBodyScroll();
       Utils.addClass(header, 'header--menu-open');
-      Utils.addClass(document.body, 'body--menu-open');
       toggleButton.setAttribute('aria-expanded', 'true');
     };
 
@@ -114,6 +140,10 @@ const createHomePage = function createHomePage() {
       const targetId = event.currentTarget.getAttribute('href');
 
       if (targetId === '#') {
+        return;
+      }
+
+      if (event.currentTarget.closest('.header')) {
         return;
       }
 

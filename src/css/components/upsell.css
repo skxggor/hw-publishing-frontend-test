@@ -45,10 +45,16 @@
   container-type: size;
   display: flex;
   justify-content: center;
-  height: calc(var(--vh, 1vh) * 100);
+  min-height: 100dvh;
   padding-inline: var(--container-padding);
   position: relative;
   overflow: hidden;
+}
+
+@media (orientation: landscape) {
+  .upsell-hero {
+    min-height: 844px;
+  }
 }
 
 .upsell-hero__video-wrapper {
@@ -118,12 +124,25 @@
   z-index: 10;
 }
 
+@media (orientation: landscape) {
+  .upsell-countdown {
+    height: 100dvh;
+    position: fixed;
+  }
+}
+
 .upsell-countdown__number {
   color: var(--color-upsell-text);
   font-family: var(--font-family-primary);
   font-size: clamp(6rem, 5rem + 8vw, 14rem);
   font-weight: var(--font-weight-bold);
   pointer-events: none;
+}
+
+@media (orientation: landscape) {
+  .upsell-countdown__number {
+    font-size: clamp(4rem, 3rem + 5vw, 8rem);
+  }
 }
 
 /* Hero container - similar to landing page */

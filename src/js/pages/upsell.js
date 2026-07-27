@@ -123,6 +123,7 @@ const createUpsellPage = function createUpsellPage() {
     const countdownNumber = Utils.getElement('#countdownNumber');
     let remaining = 10;
 
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
 
     if (countdownNumber) {
@@ -138,6 +139,7 @@ const createUpsellPage = function createUpsellPage() {
 
       if (remaining <= 0) {
         clearInterval(countdownInterval);
+        document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
 
         if (countdownElement) {
@@ -269,6 +271,7 @@ const createUpsellPage = function createUpsellPage() {
       fallbackTimeout = null;
     }
 
+    document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
 
     if (crossfadeTimeline) {

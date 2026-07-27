@@ -11,6 +11,11 @@
   z-index: var(--z-sticky);
 }
 
+.header--menu-open,
+.header--menu-closing {
+  z-index: var(--z-modal);
+}
+
 .header__container {
   align-items: center;
   display: flex;
@@ -126,6 +131,7 @@
   flex-direction: column;
   inset: 0;
   justify-content: center;
+  padding-top: var(--header-height);
   pointer-events: none;
   position: fixed;
   visibility: hidden;
@@ -147,6 +153,7 @@
     flex-direction: row;
     inset: auto;
     justify-content: flex-end;
+    padding-top: 0;
     pointer-events: auto;
     position: static;
     visibility: visible;
@@ -198,7 +205,6 @@
   transition-delay: 240ms;
 }
 
-/* Closing: columns come down in reverse, after the links have left */
 .header--menu-closing .header__column:nth-child(1) {
   transition-delay: 500ms;
 }

@@ -1,9 +1,5 @@
 /* Layout primitives: skip link, section titles, CTA band */
 
-.body--menu-open {
-  overflow: hidden;
-}
-
 .skip-link {
   background-color: var(--color-ink);
   border-radius: var(--radius-md);
