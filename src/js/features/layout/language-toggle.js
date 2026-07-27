@@ -33,6 +33,7 @@ const initLanguageToggle = function initLanguageToggle() {
 
     syncLabel(nextLocale);
     I18n.translatePage();
+    Utils.updateCopyrightYear();
     pubSub.publish('language:changed', nextLocale);
   };
 

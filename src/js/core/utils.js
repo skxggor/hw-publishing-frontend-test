@@ -329,7 +329,15 @@ const Utils = Object.freeze({
     const elements = Utils.getElements('.footer__copyright');
 
     elements.forEach(function replaceYear(element) {
-      element.textContent = element.textContent.replace(/\d{4}/, String(year));
+      const current = element.textContent;
+      const existing = element.getAttribute('data-year');
+
+      if (existing && parseInt(existing, 10) === year) {
+        return;
+      }
+
+      element.textContent = current.replace(/\d{4}/g, String(year));
+      element.setAttribute('data-year', String(year));
     });
   },
 
