@@ -1,7 +1,3 @@
-/**
- * Utility Functions - Pure functions for common operations
- */
-
 const Utils = Object.freeze({
   isString: function isString(value) {
     return typeof value === 'string';

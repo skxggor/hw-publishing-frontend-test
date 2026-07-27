@@ -1,8 +1,3 @@
-/**
- * Pub/Sub (Publish-Subscribe) Pattern Implementation
- * Event-driven architecture for decoupled communication
- */
-
 const createPubSub = function createPubSub() {
   const events = Object.create(null);
 

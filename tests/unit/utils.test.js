@@ -143,7 +143,6 @@ describe('Utils - DOM Functions', function () {
 
     it('should not add class if element is null', function () {
       Utils.addClass(null, 'test-class');
-      // Should not throw error
       expect(true).toBe(true);
     });
 
@@ -252,7 +251,6 @@ describe('Utils - Utility Functions', function () {
       const result = Utils.debounce('not a function', 100);
       expect(typeof result).toBe('function');
       result();
-      // Should not throw error
     });
   });
 

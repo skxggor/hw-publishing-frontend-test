@@ -1,11 +1,7 @@
-/* Utility classes - Visibility, animation states, JS-driven elements */
-
-/* Visibility */
 .is-hidden {
   display: none;
 }
 
-/* Scroll reveal animation states */
 [data-animate] {
   opacity: 0;
   transform: translateY(20px);
@@ -27,7 +23,6 @@
   }
 }
 
-/* Scroll progress bar (dynamic width via --scroll-progress custom property) */
 .scroll-progress {
   background-color: var(--color-primary);
   height: 3px;
@@ -38,7 +33,6 @@
   z-index: 9999;
 }
 
-/* Confetti particles (dynamic position/color via custom properties) */
 .confetti {
   background-color: var(--confetti-color);
   border-radius: 2px;
