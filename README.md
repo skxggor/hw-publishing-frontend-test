@@ -1,5 +1,7 @@
 # Demian - Série Luxo | H&W Publishing
 
+[![Site](https://img.shields.io/static/v1?label=site%20em%20produ%C3%A7%C3%A3o&message=hw-publishing-frontend-test.pages.dev&color=c44554&style=for-the-badge&logo=googlechrome&logoColor=f4ecd9)](https://hw-publishing-frontend-test.pages.dev/)
+
 Fluxo de vendas digital para exemplar raro de colecionador.
 
 ## Como Executar
